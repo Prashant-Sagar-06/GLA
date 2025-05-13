@@ -62,7 +62,7 @@ function loadContent(section) {
             mainContent.innerHTML = `
                 <h2>About</h2>
                 <p>Students Welfare at GLA University works to ensure that students develop academically, professionally, and personally through a variety of programs and support initiatives.</p>
-                <img src="../images/about-gla.jpg" alt="About Students Welfare" class="banner-img small-img">
+                <img src="./images/about-gla.jpg" alt="About Students Welfare" class="banner-img small-img">
                 <p style="margin-top: 20px; text-align: justify; font-size: 1rem; line-height: 1.6;">GLA University Students Welfare is committed to fostering a vibrant campus life by organizing events, providing support services, and creating opportunities for students to excel in all aspects of their lives. Join us in building a community of growth, learning, and success.</p>
             `;
             break;
@@ -70,7 +70,7 @@ function loadContent(section) {
             mainContent.innerHTML = `
                 <h2>Student Activity Centre</h2>
                 <p>The Student Activity Centre organizes exciting events, competitions, and workshops to enhance students' overall experience on campus.</p>
-                <img src="activity_centre_banner.jpg" alt="Student Activities" class="banner-img">
+                <img src="./images/activity_centre_banner.jpg" alt="Student Activities" class="banner-img">
             `;
             break;
             case "studentsClubs":
@@ -94,7 +94,7 @@ function loadContent(section) {
                         // Create Cultural link
                         const culturalLink = document.createElement("a");
                         culturalLink.textContent = "Cultural";
-                        culturalLink.href = "../Cultural/cultural_club.html";
+                        culturalLink.href = "./Cultural/cultural_club.html";
                         culturalLink.classList.add("sidebar-btn");
                         culturalLink.style.backgroundColor = "#2196F3"; // Change button color
                         culturalLink.style.color = "#fff"; // Change text color
@@ -105,7 +105,7 @@ function loadContent(section) {
                         // Create Departmental link
                         const departmentalLink = document.createElement("a");
                         departmentalLink.textContent = "Departmental";
-                        departmentalLink.href = "../Deparmental/Departmental.html";
+                        departmentalLink.href = "./Departmental/Departmental.html";
                         departmentalLink.classList.add("sidebar-btn");
                         departmentalLink.style.backgroundColor = "#2196F3"; // Change button color
                         departmentalLink.style.color = "#fff"; // Change text color
@@ -116,7 +116,7 @@ function loadContent(section) {
                         // Create Sports link
                         const sportsLink = document.createElement("a");
                         sportsLink.textContent = "Sports";
-                        sportsLink.href = "../Sports/Sports.html";
+                        sportsLink.href = "./Sports/Sports.html";
                         sportsLink.classList.add("sidebar-btn");
                         sportsLink.style.backgroundColor = "#2196F3"; // Change button color
                         sportsLink.style.color = "#fff"; // Change text color
