@@ -105,7 +105,7 @@ function loadContent(section) {
                         // Create Departmental link
                         const departmentalLink = document.createElement("a");
                         departmentalLink.textContent = "Departmental";
-                        departmentalLink.href = "./Departmental/Departmental.html";
+                        departmentalLink.href = "./Departmental/departmental.html"; // Ensure the file name matches the actual file
                         departmentalLink.classList.add("sidebar-btn");
                         departmentalLink.style.backgroundColor = "#2196F3"; // Change button color
                         departmentalLink.style.color = "#fff"; // Change text color
