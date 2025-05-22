@@ -1,0 +1,64 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "about"
+    label: "About Section"
+    files:
+      - file: "content/about.md"
+        label: "About Content"
+        name: "about"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "dean"
+    label: "Dean Message"
+    files:
+      - file: "content/dean.md"
+        label: "Dean Info"
+        name: "dean"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Image", name: "image", widget: "image" }
+
+  - name: "slider"
+    label: "Slider Images"
+    files:
+      - file: "content/slider.json"
+        label: "Slides"
+        name: "slider"
+        fields:
+          - { label: "Slides", name: "", widget: "list", fields: [
+              { label: "Image URL", name: "url", widget: "image" },
+              { label: "Alt Text", name: "alt", widget: "string" }
+            ]}
+
+  - name: "footer"
+    label: "Footer Info"
+    files:
+      - file: "content/footer.json"
+        label: "Footer Content"
+        name: "footer"
+        fields:
+          - { label: "Address", name: "address", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Apps", name: "apps", widget: "list", fields: [
+              { label: "App URL", name: "url", widget: "string" },
+              { label: "Image", name: "img", widget: "image" },
+              { label: "Alt Text", name: "alt", widget: "string" }
+            ]}
+          - { label: "Social", name: "social", widget: "list", fields: [
+              { label: "Social URL", name: "url", widget: "string" },
+              { label: "Image", name: "img", widget: "image" },
+              { label: "Alt Text", name: "alt", widget: "string" }
+            ]}
