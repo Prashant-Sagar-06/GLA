@@ -377,3 +377,85 @@ nav ul li a:hover {
     background-color: #1abc9c; /* Teal on hover */
     transform: translateY(-2px); /* Smooth move up on hover */
 }
+.sub-menu {
+    display: none;
+    padding: 10px;
+}
+
+.sub-menu.active {
+    display: block;
+}
+.sub-menu-btn {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    margin: 5px 0;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.sub-menu-btn:hover {
+    background-color: #1976D2;
+}
+.sub-menu-btn {
+    background-color: #ADD8E6; /* Light blue color */
+    color: #fff;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-family: inherit;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.sub-menu-btn:hover {
+    background-color: #87CEEB; /* Slightly darker blue on hover */
+}
+.sub-menu-btn {
+    width: 100%;
+    padding: 10px 12px;
+    margin: 8px 0;
+    background-color:#2196F3 ;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 14px;
+}
+
+.sub-menu-btn:hover {
+    background-color: #1976D2;
+}
+
+.sidebar {
+    transition: all 0.3s ease;
+    height: fit-content;
+    min-height: 400px; /* Base height when not expanded */
+}
+
+.sub-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.sub-menu.active {
+    max-height: 200px; /* Adjust this value based on your content */
+}
+
+.club-buttons {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.club-buttons.active {
+    max-height: 300px; /* Adjust this value based on your content */
+}

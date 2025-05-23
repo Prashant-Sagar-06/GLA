@@ -73,101 +73,26 @@ function loadContent(section) {
                 <img src="./images/activity_centre_banner.jpg" alt="Student Activities" class="banner-img">
             `;
             break;
-            case "studentsClubs":
-                const sidebar = document.querySelector(".sidebar");
-
-                if (sidebar) {
-                    const existingButtons = sidebar.querySelector(".club-buttons");
-
-                    if (existingButtons) {
-                        // If buttons already exist -> remove them
-                        existingButtons.remove();
-                    } else {
-                        // If buttons not exist -> create them
-                        const clubButtons = document.createElement("div");
-                        clubButtons.classList.add("club-buttons");
-                        clubButtons.style.display = "flex";
-                        clubButtons.style.flexDirection = "column";
-                        clubButtons.style.alignItems = "center"; // Center align buttons horizontally
-                        clubButtons.style.marginTop = "10px"; // Add some spacing from the Students Clubs link
-
-                        // Create Cultural link
-                        const culturalLink = document.createElement("a");
-                        culturalLink.textContent = "Cultural";
-                        culturalLink.href = "./Cultural/cultural_club.html";
-                        culturalLink.classList.add("sidebar-btn");
-                        culturalLink.style.backgroundColor = "#2196F3"; // Change button color
-                        culturalLink.style.color = "#fff"; // Change text color
-                        culturalLink.style.padding = "10px 15px"; // Add padding
-                        culturalLink.style.borderRadius = "5px"; // Add rounded corners
-                        culturalLink.style.margin = "5px"; // Add margin
-
-                        // Create Departmental link
-                        const departmentalLink = document.createElement("a");
-                        departmentalLink.textContent = "Departmental";
-                        departmentalLink.href = "./Departmental/Departmental.html";
-                        // Ensure the file name matches the actual file
-                        departmentalLink.classList.add("sidebar-btn");
-                        departmentalLink.style.backgroundColor = "#2196F3"; // Change button color
-                        departmentalLink.style.color = "#fff"; // Change text color
-                        departmentalLink.style.padding = "10px 15px"; // Add padding
-                        departmentalLink.style.borderRadius = "5px"; // Add rounded corners
-                        departmentalLink.style.margin = "5px"; // Add margin
-
-                        // Create Sports link
-                        const sportsLink = document.createElement("a");
-                        sportsLink.textContent = "Sports";
-                        sportsLink.href = "./Sports/Sports.html";
-                        sportsLink.classList.add("sidebar-btn");
-                        sportsLink.style.backgroundColor = "#2196F3"; // Change button color
-                        sportsLink.style.color = "#fff"; // Change text color
-                        sportsLink.style.padding = "10px 15px"; // Add padding
-                        sportsLink.style.borderRadius = "5px"; // Add rounded corners
-                        sportsLink.style.margin = "5px"; // Add margin
-
-                        // Add links to container
-                        clubButtons.appendChild(culturalLink);
-                        clubButtons.appendChild(departmentalLink);
-                        clubButtons.appendChild(sportsLink);
-
-                        // Find Students Clubs link and insert buttons after it
-                        const studentClubsLink = sidebar.querySelector('a[data-section="studentsClubs"]');
-                        if (studentClubsLink) {
-                            studentClubsLink.insertAdjacentElement("afterend", clubButtons);
-                        }
-                    }
-                } else {
-                    console.error("Sidebar element not found.");
-                }
+            case "nss":
+                mainContent.innerHTML = `
+                    <h2>NSS</h2>
+                    <p>National Service Scheme (NSS) volunteers at GLA serve the community and lead impactful social projects across the region.</p>
+                    <img src="nss_banner.jpg" alt="NSS Volunteers" class="banner-img">
+                `;
                 break;
-            
-        case "ncc":
-            mainContent.innerHTML = `
-                <h2>NCC</h2>
-                <p>GLA's NCC unit fosters leadership, discipline, and patriotism through various national-level programs and parades.</p>
-                <img src="ncc_banner.jpg" alt="NCC Activities" class="banner-img">
-            `;
-            break;
-        case "nss":
-            mainContent.innerHTML = `
-                <h2>NSS</h2>
-                <p>National Service Scheme (NSS) volunteers at GLA serve the community and lead impactful social projects across the region.</p>
-                <img src="nss_banner.jpg" alt="NSS Volunteers" class="banner-img">
-            `;
-            break;
-        case "studentAffairs":
-            mainContent.innerHTML = `
-                <h2>Student Affairs Council</h2>
-                <p>The Student Affairs Council represents the student body, organizing elections, leadership programs, and major student initiatives.</p>
-                <img src="council_banner.jpg" alt="Student Council" class="banner-img">
-            `;
-            break;
-        default:
-            mainContent.innerHTML = `
-                <h2>Welcome to Students Welfare</h2>
-                <p>Explore the various clubs, events, and student opportunities at GLA University.</p>
-                <img src="gla_banner.png" alt="GLA Students participating in activities" class="banner-img">
-            `;
+            case "studentAffairs":
+                mainContent.innerHTML = `
+                    <h2>Student Affairs Council</h2>
+                    <p>The Student Affairs Council represents the student body, organizing elections, leadership programs, and major student initiatives.</p>
+                    <img src="council_banner.jpg" alt="Student Council" class="banner-img">
+                `;
+                break;
+            default:
+                mainContent.innerHTML = `
+                    <h2>Welcome to Students Welfare</h2>
+                    <p>Explore the various clubs, events, and student opportunities at GLA University.</p>
+                    <img src="gla_banner.png" alt="GLA Students participating in activities" class="banner-img">
+                `;
     }
 }
 
@@ -269,4 +194,68 @@ document.addEventListener('DOMContentLoaded', async () => {
         },
         loop: true,
     });
+});
+
+// Update the council click handler
+document.querySelector('[data-section="council"]').addEventListener('click', function(e) {
+    e.preventDefault();
+    const sidebar = document.querySelector(".sidebar");
+    const existingButtons = sidebar.querySelector(".council-buttons");
+    
+    if (existingButtons) {
+        existingButtons.remove();
+    } else {
+        const councilButtons = document.createElement("div");
+        councilButtons.classList.add("council-buttons");
+        councilButtons.style.display = "flex";
+        councilButtons.style.flexDirection = "column";
+        councilButtons.style.width = "100%";
+        councilButtons.style.padding = "10px";
+
+        const buttons = [
+            { text: "Student Affairs Council", section: "student-affairs" },
+            { text: "Cultural Affairs Council", section: "cultural-affairs" }
+        ];
+
+        buttons.forEach(btn => {
+            const button = document.createElement("button");
+            button.textContent = btn.text;
+            button.setAttribute('data-section', btn.section);
+            button.style.backgroundColor = "#2196F3";
+            button.style.color = "#fff";
+            button.style.padding = "10px 15px";
+            button.style.margin = "5px 0";
+            button.style.border = "none";
+            button.style.borderRadius = "5px";
+            button.style.cursor = "pointer";
+            button.style.width = "100%";
+            councilButtons.appendChild(button);
+        });
+
+        const councilLink = sidebar.querySelector('a[data-section="council"]');
+        if (councilLink && councilLink.parentNode) {
+            councilLink.parentNode.insertBefore(councilButtons, councilLink.nextSibling);
+        }
+    }
+});
+
+// Handle sub-menu button clicks
+document.querySelectorAll('.sub-menu-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        const section = this.getAttribute('data-section');
+        // Handle the specific council section display here
+        // You can add your logic to show the respective council content
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const studentsClubsLink = document.querySelector('a[data-section="studentsClubs"]');
+    const clubsSubmenu = document.getElementById('clubs-submenu');
+
+    if (studentsClubsLink && clubsSubmenu) {
+        studentsClubsLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            clubsSubmenu.classList.toggle('active'); // Toggle 'active' class
+        });
+    }
 });
