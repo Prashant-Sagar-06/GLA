@@ -106,7 +106,7 @@ body {
 nav ul {
   list-style: none;
   display: flex;
-  gap: 25px;
+  gap: 10px;
 }
 
 nav ul li a {
@@ -291,7 +291,7 @@ nav ul li a:hover {
 
   nav ul {
       flex-direction: column;
-      gap: 10px;
+      gap: 5px;
   }
 
   .footer-grid {
