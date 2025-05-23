@@ -1,11 +1,12 @@
 // ----------------- Typewriter Effect -----------------
-const text = "Welcome to GLA University Cultural Clubs!";
 const typewriter = document.getElementById("typewriter");
+const text = "Welcome to GLA University Cultural Clubs!";
 
 let index = 0;
 let isDeleting = false;
 
 function typeEffect() {
+    if (!typewriter) return; // Prevent error if element not found
     if (!isDeleting) {
         typewriter.textContent = text.substring(0, index + 1);
         index++;
@@ -22,4 +23,18 @@ function typeEffect() {
     setTimeout(typeEffect, isDeleting ? 50 : 100);
 }
 
-typeEffect();
+if (typewriter) typeEffect();
+
+// ----------------- Dynamic Club Cards -----------------
+document.addEventListener('DOMContentLoaded', async () => {
+    const res = await fetch('http://localhost:5000/api/cultural-clubs');
+    const clubs = await res.json();
+
+    document.getElementById('clubs-row').innerHTML = clubs.map(club => `
+        <div class="card">
+            <a href="${club.link}"><img src="${club.image}" alt="${club.name}"></a>
+            <h3>${club.name}</h3>
+            <p>${club.description}</p>
+        </div>
+    `).join('');
+});
