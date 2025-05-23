@@ -102,9 +102,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
     links.forEach(link => {
         link.addEventListener('click', function(event) {
-            event.preventDefault();
             const section = this.getAttribute('data-section');
-            loadContent(section);
+            // Only load content for sections that are NOT council or studentsClubs
+            if (section === "council" || section === "studentsClubs") {
+                // Let the submenu toggle logic handle this
+                event.preventDefault();
+                // (No call to loadContent)
+            } else {
+                event.preventDefault();
+                loadContent(section);
+            }
         });
     });
 });
@@ -245,6 +252,27 @@ document.querySelectorAll('.sub-menu-btn').forEach(button => {
         const section = this.getAttribute('data-section');
         // Handle the specific council section display here
         // You can add your logic to show the respective council content
+    });
+});
+
+// Handle sub-menu button clicks for Council and Students Clubs
+document.querySelectorAll('.sub-menu-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        const section = this.getAttribute('data-section');
+        // Navigation logic for sub-menu buttons
+        if (section === "cultural") {
+            window.location.href = "Cultural/cultural_club.html";
+        } else if (section === "departmental") {
+            window.location.href = "Departmental/Departmental.html";
+        } else if (section === "sports") {
+            window.location.href = "Sports/Sports.html";
+        } else if (section === "student-affairs") {
+            // You can create a dedicated page or show a modal
+            alert("Student Affairs Council page coming soon!");
+        } else if (section === "cultural-affairs") {
+            // You can create a dedicated page or show a modal
+            alert("Cultural Affairs Council page coming soon!");
+        }
     });
 });
 

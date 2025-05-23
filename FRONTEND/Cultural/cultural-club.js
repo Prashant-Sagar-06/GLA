@@ -28,7 +28,17 @@ if (typewriter) typeEffect();
 // ----------------- Dynamic Club Cards -----------------
 document.addEventListener('DOMContentLoaded', async () => {
     const res = await fetch('http://localhost:5000/api/cultural-clubs');
-    const clubs = await res.json();
+    let clubs = await res.json();
+
+    // 1. Remove any club with undefined name
+    clubs = clubs.filter(club => club.name && club.name !== "undefined");
+
+    // 2. Move "GLA Media Scoop" to the first position
+    const mediaScoopIndex = clubs.findIndex(club => club.name.trim().toLowerCase() === "gla media scoop");
+    if (mediaScoopIndex > -1) {
+        const [mediaScoop] = clubs.splice(mediaScoopIndex, 1);
+        clubs.unshift(mediaScoop);
+    }
 
     document.getElementById('clubs-row').innerHTML = clubs.map(club => `
         <div class="card">
