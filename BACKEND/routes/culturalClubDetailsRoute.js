@@ -1,7 +1,6 @@
-// routes/CulturalClubDetailRoutes.js
 const express = require('express');
 const router = express.Router();
-const CulturalClubDetail = require('../models/culturalClubDetail');
+const CulturalClubDetail = require('../models/CulturalClubDetail');
 
 // GET /api/cultural-club-details/:clubKey
 router.get('/cultural-club-details/:clubKey', async (req, res) => {
