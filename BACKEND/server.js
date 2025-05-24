@@ -6,6 +6,7 @@ require("dotenv").config();
 // Use homepageRoutes instead of deanRoutes
 const homepageRoutes = require("./routes/homepageRoutes");
 const culturalClubRoutes = require('./routes/CulturalClubRoutes');
+const culturalClubDetailRoutes = require('./routes/CulturalClubDetailRoutes');
 
 const app = express();
 app.use(cors());
@@ -22,6 +23,7 @@ mongoose.connect(process.env.MONGO_URI, {
 // API routes
 app.use("/api", homepageRoutes);
 app.use('/api', culturalClubRoutes);
+app.use('/api', culturalClubDetailRoutes);
 
 // Start server
 const PORT = process.env.PORT || 5000;
