@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     document.getElementById('clubs-row').innerHTML = clubs.map(club => `
         <div class="card">
-            <a href="${club.link}"><img src="${club.image}" alt="${club.name}"></a>
+            <a href="Cultural/C-Club/${club.link}"><img src="${club.image}" alt="${club.name}"></a>
             <h3>${club.name}</h3>
             <p>${club.description}</p>
         </div>
