@@ -459,3 +459,115 @@ nav ul li a:hover {
 .club-buttons.active {
     max-height: 300px; /* Adjust this value based on your content */
 }
+.council-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  margin: 40px 0 30px 0;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.council-info {
+  flex: 2;
+  background: #f7fafc;
+  border-radius: 12px;
+  padding: 30px 24px;
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.08);
+  min-width: 260px;
+}
+
+.council-image {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+}
+
+.council-image img {
+  max-width: 220px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(44, 62, 80, 0.12);
+  object-fit: cover;
+}
+
+.council-members-grid {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 30px 0 50px 0;
+}
+
+.council-member-box {
+  background: #eaf6f6;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(44, 62, 80, 0.08);
+  padding: 22px 18px;
+  width: 400px; /* Increased width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.council-member-box:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 6px 18px rgba(44, 62, 80, 0.15);
+}
+
+.member-image {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.10);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.member-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.member-details h3 {
+  font-size: 1.15em;
+  color: #2d4675;
+  margin-bottom: 6px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.member-details p {
+  font-size: 0.98em;
+  color: #00796b;
+  text-align: center;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .council-row {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .council-info, .council-image {
+    width: 100%;
+    min-width: 0;
+  }
+  .council-members-grid {
+    gap: 18px;
+  }
+  .council-member-box {
+    width: 90%;
+    max-width: 420px; /* Increased max-width for mobile */
+  }
+}
