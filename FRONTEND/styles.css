@@ -7,7 +7,7 @@
 }
 
 body {
-  background: linear-gradient(to bottom right, #c8d8e7, #ffffff);
+  background: linear-gradient(to bottom right, #ffffff, #ffffff);
   /* background-image: url(/images/gla_banner.png); */
   background-size: 2000px;
   background-repeat: no-repeat;
@@ -84,8 +84,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(rgb(114, 15, 15), green, blue, alpha);
-  color: white;
+  background: linear-gradient(to right, #00084d, #00796b);
+  color: rgb(255, 255, 255);
   padding: 15px 40px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -100,7 +100,7 @@ body {
   margin-right: 15px;
 }
 .text {
-    color: black;
+    color: rgb(255, 255, 255);
     font-family:'Times New Roman', Times, serif;
 }
 nav ul {
@@ -111,7 +111,7 @@ nav ul {
 
 nav ul li a {
   text-decoration: none;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   padding: 8px 12px;
   border-radius: 5px;
   transition: background 0.3s ease;
@@ -130,7 +130,7 @@ nav ul li a:hover {
 
 .sidebar {
   width: 300px;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(215, 212, 212, 0.4);
   border-radius: 15px;
   padding: 25px 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);

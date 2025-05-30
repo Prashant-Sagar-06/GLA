@@ -64,34 +64,6 @@ function loadContent(section) {
                 <img src="./images/about-gla.jpg" alt="About Students Welfare" class="banner-img small-img">
                 <p style="margin-top: 20px; text-align: justify; font-size: 1rem; line-height: 1.6;">Students Welfare at GLA University works to ensure that students develop academically, professionally, and personally through a variety of programs and support initiatives.GLA University Students Welfare is committed to fostering a vibrant campus life by organizing events, providing support services, and creating opportunities for students to excel in all aspects of their lives. Join us in building a community of growth, learning, and success.GLA has been actively involved with social causes since its very inception and has drawn appreciation from one and all for its works in various facets of societal paradigms.At the heart of the Students Welfare Department lies a deep commitment to inclusivity and student engagement. It aims to nurture leadership qualities, encourage creative pursuits, and instill a sense of social responsibility among students.Through various student-led clubs, workshops, mentorship programs, and cultural festivals, the department ensures every student finds their niche and flourishes in a supportive environment.The vibrant campus culture is a testament to the University’s belief that holistic education goes beyond textbooks. Students are encouraged to take initiative, collaborate across disciplines, and become agents of positive change.With dedicated faculty mentors and enthusiastic student volunteers, GLA’s Students Welfare initiatives continue to set benchmarks in student development, making the university experience truly enriching and unforgettable.GLA University's Students Welfare Department is dedicated to fostering holistic student development by promoting academic excellence, leadership, creativity, inclusivity, and social responsibility through a wide range of cultural events, support services, mentorship programs, and student-led initiatives that enrich campus life and empower individuals to thrive in all aspects of their journey.</p>
             `;
-            break;
-        case "studentActivity":
-            mainContent.innerHTML = `
-                <h2>Student Activity Centre</h2>
-                <p>The Student Activity Centre organizes exciting events, competitions, and workshops to enhance students' overall experience on campus.</p>
-                <img src="./images/activity_centre_banner.jpg" alt="Student Activities" class="banner-img">
-            `;
-            break;
-            case "nss":
-                mainContent.innerHTML = `
-                    <h2>NSS</h2>
-                    <p>National Service Scheme (NSS) volunteers at GLA serve the community and lead impactful social projects across the region.</p>
-                    <img src="nss_banner.jpg" alt="NSS Volunteers" class="banner-img">
-                `;
-                break;
-            case "studentAffairs":
-                mainContent.innerHTML = `
-                    <h2>Student Affairs Council</h2>
-                    <p>The Student Affairs Council represents the student body, organizing elections, leadership programs, and major student initiatives.</p>
-                    <img src="council_banner.jpg" alt="Student Council" class="banner-img">
-                `;
-                break;
-            default:
-                mainContent.innerHTML = `
-                    <h2>Welcome to Students Welfare</h2>
-                    <p>Explore the various clubs, events, and student opportunities at GLA University.</p>
-                    <img src="gla_banner.png" alt="GLA Students participating in activities" class="banner-img">
-                `;
     }
 }
 
@@ -266,11 +238,11 @@ document.querySelectorAll('.sub-menu-btn').forEach(button => {
         } else if (section === "sports") {
             window.location.href = "Sports/Sports.html";
         } else if (section === "student-affairs") {
-            // You can create a dedicated page or show a modal
             alert("Student Affairs Council page coming soon!");
         } else if (section === "cultural-affairs") {
-            // You can create a dedicated page or show a modal
             alert("Cultural Affairs Council page coming soon!");
+        } else if (section === "ncc") {
+            window.location.href = "others/NCC.html";
         }
     });
 });
@@ -285,4 +257,27 @@ document.addEventListener("DOMContentLoaded", function() {
             clubsSubmenu.classList.toggle('active'); // Toggle 'active' class
         });
     }
+});
+
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const res = await fetch('http://localhost:5000/api/council-members');
+    const members = await res.json();
+    const container = document.getElementById('council-members-container');
+    if (container && Array.isArray(members)) {
+      container.innerHTML = members.map(member => `
+        <div class="council-member-box">
+          <div class="member-image">
+            <img src="${member.image}" alt="${member.name}" />
+          </div>
+          <div class="member-details">
+            <h3>${member.name}</h3>
+            <p>${member.role}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+  } catch (err) {
+    console.error('Failed to load council members:', err);
+  }
 });
