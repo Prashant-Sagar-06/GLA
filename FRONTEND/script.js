@@ -228,6 +228,8 @@ document.querySelectorAll('.sub-menu-btn').forEach(button => {
             alert("Cultural Affairs Council page coming soon!");
         } else if (section === "ncc") {
             window.location.href = "others/NCC.html";
+        } else if (section === "nss") {
+            window.location.href = "others/NSS.html";
         }
     });
 });
