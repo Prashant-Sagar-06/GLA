@@ -54,16 +54,20 @@ function loadContent(section) {
 
     switch (section) {
         case "about":
-            mainContent.style.background = "linear-gradient(to bottom right,rgba(44, 141, 232, 0.84),rgb(29, 35, 36))"; // Set gradient background
-            mainContent.style.padding = "20px"; // Optional: Add padding for better spacing
-            mainContent.style.borderRadius = "10px"; // Optional: Add rounded corners
-            mainContent.style.color = "#fff"; // Optional: Change text color to white for better contrast
-            mainContent.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)"; // Optional: Add a shadow for better appearance
+            mainContent.style.background = "linear-gradient(to bottom right,rgba(44, 141, 232, 0.84),rgb(29, 35, 36))";
+            mainContent.style.padding = "20px";
+            mainContent.style.borderRadius = "10px";
+            mainContent.style.color = "#fff";
+            mainContent.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
             mainContent.innerHTML = `
                 <h2>About</h2>
                 <img src="./images/about-gla.jpg" alt="About Students Welfare" class="banner-img small-img">
                 <p style="margin-top: 20px; text-align: justify; font-size: 1rem; line-height: 1.6;">Students Welfare at GLA University works to ensure that students develop academically, professionally, and personally through a variety of programs and support initiatives.GLA University Students Welfare is committed to fostering a vibrant campus life by organizing events, providing support services, and creating opportunities for students to excel in all aspects of their lives. Join us in building a community of growth, learning, and success.GLA has been actively involved with social causes since its very inception and has drawn appreciation from one and all for its works in various facets of societal paradigms.At the heart of the Students Welfare Department lies a deep commitment to inclusivity and student engagement. It aims to nurture leadership qualities, encourage creative pursuits, and instill a sense of social responsibility among students.Through various student-led clubs, workshops, mentorship programs, and cultural festivals, the department ensures every student finds their niche and flourishes in a supportive environment.The vibrant campus culture is a testament to the University’s belief that holistic education goes beyond textbooks. Students are encouraged to take initiative, collaborate across disciplines, and become agents of positive change.With dedicated faculty mentors and enthusiastic student volunteers, GLA’s Students Welfare initiatives continue to set benchmarks in student development, making the university experience truly enriching and unforgettable.GLA University's Students Welfare Department is dedicated to fostering holistic student development by promoting academic excellence, leadership, creativity, inclusivity, and social responsibility through a wide range of cultural events, support services, mentorship programs, and student-led initiatives that enrich campus life and empower individuals to thrive in all aspects of their journey.</p>
             `;
+            break;
+        default:
+            mainContent.innerHTML = "";
+            break;
     }
 }
 
@@ -76,9 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const section = this.getAttribute('data-section');
             // Only load content for sections that are NOT council or studentsClubs
             if (section === "council" || section === "studentsClubs") {
-                // Let the submenu toggle logic handle this
                 event.preventDefault();
-                // (No call to loadContent)
             } else {
                 event.preventDefault();
                 loadContent(section);
@@ -88,9 +90,9 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 const swiper = new Swiper(".mySwiper", {
-    loop: true, // Infinite loop
+    loop: true,
     autoplay: {
-      delay: 3000, // Auto-slide every 3 sec
+      delay: 3000,
       disableOnInteraction: false,
     },
     navigation: {
@@ -101,11 +103,9 @@ const swiper = new Swiper(".mySwiper", {
       el: ".swiper-pagination",
       clickable: true,
     },
-  });
+});
 
 // ----------------- Fetch Dean's Message from Backend -----------------
-// This function fetches the dean's message and other data from the backend
-
 document.addEventListener("DOMContentLoaded", async () => {
     // Fetch dean info
     const deanRes = await fetch('http://localhost:5000/api/dean');
@@ -145,26 +145,21 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 // ----------------- Fetch Images for Swiper Slider -----------------
 document.addEventListener('DOMContentLoaded', async () => {
-    // Fetch images from backend
     const res = await fetch('http://localhost:5000/api/images');
     const images = await res.json();
 
-    // Find the swiper wrapper (create it if not present)
     let swiperWrapper = document.querySelector('.swiper-wrapper');
     if (!swiperWrapper) {
-        // If not present, create and append it to the swiper container
         const swiperContainer = document.querySelector('.swiper.mySwiper');
         swiperWrapper = document.createElement('div');
         swiperWrapper.className = 'swiper-wrapper';
         swiperContainer.appendChild(swiperWrapper);
     }
 
-    // Insert images into the slider
     swiperWrapper.innerHTML = images.map(img =>
         `<div class="swiper-slide"><img src="${img.url}" alt="${img.alt}"></div>`
     ).join('');
 
-    // Initialize Swiper (if not already initialized)
     new Swiper('.mySwiper', {
         navigation: {
             nextEl: '.swiper-button-next',
@@ -174,12 +169,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 });
 
-// Update the council click handler
+// ----------------- Council Button Handler -----------------
 document.querySelector('[data-section="council"]').addEventListener('click', function(e) {
     e.preventDefault();
     const sidebar = document.querySelector(".sidebar");
     const existingButtons = sidebar.querySelector(".council-buttons");
-    
+
     if (existingButtons) {
         existingButtons.remove();
     } else {
@@ -217,20 +212,10 @@ document.querySelector('[data-section="council"]').addEventListener('click', fun
     }
 });
 
-// Handle sub-menu button clicks
+// ----------------- Sub-menu Button Navigation -----------------
 document.querySelectorAll('.sub-menu-btn').forEach(button => {
     button.addEventListener('click', function() {
         const section = this.getAttribute('data-section');
-        // Handle the specific council section display here
-        // You can add your logic to show the respective council content
-    });
-});
-
-// Handle sub-menu button clicks for Council and Students Clubs
-document.querySelectorAll('.sub-menu-btn').forEach(button => {
-    button.addEventListener('click', function() {
-        const section = this.getAttribute('data-section');
-        // Navigation logic for sub-menu buttons
         if (section === "cultural") {
             window.location.href = "Cultural/cultural_club.html";
         } else if (section === "departmental") {
@@ -247,18 +232,20 @@ document.querySelectorAll('.sub-menu-btn').forEach(button => {
     });
 });
 
+// ----------------- Students Clubs Submenu Toggle -----------------
 document.addEventListener("DOMContentLoaded", function() {
     const studentsClubsLink = document.querySelector('a[data-section="studentsClubs"]');
     const clubsSubmenu = document.getElementById('clubs-submenu');
 
     if (studentsClubsLink && clubsSubmenu) {
         studentsClubsLink.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent default anchor behavior
-            clubsSubmenu.classList.toggle('active'); // Toggle 'active' class
+            event.preventDefault();
+            clubsSubmenu.classList.toggle('active');
         });
     }
 });
 
+// ----------------- Fetch and Render Council Members -----------------
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     const res = await fetch('http://localhost:5000/api/council-members');
