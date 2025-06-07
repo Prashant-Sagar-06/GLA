@@ -248,24 +248,39 @@ nav ul li a:hover {
   gap: 15px;
 }
 
+/* App icons in the footer */
+.app-links img,
+#footer-apps img {
+  height: 48px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  margin: 0 8px;
+  display: inline-block;
+}
+
 .app-icon {
   height: 50px;
 }
 
-.social-icons img {
+/* Social icons in the footer */
+.social-icons img,
+#footer-social img {
   height: 32px;
   width: 32px;
-  margin: 0 8px;
+  margin: 0 6px;
   border-radius: 50%;
-  border: 1px solid white;
-  padding: 5px;
-  background-color: transparent;
-  transition: transform 0.3s;
+  border: 1.5px solid #fff;
+  padding: 4px;
+  background: #fff;
+  box-sizing: border-box;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.social-icons img:hover {
-  transform: scale(1.1);
-  background-color: rgba(255, 255, 255, 0.2);
+.social-icons img:hover,
+#footer-social img:hover {
+  transform: scale(1.15);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
 .footer-bottom p {

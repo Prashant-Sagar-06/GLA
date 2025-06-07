@@ -127,20 +127,27 @@ document.addEventListener("DOMContentLoaded", async () => {
     const footer = await footerRes.json();
 
     // Render footer info
-    document.querySelector('.footer-col').innerHTML = `
-        <h4>Contact Us</h4>
-        <p>${footer.address}</p>
-        <p>Phone: ${footer.phone}</p>
-        <p>Email: <a href="mailto:${footer.email}">${footer.email}</a></p>
-    `;
+    const footerContact = document.getElementById('footer-contact');
+    const footerApps = document.getElementById('footer-apps');
+    const footerSocial = document.getElementById('footer-social');
 
-    document.querySelector('.app-links').innerHTML = footer.apps.map(app =>
-        `<a href="${app.url}" target="_blank"><img class="app-icon" src="${app.img}" alt="${app.alt}"></a>`
-    ).join('');
-
-    document.querySelector('.social-icons').innerHTML = footer.social.map(s =>
-        `<a href="${s.url}"><img src="${s.img}" alt="${s.alt}"></a>`
-    ).join('');
+    if (footerContact && footer) {
+        footerContact.innerHTML = `
+            <p>${footer.address}</p>
+            <p>${footer.phone}</p>
+            <p>${footer.email}</p>
+        `;
+    }
+    if (footerApps && footer.apps) {
+        footerApps.innerHTML = footer.apps.map(app =>
+            `<a href="${app.url}" target="_blank"><img src="/images/${app.img}" alt="${app.alt}"></a>`
+        ).join('');
+    }
+    if (footerSocial && footer.social) {
+        footerSocial.innerHTML = footer.social.map(s =>
+            `<a href="${s.url}" target="_blank"><img src="/images/${s.img}" alt="${s.alt}"></a>`
+        ).join('');
+    }
 });
 
 // ----------------- Fetch Images for Swiper Slider -----------------
