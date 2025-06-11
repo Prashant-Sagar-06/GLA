@@ -108,7 +108,7 @@ const swiper = new Swiper(".mySwiper", {
 // ----------------- Fetch Dean's Message from Backend -----------------
 document.addEventListener("DOMContentLoaded", async () => {
     // Fetch dean info
-    const deanRes = await fetch('http://localhost:5000/api/dean');
+    const deanRes = await fetch('/api/dean');
     const dean = await deanRes.json();
 
     // Render dean info
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     `;
 
     // Fetch footer info
-    const footerRes = await fetch('http://localhost:5000/api/footer');
+    const footerRes = await fetch('/api/footer');
     const footer = await footerRes.json();
 
     // Render footer info
@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 // ----------------- Fetch Images for Swiper Slider -----------------
 document.addEventListener('DOMContentLoaded', async () => {
-    const res = await fetch('http://localhost:5000/api/images');
+    const res = await fetch('/api/images');
     const images = await res.json();
 
     let swiperWrapper = document.querySelector('.swiper-wrapper');
@@ -257,7 +257,7 @@ document.addEventListener("DOMContentLoaded", function() {
 // ----------------- Fetch and Render Council Members -----------------
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    const res = await fetch('http://localhost:5000/api/council-members');
+    const res = await fetch('/api/council-members');
     const members = await res.json();
     const container = document.getElementById('council-members-container');
     if (container && Array.isArray(members)) {
