@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const path = require('path');
 require("dotenv").config();
 
 // Use homepageRoutes instead of deanRoutes
@@ -24,6 +25,14 @@ mongoose.connect(process.env.MONGO_URI, {
 app.use("/api", homepageRoutes);
 app.use('/api', culturalClubRoutes);
 app.use('/api/council-members', councilRoutes);
+
+// Serve static files from the FRONTEND folder
+app.use(express.static(path.join(__dirname, '../FRONTEND')));
+
+// For SPA routing (if using React Router or similar), add this catch-all route at the end:
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../FRONTEND/index.html'));
+});
 
 // Start server
 const PORT = process.env.PORT || 5000;
