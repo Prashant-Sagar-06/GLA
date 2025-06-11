@@ -29,8 +29,8 @@ app.use('/api/council-members', councilRoutes);
 // Serve static files from the FRONTEND folder
 app.use(express.static(path.join(__dirname, '../FRONTEND')));
 
-// For SPA routing (if using React Router or similar), add this catch-all route at the end:
-app.get('*', (req, res) => {
+// Only handle frontend routes that do NOT start with /api
+app.get(/^\/(?!api).*/, (req, res) => {
   res.sendFile(path.join(__dirname, '../FRONTEND/index.html'));
 });
 
