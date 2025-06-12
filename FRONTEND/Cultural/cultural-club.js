@@ -27,7 +27,7 @@ if (typewriter) typeEffect();
 
 // ----------------- Dynamic Club Cards -----------------
 document.addEventListener('DOMContentLoaded', async () => {
-    const res = await fetch('http://localhost:5000/api/cultural-clubs');
+    const res = await fetch('/api/cultural-clubs');
     let clubs = await res.json();
 
     // 1. Remove any club with undefined name
