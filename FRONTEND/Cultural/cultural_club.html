@@ -1,80 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cultural Club</title>
-    <link rel="stylesheet" href="cultural_club.css">
-    <script src="cultural-club.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cultural Clubs</title>
+  <link rel="stylesheet" href="../Cultural/cultural_club.css">
+  <script src="../Cultural/cultural-club.js" defer></script>
 </head>
 <body>
-    <!-- Updated Header -->
-    <div class="top-bar">
-        <div class="top-bar-left" id="typewriter"></div>
-        <div class="top-bar-right">
-            <a href="https://www.facebook.com/glauniv"><img src="../images/facebook.png" alt="Facebook" class="social-icon"></a>
-            <a href="#"><img src="../images/twitter.png" alt="Twitter" class="social-icon"></a>
-            <a href="https://www.linkedin.com/school/gla-university/posts/?feedView=all"><img src="../images/linkedin.png" alt="LinkedIn" class="social-icon"></a>
-            <a href="https://www.instagram.com/glauniv?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><img src="../images/instagram.png" alt="Instagram" class="social-icon"></a>
-            <a href="https://api.whatsapp.com/send?phone=916399020003&text=Hello%20GLA%20University!"><img src="../images/whatsapp.png" alt="WhatsApp" class="social-icon"></a>
-            <button class="zoom-btn" id="zoom-in">🔍+</button>
-            <button class="zoom-btn" id="zoom-out">🔍-</button>
-            <button class="reset-btn" id="reset">Reset</button>
-        </div>
+  <!-- Header and Top Bar -->
+  <div class="top-bar">
+    <div class="top-bar-left" id="typewriter"></div>
+    <div class="top-bar-right">
+      <a href="https://www.facebook.com/glauniv"><img src="../images/facebook.png" alt="Facebook" class="social-icon"></a>
+      <a href="#"><img src="../images/twitter.png" alt="Twitter" class="social-icon"></a>
+      <a href="https://www.linkedin.com/school/gla-university/posts/?feedView=all"><img src="../images/linkedin.png" alt="LinkedIn" class="social-icon"></a>
+      <a href="https://www.instagram.com/glauniv"><img src="../images/instagram.png" alt="Instagram" class="social-icon"></a>
+      <a href="https://api.whatsapp.com/send?phone=916399020003"><img src="../images/whatsapp.png" alt="WhatsApp" class="social-icon"></a>
+      <button class="zoom-btn" id="zoom-in">🔍+</button>
+      <button class="zoom-btn" id="zoom-out">🔍-</button>
+      <button class="reset-btn" id="reset">Reset</button>
     </div>
-   <header class="navbar">
-        <div class="logo">
-            <img src="../images/logo.png" alt="GLA University Logo" />
-            <h1 class="text">GLA UNIVERSITY</h1>
-        </div>
-        <nav>
-            <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="https://www.gla.ac.in/">Institute</a></li>
-            <li><a href="campus_events.html">Campus Events</a></li>
-            <li><a href="#">Council Division</a></li>
-            <li><a href="#">Academics</a></li>
-            <li><a href="#">Disability Support</a></li>
-            <li><a href="#">Alumni</a></li>
-            <li><a href="#">Policies on core values </a></li>
-            </ul>
-        </nav>
-    </header>
-    <main class="main-section">
-        <h1>Cultural Clubs</h1>
-        <div class="row" id="clubs-row"></div>
-    </main>
+  </div>
 
-    <!-- Updated Footer -->
-    <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Get in Touch</h4>
-                <p>Address: 17km Stone, NH-2, Mathura-Delhi Road, Mathura-281 406 (U.P.) INDIA</p>
-                <p>Phone: +91-5662-250900</p>
-                <p>Email: <a href="mailto:glaoftwaresupport@gla.ac.in">glaoftwaresupport@gla.ac.in</a></p>
-            </div>
-            <div class="footer-col">
-                <h4>Download Our Free Mobile Apps</h4>
-                <div class="app-links">
-                    <a href="https://play.google.com/store/search?q=gla+university+app&c=apps"><img src="../images/google-play.png" alt="Download on Google Play" class="app-icon"></a>
-                    <a href="#"><img src="../images/app-store.png" alt="Download on App Store" class="app-icon"></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Social Media</h4>
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/glauniv"><img src="../images/facebook.png" alt="Follow us on Facebook"></a>
-                    <a href="#"><img src="../images/twitter.png" alt="Follow us on Twitter"></a>
-                    <a href="https://www.linkedin.com/school/gla-university/posts/?feedView=all"><img src="../images/linkedin.png" alt="Connect with us on Linked In"></a>
-                    <a href="https://www.instagram.com/glauniv?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><img src="../images/instagram.png" alt="Follow us on Instagram"></a>
-                    <a href="https://api.whatsapp.com/send?phone=916399020003&text=Hello%20GLA%20University!"><img src="../images/whatsapp.png" alt="WhatsApp us"></a>
-                </div>
-            </div>
+  <header class="navbar">
+    <div class="logo">
+      <img src="./images/logo.png" alt="GLA University Logo" />
+      <h1 class="text">GLA UNIVERSITY</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="https://www.gla.ac.in/">Institute</a></li>
+        <li><a href="campus_events.html">Campus Events</a></li>
+        <li><a href="#">Council Division</a></li>
+        <li><a href="#">Academics</a></li>
+        <li><a href="#">Disability Support</a></li>
+        <li><a href="#">Alumni</a></li>
+        <li><a href="#">Policies on core values</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-section">
+    <h1>Cultural Clubs</h1>
+    <div class="row">
+      <a href="../Cultural/C-Club/Ninad-club.html" class="card">
+        <img src="../images/ninad logo.png" alt="Ninad Club">
+        <h3>Ninad Club</h3>
+      </a>
+      <a href="natraj.html" class="card">
+        <img src="../images/natraj logo.png" alt="Natraj Club">
+        <h3>Natraj Club</h3>
+      </a>
+      <a href="vihiti.html" class="card">
+        <img src="../images/vihti logo.png" alt="Vihiti Theatre Club">
+        <h3>Vihiti Theatre Club</h3>
+      </a>
+      <a href="drishti.html" class="card">
+        <img src="../images/Drishti_Logo.jpg" alt="Drishti Photography Club">
+        <h3>Drishti Photography Club</h3>
+      </a>
+      <a href="poetry.html" class="card">
+        <img src="../images/Poetry logo.jpg" alt="Poetry Club">
+        <h3>Poetry Club</h3>
+      </a>
+      <a href="litrario.html" class="card">
+        <img src="../images/literario logo.png" alt="Litrario Club">
+        <h3>Litrario Club</h3>
+      </a>
+      <a href="saturangle.html" class="card">
+        <img src="../images/saturangle logo.png" alt="Saturangle Club">
+        <h3>Saturangle Club</h3>
+      </a>
+      <a href="pratibha.html" class="card">
+        <img src="../images/pratibha logo.png" alt="Pratibha Club">
+        <h3>Pratibha Club</h3>
+      </a>
+      <a href="Media scoop.html" class="card">
+        <img src="../images/media-scoop.png" alt="Media Scoop Club">
+        <h3>Media Scoop Club</h3>
+      </a>
+      <a href="finearts.html" class="card">
+        <img src="../images/fine arts logo.png" alt="Fine Arts Club">
+        <h3>Fine Arts Club</h3>
+      </a>
+      <a href="nature.html" class="card">
+        <img src="../images/nature logo.png" alt="Nature Club">
+        <h3>Nature Club</h3>
+      </a>
+      <a href="../Cultural/C-Club/Aikyam-club.html" class="card">
+        <img src="../images/aikyam logo.png" alt="Aikyam Club">
+        <h3>Aikyam Club</h3>
+      </a>
+      <a href="Voice.html" class="card">
+        <img src="../images/voice logo.png" alt="Voice Club">
+        <h3>Voice Club</h3>
+      </a>
+    </div>
+  </main>
+  
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Get in Touch</h4>
+        <p>Address: 17km Stone, NH-2, Mathura-Delhi Road, Mathura-281 406 (U.P.) INDIA</p>
+        <p>Phone: +91-5662-250900</p>
+        <p>Email: <a href="mailto:glaoftwaresupport@gla.ac.in">glaoftwaresupport@gla.ac.in</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Download Our Free Mobile Apps</h4>
+        <div class="app-links">
+          <a href="https://play.google.com/store/search?q=gla+university+app&c=apps"><img src="../images/google-play.png" alt="Google Play" class="app-icon"></a>
+          <a href="#"><img src="../images/app-store.png" alt="App Store" class="app-icon"></a>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 GLA University. All rights reserved.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Social Media</h4>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/glauniv"><img src="../images/facebook.png" alt="Facebook"></a>
+          <a href="#"><img src="../images/twitter.png" alt="Twitter"></a>
+          <a href="https://www.linkedin.com/school/gla-university/posts/?feedView=all"><img src="../images/linkedin.png" alt="LinkedIn"></a>
+          <a href="https://www.instagram.com/glauniv"><img src="../images/instagram.png" alt="Instagram"></a>
+          <a href="https://api.whatsapp.com/send?phone=916399020003"><img src="../images/whatsapp.png" alt="WhatsApp"></a>
         </div>
-    </footer>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 GLA University. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
