@@ -276,3 +276,46 @@ body, html {
   height: auto;
   overflow-x: hidden;
 }
+
+/* President Card */
+.president-card {
+  background-color: white;
+  color: #003366;
+  padding: 25px;
+  margin: 0 auto 30px;
+  width: 250px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Vice President Row */
+.vp-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+/* Other Members List */
+.other-members {
+  margin-top: 40px;
+}
+
+.other-members h3 {
+  font-size: 1.5em;
+  color: #003366;
+  margin-bottom: 15px;
+}
+
+.other-members ul {
+  list-style: none;
+  padding: 0;
+  font-size: 1.1rem;
+  color: #003366;
+}
+
+.other-members li {
+  margin-bottom: 8px;
+}
