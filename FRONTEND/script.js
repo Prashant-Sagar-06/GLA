@@ -277,3 +277,27 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error('Failed to load council members:', err);
   }
 });
+
+// ----------------- Fetch and Render Departmental Clubs -----------------
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const res = await fetch('/api/departmental-clubs');
+    const clubs = await res.json();
+    const container = document.getElementById('departmental-clubs-container');
+    if (container && Array.isArray(clubs)) {
+      container.innerHTML = clubs.map(club => `
+        <div class="club-card">
+          <div class="club-image">
+            <img src="${club.image}" alt="${club.name}" />
+          </div>
+          <div class="club-details">
+            <h3>${club.name}</h3>
+            <p>${club.description}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+  } catch (err) {
+    console.error('Failed to load departmental clubs:', err);
+  }
+});
