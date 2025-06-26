@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const DeanInfo = require('../models/DeanInfo');
 
- router.get('/dean', async (req, res) => {
+router.get('/dean', async (req, res) => {
   try {
     const dean = await DeanInfo.findOne();
     if (!dean) {

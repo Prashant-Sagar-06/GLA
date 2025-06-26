@@ -11,6 +11,7 @@ router.get('/footer', async (req, res) => {
     }
     res.json(footer);
   } catch (err) {
+    console.error('Error fetching footer:', err);
     res.status(500).json({ error: "Failed to fetch footer from database" });
   }
 });

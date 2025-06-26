@@ -8,6 +8,7 @@ router.get('/cultural-clubs', async (req, res) => {
     const clubs = await CulturalClub.find();
     res.json(clubs);
   } catch (err) {
+    console.error('Error fetching cultural clubs:', err);
     res.status(500).json({ error: "Failed to fetch cultural clubs" });
   }
 });
