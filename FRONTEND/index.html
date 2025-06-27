@@ -13,6 +13,7 @@
 </head>
 
 <body>
+  <!-- Top Bar -->
   <div class="top-bar">
     <div class="top-bar-left" id="typewriter"></div>
     <div class="top-bar-right">
@@ -27,24 +28,70 @@
     </div>
   </div>
 
-  <header class="navbar">
-    <div class="logo">
-      <img src="./images/logo.png" alt="GLA University Logo" />
-      <h1 class="text">GLA UNIVERSITY</h1>
+  <!-- Navbar -->
+  <!-- Updated portion of the HTML body -->
+<header class="navbar">
+  <div class="logo">
+    <img src="./images/logo.png" alt="GLA University Logo" />
+    <h1 class="text">GLA UNIVERSITY</h1>
+    <div class="menu-toggle" id="menu-toggle">
+      &#8942;
     </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="https://www.gla.ac.in/">Institute</a></li>
-        <li><a href="campus_events.html">Campus Events</a></li>
-        <li><a href="#">Council Division</a></li>
-        <li><a href="#">Academics</a></li>
-        <li><a href="#">Disability Support</a></li>
-        <li><a href="#">Alumni</a></li>
-        <li><a href="#">Policies on core values </a></li>
-      </ul>
-    </nav>
-  </header>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="https://www.gla.ac.in/">Institute</a></li>
+      <li><a href="campus_events.html">Campus Events</a></li>
+      <li><a href="#">Council Division</a></li>
+      <li><a href="#">Academics</a></li>
+      <li><a href="#">Disability Support</a></li>
+      <li><a href="#">Alumni</a></li>
+      <li><a href="#">Policies on core values</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Sidebar as popup -->
+<div class="popup-sidebar" id="popupSidebar">
+  <ul>
+    <li><a href="about.html">About</a></li>
+    <li><a href="newsletters.html">Newsletters</a></li>
+    <li><a href="student_activity.html">Student Activity Centre</a></li>
+    <li>
+      <a href="#" data-section="council">Council</a>
+      <div class="sub-menu" id="council-submenu">
+        <button class="sub-menu-btn" data-section="student-affairs">Student Affairs Council</button>
+        <button class="sub-menu-btn" data-section="cultural-affairs">Cultural Affairs Council</button>
+      </div>
+    </li>
+    <li>
+      <a href="#" data-section="studentsClubs">Students Clubs</a>
+      <div class="sub-menu" id="clubs-submenu">
+        <button class="sub-menu-btn" data-section="cultural">Cultural</button>
+        <button class="sub-menu-btn" data-section="departmental">Departmental</button>
+        <button class="sub-menu-btn" data-section="sports">Sports</button>
+      </div>
+    </li>
+    <li><a href="ncc.html">NCC</a></li>
+    <li><a href="nss.html">NSS</a></li>
+  </ul>
+</div>
+
+<!-- REMOVE the old <aside class="sidebar"> ... </aside> -->
+
+
+  <!-- Video Banner -->
+  <section class="video-banner">
+    <video autoplay muted loop playsinline>
+      <source src="./images/gla.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="video-overlay">
+      <h2>Welcome to Students Welfare GLA University</h2>
+      <p>Empowering students through engagement, support, and innovation</p>
+    </div>
+  </section>
 
   <!-- Council Members Grid -->
   <div id="council-members-container" class="council-members-grid"></div>
@@ -58,30 +105,6 @@
     </div>
 
     <div class="container">
-      <aside class="sidebar">
-        <ul>
-          <li><a href="#" data-section="about">About</a></li>
-          <li><a href="#" data-section="newsletters">Newsletters</a></li>
-          <li><a href="#" data-section="studentActivity">Student Activity Centre</a></li>
-          <li>
-            <a href="#" data-section="council">Council</a>
-            <div class="sub-menu" id="council-submenu">
-              <button class="sub-menu-btn" data-section="student-affairs">Student Affairs Council</button>
-              <button class="sub-menu-btn" data-section="cultural-affairs">Cultural Affairs Council</button>
-            </div>
-          </li>
-          <li>
-            <a href="#" data-section="studentsClubs">Students Clubs</a>
-            <div class="sub-menu" id="clubs-submenu">
-              <button class="sub-menu-btn" data-section="cultural">Cultural</button>
-              <button class="sub-menu-btn" data-section="departmental">Departmental</button>
-              <button class="sub-menu-btn" data-section="sports">Sports</button>
-            </div>
-          </li>
-          <li><a class="sub-menu-btn" data-section="ncc">NCC</a></li>
-          <li><a href="others/NSS.html" class="sub-menu-btn" data-section="nss">NSS</a></li>
-        </ul>
-      </aside>
 
       <main class="main-content">
         <div class="dean-profile">
@@ -92,6 +115,7 @@
     </div>
   </section>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-col">
       <h4>Get in Touch</h4>

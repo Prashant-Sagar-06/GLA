@@ -593,3 +593,99 @@ nav ul li a:hover {
     max-width: 420px; /* Increased max-width for mobile */
   }
 }
+
+.video-banner {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full screen height */
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.video-banner video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.video-overlay h2 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.video-overlay p {
+  font-size: 1.5rem;
+}
+
+#council-members-container {
+  margin-top: 0;
+  padding-top: 0;
+}
+.menu-toggle {
+  font-size: 28px;
+  margin-left: 20px;
+  cursor: pointer;
+  color: white;
+  display: inline-block;
+}
+
+.popup-sidebar {
+  display: none;
+  position: absolute;
+  top: 80px; /* adjust depending on navbar height */
+  left: 30px;
+  width: 260px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  z-index: 999;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+.popup-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.popup-sidebar ul li {
+  margin: 12px 0;
+}
+
+.popup-sidebar ul li a {
+  text-decoration: none;
+  color: #007467;
+  font-weight: bold;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 6px;
+  background-color: #e0f7fa;
+  transition: background-color 0.3s;
+}
+
+.popup-sidebar ul li a:hover {
+  background-color: #b2ebf2;
+}
+
+.popup-sidebar .sub-menu {
+  margin-top: 8px;
+}
