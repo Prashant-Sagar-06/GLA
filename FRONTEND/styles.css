@@ -329,21 +329,28 @@ nav ul li a:hover {
   margin: 0 auto; /* center the slider */
   height: 500px; /* Adjust height */
 }
-
+/* Swiper Container Full Width and Centered */
+.swiper.mySwiper {
+  width: 100%;
+  max-width: 1000px;
+  margin: 30px auto;
+}
+/* Fix the slide image box */
 .swiper-slide {
   display: flex;
-  align-items: center;
   justify-content: center;
-  overflow: hidden;
-  border-radius: 12px; /* optional: rounded corners */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* optional: nice shadow */
+  align-items: center;
+  height: 350px; /* Controls vertical height of slider */
 }
-
+/* Slider images should be landscape and consistent */
 .swiper-slide img {
   width: 100%;
-  height: 100%;
-  object-fit: contain; /* ✅ SHOW FULL IMAGE properly */
+  height: 100%;         /* Adjust height as needed */
+  object-fit: contain;     /* Ensures image covers space without distortion */
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
+
 
 .swiper-button-next,
 .swiper-button-prev {
