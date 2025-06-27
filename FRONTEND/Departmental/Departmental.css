@@ -99,40 +99,6 @@ nav ul li a:hover {
 }
 
 
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo img {
-    height: 40px;
-    margin-right: 15px;
-}
-
-.text {
-    color: white;
-    font-family: 'Times New Roman', Times, serif;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 5px;
-    transition: background 0.3s ease;
-}
-
-nav ul li a:hover {
-    background-color: #1db131;
-    text-decoration: underline;
-}
-
 /* Footer Styling */
 .footer {
     background: #2a6679;
@@ -200,16 +166,25 @@ nav ul li a:hover {
 
 /* Styling for the main section */
 .main-section {
-    padding: 40px 20px;
+    padding: 10px 30px;
     background: linear-gradient(to bottom, #f9f9f9, #e6e6e6);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0 auto;
 }
 
 .main-section h1 {
-    font-size: 2.5em;
-    color: #004d40;
-    margin-bottom: 30px;
+    padding: 2px 10px;
+    font-size: 3em;
+    color: #003d33;
+    margin-bottom: 40px;
     font-family: 'Roboto', Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 /* Styling for the row containing the cards */
@@ -217,49 +192,78 @@ nav ul li a:hover {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 30px; /* Gap between columns */
+    row-gap: 50px; /* Gap between rows */
+    margin: 0 auto;
 }
 
 /* Styling for individual cards */
 .card {
-    background: linear-gradient(to bottom, #ffffff, #f0f0f0);
-    border-radius: 15px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to bottom, #ffffff, #f7f7f7);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     text-align: center;
-    padding: 20px;
-    width: 250px;
+    padding: 25px;
+    width: 280px;
     transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #ddd;
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-12px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
 }
 
 /* Styling for card images */
 .card img {
     width: 100%;
-    height: 150px;
+    height: 180px;
     object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 15px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+
+.card:hover img {
+    transform: scale(1.05);
 }
 
 /* Styling for card titles */
 .card h3 {
-    font-size: 1.5em;
-    color: #00796b;
-    margin-bottom: 10px;
+    font-size: 1.8em;
+    color: #00574b;
+    margin-bottom: 15px;
     font-family: 'Roboto', Arial, sans-serif;
+    font-weight: bold;
+    text-transform: capitalize;
 }
 
 /* Styling for card descriptions */
 .card p {
-    font-size: 1em;
-    color: #555;
-    line-height: 1.5;
+    font-size: 1.1em;
+    color: #666;
+    line-height: 1.6;
     font-family: 'Roboto', Arial, sans-serif;
+    margin-bottom: 15px;
+}
+
+/* Add a button to the card */
+.card .card-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #00796b;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.card .card-btn:hover {
+    background-color: #004d40;
+    transform: scale(1.1);
 }
 
 /* Responsive Design */
