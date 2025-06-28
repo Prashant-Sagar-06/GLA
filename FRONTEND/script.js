@@ -220,4 +220,187 @@ document.addEventListener("click", (event) => {
     });
   });
 
+  // ----------------- Footer Animations and Functionality -----------------
+  
+  // Animated counter for statistics
+  function animateCounters() {
+    const counters = document.querySelectorAll('.stat-number');
+    
+    counters.forEach(counter => {
+      const target = parseInt(counter.getAttribute('data-target'));
+      const count = +counter.innerText;
+      const increment = target / 200;
+      
+      if (count < target) {
+        counter.innerText = Math.ceil(count + increment);
+        setTimeout(() => animateCounters(), 1);
+      } else {
+        counter.innerText = target.toLocaleString();
+      }
+    });
+  }
+
+  // Intersection Observer for footer animations
+  const footerObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        if (entry.target.classList.contains('footer-stats')) {
+          animateCounters();
+        }
+      }
+    });
+  }, { threshold: 0.3 });
+
+  // Observe footer elements for animation
+  const footerElements = document.querySelectorAll('.footer-section, .footer-stats');
+  footerElements.forEach(el => footerObserver.observe(el));
+
+  // Newsletter form functionality
+  const newsletterForm = document.querySelector('.newsletter-form');
+  const newsletterInput = document.querySelector('.newsletter-input');
+  const newsletterBtn = document.querySelector('.newsletter-btn');
+
+  if (newsletterBtn) {
+    newsletterBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const email = newsletterInput.value.trim();
+      
+      if (email && isValidEmail(email)) {
+        // Simulate newsletter subscription
+        newsletterBtn.textContent = 'Subscribed!';
+        newsletterBtn.style.background = 'linear-gradient(45deg, #28a745, #20c997)';
+        newsletterInput.value = '';
+        
+        setTimeout(() => {
+          newsletterBtn.textContent = 'Subscribe';
+          newsletterBtn.style.background = 'linear-gradient(45deg, #4facfe, #00f2fe)';
+        }, 3000);
+      } else {
+        newsletterInput.style.borderColor = '#dc3545';
+        newsletterInput.style.boxShadow = '0 0 20px rgba(220, 53, 69, 0.3)';
+        
+        setTimeout(() => {
+          newsletterInput.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+          newsletterInput.style.boxShadow = 'none';
+        }, 3000);
+      }
+    });
+  }
+
+  // Email validation function
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+  // Back to top button functionality
+  const backToTopBtn = document.getElementById('backToTop');
+  
+  if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+
+  // Social link hover effects
+  const socialLinks = document.querySelectorAll('.social-link');
+  socialLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      link.style.transform = 'translateY(-3px) scale(1.05)';
+    });
+    
+    link.addEventListener('mouseleave', () => {
+      link.style.transform = 'translateY(0) scale(1)';
+    });
+  });
+
+  // Footer link animations
+  const footerLinks = document.querySelectorAll('.footer-link');
+  footerLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      const icon = link.querySelector('.link-icon');
+      if (icon) {
+        icon.style.transform = 'translateX(8px) scale(1.2)';
+      }
+    });
+    
+    link.addEventListener('mouseleave', () => {
+      const icon = link.querySelector('.link-icon');
+      if (icon) {
+        icon.style.transform = 'translateX(0) scale(1)';
+      }
+    });
+  });
+
+  // Add floating animation to footer logo
+  const footerLogo = document.querySelector('.footer-logo');
+  if (footerLogo) {
+    setInterval(() => {
+      footerLogo.style.transform = 'translateY(-5px)';
+      setTimeout(() => {
+        footerLogo.style.transform = 'translateY(0)';
+      }, 1000);
+    }, 3000);
+  }
+
+  // Parallax effect for footer waves
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const footerWaves = document.querySelector('.footer-waves svg');
+    if (footerWaves) {
+      footerWaves.style.transform = `translateY(${scrolled * 0.1}px)`;
+    }
+  });
+
+  // Add ripple effect to contact items
+  const contactItems = document.querySelectorAll('.contact-item');
+  contactItems.forEach(item => {
+    item.addEventListener('click', function(e) {
+      const ripple = document.createElement('span');
+      const rect = this.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = e.clientX - rect.left - size / 2;
+      const y = e.clientY - rect.top - size / 2;
+      
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = x + 'px';
+      ripple.style.top = y + 'px';
+      ripple.classList.add('ripple');
+      
+      this.appendChild(ripple);
+      
+      setTimeout(() => {
+        ripple.remove();
+      }, 600);
+    });
+  });
+
+  // App button click animations
+  const appButtons = document.querySelectorAll('.app-button');
+  appButtons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Add click animation
+      this.style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        this.style.transform = 'scale(1)';
+        // Open the actual link
+        window.open(this.href, '_blank');
+      }, 150);
+    });
+  });
+
 });
