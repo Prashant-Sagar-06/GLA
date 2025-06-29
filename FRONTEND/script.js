@@ -61,20 +61,60 @@ document.addEventListener("DOMContentLoaded", async () => {
   // ----------------- Sidebar Popup Toggle -----------------
   const menuToggle = document.getElementById("menu-toggle");
   const popupSidebar = document.getElementById("popupSidebar");
-  if (menuToggle && popupSidebar) {
-    menuToggle.onclick = (event) => {
+  const sidebarBackdrop = document.getElementById("sidebarBackdrop");
+  
+  if (menuToggle && popupSidebar && sidebarBackdrop) {
+    menuToggle.addEventListener('click', (event) => {
       event.stopPropagation();
-      popupSidebar.style.display =
-        popupSidebar.style.display === "block" ? "none" : "block";
-    };
-    document.addEventListener("click", (event) => {
-      if (
-        !popupSidebar.contains(event.target) &&
-        !menuToggle.contains(event.target)
-      ) {
-        popupSidebar.style.display = "none";
+      toggleSidebar();
+    });
+    
+    sidebarBackdrop.addEventListener('click', () => {
+      closeSidebar();
+    });
+    
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeSidebar();
       }
     });
+  }
+  
+  function toggleSidebar() {
+    if (popupSidebar.classList.contains('active')) {
+      closeSidebar();
+    } else {
+      openSidebar();
+    }
+  }
+  
+  function openSidebar() {
+    popupSidebar.style.display = 'block';
+    sidebarBackdrop.classList.add('active');
+    menuToggle.classList.add('active');
+    
+    // Force a reflow before adding active class for smooth animation
+    popupSidebar.offsetHeight;
+    popupSidebar.classList.add('active');
+    
+    // Prevent body scroll when sidebar is open
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closeSidebar() {
+    popupSidebar.classList.remove('active');
+    sidebarBackdrop.classList.remove('active');
+    menuToggle.classList.remove('active');
+    
+    // Allow body scroll when sidebar is closed
+    document.body.style.overflow = '';
+    
+    // Hide sidebar after animation completes
+    setTimeout(() => {
+      if (!popupSidebar.classList.contains('active')) {
+        popupSidebar.style.display = 'none';
+      }
+    }, 400);
   }
 
   // ----------------- Dynamic Main Content Loader -----------------
@@ -170,8 +210,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
       }
     } catch (apiErr) {
-      console.log('Using fallback dean content');
-      // Static content is already in HTML, so we just need to initialize animations
+      // Using fallback dean content - static content is already in HTML
     }
     
   } catch (err) {
@@ -345,26 +384,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   } catch (err) {
     console.error('Failed to load departmental clubs:', err);
-  }
-
-  // ----------------- Submenu Toggles -----------------
-  // Students Clubs submenu
-  const studentsClubsLink = document.querySelector('a[data-section="studentsClubs"]');
-  const clubsSubmenu = document.getElementById('clubs-submenu');
-  if (studentsClubsLink && clubsSubmenu) {
-    studentsClubsLink.addEventListener('click', e => {
-      e.preventDefault();
-      clubsSubmenu.classList.toggle('active');
-    });
-  }
-  // Council submenu
-  const councilLink = document.querySelector('[data-section="council"]');
-  if (councilLink) {
-    councilLink.addEventListener('click', function (e) {
-      e.preventDefault();
-      const submenu = document.getElementById('council-submenu');
-      if (submenu) submenu.classList.toggle('active');
-    });
   }
 
   // ----------------- Sub-menu Button Navigation -----------------
@@ -672,58 +691,128 @@ document.addEventListener("DOMContentLoaded", async () => {
   // ENHANCED VIDEO BANNER & FACULTY CARDS FUNCTIONALITY
   // ===========================================================
 
-  // Enhanced Video Controls
+  // Enhanced Video Controls with Error Handling and Mobile Optimization
   const playBtn = document.getElementById('playBtn');
   const heroVideo = document.getElementById('heroVideo');
   
   if (playBtn && heroVideo) {
-    playBtn.addEventListener('click', function() {
-      if (heroVideo.paused) {
-        heroVideo.play();
-        playBtn.innerHTML = '<span class="play-icon">⏸</span><span class="play-text">Pause Video</span>';
-      } else {
-        heroVideo.pause();
-        playBtn.innerHTML = '<span class="play-icon">▶</span><span class="play-text">Play Video</span>';
+    // Initialize video state
+    let videoReady = false;
+    
+    // Video loading and error handling
+    heroVideo.addEventListener('loadeddata', () => {
+      videoReady = true;
+      console.log('Video loaded successfully');
+    });
+    
+    heroVideo.addEventListener('error', (e) => {
+      console.error('Video loading error:', e);
+      // Hide video controls if video fails to load
+      if (playBtn) {
+        playBtn.style.display = 'none';
+      }
+      // Add fallback background
+      const videoBanner = document.querySelector('.video-banner');
+      if (videoBanner) {
+        videoBanner.style.background = 'linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #4facfe 100%)';
       }
     });
+    
+    // Enhanced play/pause functionality
+    playBtn.addEventListener('click', function() {
+      if (!videoReady) {
+        showNotification('Video is still loading, please wait...', 'warning');
+        return;
+      }
+      
+      try {
+        if (heroVideo.paused) {
+          heroVideo.play().then(() => {
+            playBtn.innerHTML = '<span class="play-icon">⏸</span><span class="play-text">Pause Video</span>';
+            playBtn.setAttribute('aria-label', 'Pause video');
+          }).catch((error) => {
+            console.error('Error playing video:', error);
+            showNotification('Unable to play video', 'error');
+          });
+        } else {
+          heroVideo.pause();
+          playBtn.innerHTML = '<span class="play-icon">▶</span><span class="play-text">Play Video</span>';
+          playBtn.setAttribute('aria-label', 'Play video');
+        }
+      } catch (error) {
+        console.error('Video control error:', error);
+        showNotification('Video control error', 'error');
+      }
+    });
+    
+    // Auto-hide controls on mobile after inactivity
+    if (window.innerWidth <= 768) {
+      let hideControlsTimeout;
+      const videoBanner = document.querySelector('.video-banner');
+      
+      function resetHideControlsTimer() {
+        clearTimeout(hideControlsTimeout);
+        playBtn.style.opacity = '1';
+        hideControlsTimeout = setTimeout(() => {
+          if (!heroVideo.paused) {
+            playBtn.style.opacity = '0.7';
+          }
+        }, 3000);
+      }
+      
+      if (videoBanner) {
+        videoBanner.addEventListener('touchstart', resetHideControlsTimer);
+        videoBanner.addEventListener('click', resetHideControlsTimer);
+      }
+    }
+    
+    // Video ended event
+    heroVideo.addEventListener('ended', () => {
+      playBtn.innerHTML = '<span class="play-icon">▶</span><span class="play-text">Play Video</span>';
+      playBtn.setAttribute('aria-label', 'Play video');
+    });
+    
+    // Keyboard accessibility
+    playBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        playBtn.click();
+      }
+    });
+    
+    // Set initial aria-label
+    playBtn.setAttribute('aria-label', 'Play video');
+    playBtn.setAttribute('role', 'button');
+    playBtn.setAttribute('tabindex', '0');
   }
 
   // Enhanced Faculty Card Filtering
   const filterButtons = document.querySelectorAll('.filter-btn');
   const facultyCards = document.querySelectorAll('.faculty-card');
   
-  console.log('Filter buttons found:', filterButtons.length);
-  console.log('Faculty cards found:', facultyCards.length);
-  
-  filterButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      console.log('Filter button clicked:', this.getAttribute('data-filter'));
-      
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
       // Remove active class from all buttons
-      filterButtons.forEach(btn => btn.classList.remove('active'));
+      filterButtons.forEach(button => button.classList.remove('active'));
       // Add active class to clicked button
-      this.classList.add('active');
+      btn.classList.add('active');
       
-      const filterValue = this.getAttribute('data-filter');
+      const filter = btn.getAttribute('data-filter');
       
-      facultyCards.forEach((card, index) => {
-        const cardCategory = card.getAttribute('data-category');
-        console.log('Card category:', cardCategory, 'Filter:', filterValue);
-        
-        if (filterValue === 'all' || cardCategory === filterValue) {
+      facultyCards.forEach(card => {
+        if (filter === 'all' || card.getAttribute('data-category') === filter) {
           card.style.display = 'block';
           card.style.opacity = '0';
-          card.style.transform = 'translateY(30px) scale(0.9)';
+          card.style.transform = 'translateY(20px)';
           
+          // Animate card appearance
           setTimeout(() => {
             card.style.opacity = '1';
-            card.style.transform = 'translateY(0) scale(1)';
-            card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-          }, index * 50);
+            card.style.transform = 'translateY(0)';
+          }, 100);
         } else {
           card.style.opacity = '0';
-          card.style.transform = 'translateY(-30px) scale(0.8)';
-          card.style.transition = 'all 0.3s ease';
+          card.style.transform = 'translateY(-20px)';
           
           setTimeout(() => {
             card.style.display = 'none';
@@ -731,58 +820,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
       });
     });
-  });
-
-  // Enhanced Hover Effects for Faculty Cards
-  facultyCards.forEach((card, index) => {
-    // Add staggered entrance animation
-    card.style.animationDelay = `${index * 0.1}s`;
-    card.classList.add('fade-in-card');
-    
-    // Enhanced hover interactions with tilt effect
-    card.addEventListener('mouseenter', function() {
-      this.style.zIndex = '10';
-      this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-      this.style.transform = 'translateY(-20px) scale(1.05)';
-      
-      // Add glow effect
-      this.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.2), 0 0 30px rgba(79, 172, 254, 0.3)';
-    });
-    
-    card.addEventListener('mouseleave', function() {
-      this.style.zIndex = '1';
-      this.style.transform = 'translateY(0) scale(1)';
-      this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
-      this.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-    });
-
-    // Add click animation
-    card.addEventListener('click', function() {
-      this.style.transform = 'translateY(-20px) scale(0.98)';
-      setTimeout(() => {
-        this.style.transform = 'translateY(-20px) scale(1.05)';
-      }, 150);
-    });
-  });
-
-  // Parallax effect for video background
-  window.addEventListener('scroll', function() {
-    const scrolled = window.pageYOffset;
-    const video = document.querySelector('.video-banner video');
-    if (video) {
-      video.style.transform = `translate(-50%, -50%) translateY(${scrolled * 0.3}px)`;
-    }
-  });
-
-  // Enhanced keyboard navigation
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      // Reset filter to show all
-      const allButton = document.querySelector('.filter-btn[data-filter="all"]');
-      if (allButton) {
-        allButton.click();
-      }
-    }
   });
 
   // Add intersection observer for scroll animations
@@ -805,4 +842,80 @@ document.addEventListener("DOMContentLoaded", async () => {
   // ===========================================================
   // END ENHANCED FUNCTIONALITY
   // ===========================================================
+
+  // ----------------- Page Loading and Performance Optimizations -----------------
+  // Add loading animation
+  const loadingScreen = document.createElement('div');
+  loadingScreen.className = 'loading-screen';
+  loadingScreen.innerHTML = `
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+      <p>Loading GLA University...</p>
+    </div>
+  `;
+  document.body.appendChild(loadingScreen);
+  
+  // Remove loading screen when page is fully loaded
+  window.addEventListener('load', () => {
+    loadingScreen.style.opacity = '0';
+    setTimeout(() => {
+      loadingScreen.remove();
+    }, 500);
+  });
+  
+  // Add smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+  
+  // Add error boundaries for better user experience
+  window.addEventListener('error', (e) => {
+    console.error('Global error caught:', e.error);
+    // Show user-friendly error message
+    showNotification('Something went wrong. Please refresh the page.', 'error');
+  });
+  
+  function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
+    notification.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 15px 20px;
+      background: ${type === 'error' ? '#ff4757' : '#1e3c72'};
+      color: white;
+      border-radius: 8px;
+      z-index: 10001;
+      font-size: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      transform: translateX(400px);
+      transition: transform 0.3s ease;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Animate in
+    setTimeout(() => {
+      notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Auto remove after 5 seconds
+    setTimeout(() => {
+      notification.style.transform = 'translateX(400px)';
+      setTimeout(() => {
+        notification.remove();
+      }, 300);
+    }, 5000);
+  }
 });
