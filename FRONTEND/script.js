@@ -136,21 +136,175 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error('Failed to load slider images:', err);
   }
 
-  // ----------------- Dean Profile Section -----------------
+  // ----------------- Enhanced Dean Profile Section -----------------
   try {
-    const deanRes = await fetch('/api/dean');
-    const dean = await deanRes.json();
-    document.getElementById('dean-info').innerHTML = `
-      <h2>${dean.title}</h2>
-      <h3>${dean.subtitle}</h3>
-      <h2>${dean.name}</h2>
-      <p>${dean.description}</p>
-    `;
-    document.getElementById('dean-image').innerHTML = `
-      <img src="${dean.image}" alt="${dean.name}" />
-    `;
+    // Initialize enhanced dean section with animations
+    initializeDeanSection();
+    
+    // Try to load dean data from API, fallback to static content
+    try {
+      const deanRes = await fetch('/api/dean');
+      const dean = await deanRes.json();
+      
+      // Update dean info with API data
+      const deanInfoElement = document.getElementById('dean-info');
+      if (deanInfoElement) {
+        deanInfoElement.querySelector('.dean-title-animated h2').textContent = dean.name || 'Dr. Himanshu Agarwal';
+        deanInfoElement.querySelector('.dean-position').textContent = dean.position || 'Dean of Students Welfare';
+        deanInfoElement.querySelector('.dean-description p').textContent = dean.description || 'With a passion for student development and academic excellence, Dr. Himanshu Agarwal leads our student welfare initiatives with vision and dedication.';
+        
+        // Update contact link
+        const contactBtn = deanInfoElement.querySelector('.dean-contact-btn.primary');
+        if (contactBtn && dean.email) {
+          contactBtn.href = `mailto:${dean.email}`;
+        }
+      }
+      
+      // Update dean image
+      const deanImageElement = document.getElementById('dean-image');
+      if (deanImageElement && dean.image) {
+        const img = deanImageElement.querySelector('img');
+        if (img) {
+          img.src = dean.image;
+          img.alt = dean.name || 'Dean';
+        }
+      }
+    } catch (apiErr) {
+      console.log('Using fallback dean content');
+      // Static content is already in HTML, so we just need to initialize animations
+    }
+    
   } catch (err) {
-    console.error('Failed to load dean info:', err);
+    console.error('Failed to initialize dean section:', err);
+  }
+
+  // Function to initialize dean section animations and interactions
+  function initializeDeanSection() {
+    // Animate statistics counter
+    const statNumbers = document.querySelectorAll('.dean-stats .stat-number');
+    
+    const animateCounter = (element) => {
+      const target = parseInt(element.getAttribute('data-target'));
+      const duration = 2000; // 2 seconds
+      const increment = target / (duration / 16); // 60fps
+      let current = 0;
+      
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        element.textContent = Math.floor(current);
+      }, 16);
+    };
+    
+    // Intersection Observer for stats animation
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const statNumber = entry.target;
+          if (!statNumber.classList.contains('animated')) {
+            statNumber.classList.add('animated');
+            animateCounter(statNumber);
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    statNumbers.forEach(stat => {
+      statsObserver.observe(stat);
+    });
+    
+    // Add ripple effect to contact buttons
+    const contactBtns = document.querySelectorAll('.dean-contact-btn');
+    contactBtns.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const ripple = this.querySelector('.btn-ripple');
+        if (ripple) {
+          ripple.style.transform = 'scale(0)';
+          setTimeout(() => {
+            ripple.style.transform = 'scale(1)';
+          }, 10);
+          setTimeout(() => {
+            ripple.style.transform = 'scale(0)';
+          }, 600);
+        }
+      });
+    });
+    
+    // Add hover effects to highlight items
+    const highlightItems = document.querySelectorAll('.highlight-item');
+    highlightItems.forEach(item => {
+      item.addEventListener('mouseenter', function() {
+        const icon = this.querySelector('.highlight-icon');
+        if (icon) {
+          icon.style.transform = 'scale(1.2) rotate(10deg)';
+        }
+      });
+      
+      item.addEventListener('mouseleave', function() {
+        const icon = this.querySelector('.highlight-icon');
+        if (icon) {
+          icon.style.transform = 'scale(1) rotate(0deg)';
+        }
+      });
+    });
+    
+    // Add scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const slideUpObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    
+    // Elements to animate on scroll
+    const animateElements = document.querySelectorAll('.dean-title-group, .dean-image-section, .dean-info-section');
+    animateElements.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(50px)';
+      el.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+      slideUpObserver.observe(el);
+    });
+    
+    // Add parallax effect to floating elements
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const parallaxElements = document.querySelectorAll('.floating-icon');
+      
+      parallaxElements.forEach((element, index) => {
+        const speed = 0.5 + (index * 0.1);
+        const yPos = -(scrolled * speed);
+        element.style.transform = `translateY(${yPos}px)`;
+      });
+    });
+    
+    // Add dynamic background color change based on scroll
+    window.addEventListener('scroll', () => {
+      const deanSection = document.querySelector('.enhanced-dean-section');
+      const sectionTop = deanSection.offsetTop;
+      const sectionHeight = deanSection.offsetHeight;
+      const scrollPosition = window.pageYOffset;
+      
+      if (scrollPosition >= sectionTop - window.innerHeight && 
+          scrollPosition <= sectionTop + sectionHeight) {
+        const progress = (scrollPosition - (sectionTop - window.innerHeight)) / 
+                        (sectionHeight + window.innerHeight);
+        const hue = 200 + (progress * 60); // Shift from blue to green
+        deanSection.style.background = `linear-gradient(135deg, 
+          hsl(${hue}, 20%, 98%) 0%, 
+          hsl(${hue + 20}, 30%, 96%) 50%, 
+          hsl(${hue + 40}, 25%, 97%) 100%)`;
+      }
+    });
   }
 
   // ----------------- Council Members Section -----------------
