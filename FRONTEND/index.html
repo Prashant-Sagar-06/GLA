@@ -1,89 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Meta Tags -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Students Welfare - GLA University</title>
+  
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <script src="script.js" defer></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- Scripts -->
+  <script src="script.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 
 <body>
-  <!-- Top Bar -->
-  <div class="top-bar">
-    <div class="top-bar-left" id="typewriter"></div>
-    <div class="top-bar-right">
-      <a href="https://www.facebook.com/glauniv"><img src="./images/facebook.png" alt="Facebook" class="social-icon"></a>
-      <a href="#"><img src="./images/twitter.png" alt="Twitter" class="social-icon"></a>
-      <a href="https://www.linkedin.com/school/gla-university/posts/?feedView=all"><img src="./images/linkedin.png" alt="LinkedIn" class="social-icon"></a>
-      <a href="https://www.instagram.com/glauniv"><img src="./images/instagram.png" alt="Instagram" class="social-icon"></a>
-      <a href="https://api.whatsapp.com/send?phone=916399020003&text=Hello%20GLA%20University!"><img src="./images/whatsapp.png" alt="WhatsApp" class="social-icon"></a>
-      <button class="zoom-btn" id="zoom-in">🔍+</button>
-      <button class="zoom-btn" id="zoom-out">🔍-</button>
-      <button class="reset-btn" id="reset">Reset</button>
+  <!-- ===================== Top Bar ===================== -->
+  <div class="modern-top-bar">
+    <div class="top-bar-content">
+      <div class="top-bar-left">
+        <div class="contact-info">
+          <span class="contact-item">
+            <i class="icon">📞</i>
+            <span>+91-5662-250900</span>
+          </span>
+          <span class="contact-item">
+            <i class="icon">✉️</i>
+            <span>info@gla.ac.in</span>
+          </span>
+        </div>
+      </div>
+      <div class="top-bar-right">
+        <div class="top-social-links">
+          <a href="https://www.facebook.com/glauniv" class="top-social-icon" title="Facebook">
+            <img src="./images/facebook.png" alt="Facebook">
+          </a>
+          <a href="#" class="top-social-icon" title="Twitter">
+            <img src="./images/twitter.png" alt="Twitter">
+          </a>
+          <a href="https://www.linkedin.com/school/gla-university/posts/?feedView=all" class="top-social-icon" title="LinkedIn">
+            <img src="./images/linkedin.png" alt="LinkedIn">
+          </a>
+          <a href="https://www.instagram.com/glauniv" class="top-social-icon" title="Instagram">
+            <img src="./images/instagram.png" alt="Instagram">
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=916399020003&text=Hello%20GLA%20University!" class="top-social-icon" title="WhatsApp">
+            <img src="./images/whatsapp.png" alt="WhatsApp">
+          </a>
+        </div>
+        <div class="accessibility-controls">
+          <button type="button" class="control-btn" id="zoom-in" title="Increase Font Size">
+            <span>A+</span>
+          </button>
+          <button type="button" class="control-btn" id="zoom-out" title="Decrease Font Size">
+            <span>A-</span>
+          </button>
+          <button type="button" class="control-btn" id="reset" title="Reset Font Size">
+            <span>↻</span>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
+  <!-- ===================== End Top Bar ===================== -->
 
-  <!-- Navbar -->
-  <!-- Updated portion of the HTML body -->
-<header class="navbar">
-  <div class="logo">
-    <img src="./images/logo.png" alt="GLA University Logo" />
-    <h1 class="text">GLA UNIVERSITY</h1>
-    <div class="menu-toggle" id="menu-toggle">
-      &#8942;
+  <!-- ===================== Navbar ===================== -->
+  <header class="modern-navbar">
+    <div class="navbar-container">
+      <div class="navbar-brand">
+        <button type="button" class="mobile-menu-btn" id="menu-toggle" aria-label="Toggle Menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+        <div class="brand-logo">
+          <img src="./images/logo.png" alt="GLA University Logo" class="logo-img">
+          <div class="brand-text">
+            <h1 class="university-name">GLA UNIVERSITY</h1>
+            <span class="brand-subtitle">Excellence in Education</span>
+          </div>
+        </div>
+      </div>
+      <nav class="navbar-nav">
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link active">
+              <i class="nav-icon">🏠</i>
+              <span>Home</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.gla.ac.in/" class="nav-link">
+              <i class="nav-icon">🏛️</i>
+              <span>Institute</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/FRONTEND/others/campus_events.html" class="nav-link">
+              <i class="nav-icon">📅</i>
+              <span>Campus Events</span>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle">
+              <i class="nav-icon">👥</i>
+              <span>Council Division</span>
+              <i class="dropdown-arrow">▼</i>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#" class="dropdown-link">Student Council</a></li>
+              <li><a href="#" class="dropdown-link">Cultural Council</a></li>
+              <li><a href="#" class="dropdown-link">Sports Council</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle">
+              <i class="nav-icon">📚</i>
+              <span>Academics</span>
+              <i class="dropdown-arrow">▼</i>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#" class="dropdown-link">Departments</a></li>
+              <li><a href="#" class="dropdown-link">Programs</a></li>
+              <li><a href="#" class="dropdown-link">Research</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon">♿</i>
+              <span>Disability Support</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon">🎓</i>
+              <span>Alumni</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon">📋</i>
+              <span>Policies</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
-  </div>
-  <nav>
+  </header>
+  <!-- ===================== End Navbar ===================== -->
+
+  <!-- ===================== Sidebar Popup ===================== -->
+  <div class="popup-sidebar" id="popupSidebar">
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="https://www.gla.ac.in/">Institute</a></li>
-      <li><a href="/FRONTEND/others/campus_events.html">Campus Events</a></li>
-      <li><a href="#">Council Division</a></li>
-      <li><a href="#">Academics</a></li>
-      <li><a href="#">Disability Support</a></li>
-      <li><a href="#">Alumni</a></li>
-      <li><a href="#">Policies on core values</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="newsletters.html">Newsletters</a></li>
+      <li><a href="student_activity.html">Student Activity Centre</a></li>
+      <li>
+        <a href="#" data-section="council">Council</a>
+        <div class="sub-menu" id="council-submenu">
+          <button type="button" class="sub-menu-btn" data-section="student-affairs">Student Affairs Council</button>
+          <button type="button" class="sub-menu-btn" data-section="cultural-affairs">Cultural Affairs Council</button>
+        </div>
+      </li>
+      <li>
+        <a href="#" data-section="studentsClubs">Students Clubs</a>
+        <div class="sub-menu" id="clubs-submenu">
+          <button type="button" class="sub-menu-btn" data-section="cultural">Cultural</button>
+          <button type="button" class="sub-menu-btn" data-section="departmental">Departmental</button>
+          <button type="button" class="sub-menu-btn" data-section="sports">Sports</button>
+        </div>
+      </li>
+      <li><a href="ncc.html">NCC</a></li>
+      <li><a href="nss.html">NSS</a></li>
     </ul>
-  </nav>
-</header>
+  </div>
+  <!-- ===================== End Sidebar Popup ===================== -->
 
-<!-- Sidebar as popup -->
-<div class="popup-sidebar" id="popupSidebar">
-  <ul>
-    <li><a href="about.html">About</a></li>
-    <li><a href="newsletters.html">Newsletters</a></li>
-    <li><a href="student_activity.html">Student Activity Centre</a></li>
-    <li>
-      <a href="#" data-section="council">Council</a>
-      <div class="sub-menu" id="council-submenu">
-        <button class="sub-menu-btn" data-section="student-affairs">Student Affairs Council</button>
-        <button class="sub-menu-btn" data-section="cultural-affairs">Cultural Affairs Council</button>
-      </div>
-    </li>
-    <li>
-      <a href="#" data-section="studentsClubs">Students Clubs</a>
-      <div class="sub-menu" id="clubs-submenu">
-        <button class="sub-menu-btn" data-section="cultural">Cultural</button>
-        <button class="sub-menu-btn" data-section="departmental">Departmental</button>
-        <button class="sub-menu-btn" data-section="sports">Sports</button>
-      </div>
-    </li>
-    <li><a href="ncc.html">NCC</a></li>
-    <li><a href="nss.html">NSS</a></li>
-  </ul>
-</div>
-
-<!-- REMOVE the old <aside class="sidebar"> ... </aside> -->
-
-
-  <!-- Video Banner -->
+  <!-- ===================== Video Banner ===================== -->
   <section class="video-banner">
-    <video autoplay muted loop playsinline>
+    <video autoplay muted loop>
       <source src="./images/gla.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
@@ -92,204 +190,181 @@
       <p>Empowering students through engagement, support, and innovation</p>
     </div>
   </section>
-    <div class="container">
+  <!-- ===================== End Video Banner ===================== -->
 
-      <main class="main-content">
-        <div class="dean-profile">
-          <div class="dean-info" id="dean-info"></div>
-          <div class="dean-image" id="dean-image"></div>
-        </div>
-      </main>
+  <!-- ===================== Main Content ===================== -->
+  <div class="container">
+    <main class="main-content">
+      <div class="dean-profile">
+        <div class="dean-info" id="dean-info"></div>
+        <div class="dean-image" id="dean-image"></div>
+      </div>
+    </main>
+  </div>
+  <!-- ===================== End Main Content ===================== -->
+
+  <!-- ===================== Faculty Council Section ===================== -->
+  <section id="faculty-council" class="faculty-council-section">
+    <h2 class="faculty-council-title">Faculty Council</h2>
+    <div class="faculty-grid">
+      <!-- Faculty Cards -->
+      <div class="faculty-card">
+        <img src="./images/faculty-placeholder.jpg" alt="Dr. Vivek Mehrotra">
+        <h3>Dr. Vivek Mehrotra</h3>
+        <p>Cultural-Vice President</p>
+        <a href="mailto:vivek.mehrotra@gla.ac.in">vivek.mehrotra@gla.ac.in</a>
+      </div>
+      <div class="faculty-card">
+        <img src="./images/faculty-placeholder.jpg" alt="Dr. Supriya Jain">
+        <h3>Dr. Supriya Jain</h3>
+        <p>Cultural-Vice President</p>
+        <a href="mailto:supriya.jain@gla.ac.in">supriya.jain@gla.ac.in</a>
+      </div>
+      <div class="faculty-card">
+        <img src="./images/natraj and ninad.jpg" alt="Dr. Brijesh Goswami">
+        <h3>Dr. Brijesh Goswami</h3>
+        <p>Cultural-Vice President</p>
+        <a href="mailto:brijesh.goswami@gla.ac.in">brijesh.goswami@gla.ac.in</a>
+      </div>
+      <div class="faculty-card">
+        <img src="./images/faculty-placeholder.jpg" alt="Dr. Shilpi Pathak">
+        <h3>Dr. Shilpi Pathak</h3>
+        <p>General Secretary - Internal Affairs</p>
+        <a href="mailto:shilpi.pathak@gla.ac.in">shilpi.pathak@gla.ac.in</a>
+      </div>
+      <div class="faculty-card">
+        <img src="./images/faculty-placeholder.jpg" alt="Dr. Reena Gupta">
+        <h3>Dr. Reena Gupta</h3>
+        <p>General Secretary - External Affairs</p>
+        <a href="mailto:reena.gupta@gla.ac.in">reena.gupta@gla.ac.in</a>
+      </div>
+      <div class="faculty-card">
+        <img src="./images/faculty-placeholder.jpg" alt="Ms. Niharika Singh">
+        <h3>Ms. Niharika Singh</h3>
+        <p>Cultural-Secretary</p>
+        <a href="mailto:niharika.singh@gla.ac.in">niharika.singh@gla.ac.in</a>
+      </div>
+      <div class="faculty-card">
+        <img src="./images/faculty-placeholder.jpg" alt="Mr. Faizul Hasan">
+        <h3>Mr. Faizul Hasan</h3>
+        <p>Drishti Club Mentor</p>
+        <a href="mailto:faijul.hasan@gla.ac.in">faijul.hasan@gla.ac.in</a>
+      </div>
+      <div class="faculty-card">
+        <img src="./images/faculty-placeholder.jpg" alt="Dr. Ayushi Dixit">
+        <h3>Dr. Ayushi Dixit</h3>
+        <p>Fine Arts Club Mentor</p>
+        <a href="mailto:ayushi.dixit@gla.ac.in">ayushi.dixit@gla.ac.in</a>
+      </div>
+      <div class="faculty-card">
+        <img src="./images/faculty-placeholder.jpg" alt="Dr. Silpa Krishnan V S">
+        <h3>Dr. Silpa Krishnan V S</h3>
+        <p>Nature Club Mentor</p>
+        <a href="mailto:silpa.krishnan@gla.ac.in">silpa.krishnan@gla.ac.in</a>
+      </div>
+      <div class="faculty-card">
+        <img src="./images/faculty-placeholder.jpg" alt="Dr. Neha Kumari">
+        <h3>Dr. Neha Kumari</h3>
+        <p>Poetry Club Mentor</p>
+        <a href="mailto:neha.kumari@gla.ac.in">neha.kumari@gla.ac.in</a>
+      </div>
+      <div class="faculty-card">
+        <img src="./images/faculty-placeholder.jpg" alt="Dr. Prateek Upreti">
+        <h3>Dr. Prateek Upreti</h3>
+        <p>Poetry Club Mentor</p>
+        <a href="mailto:prateek.upreti@gla.ac.in">prateek.upreti@gla.ac.in</a>
+      </div>
+      <div class="faculty-card">
+        <img src="./images/faculty-placeholder.jpg" alt="Dr. Sohela Mukherjee">
+        <h3>Dr. Sohela Mukherjee</h3>
+        <p>Literario Club Mentor</p>
+        <a href="mailto:sohela.mukherjee@gla.ac.in">sohela.mukherjee@gla.ac.in</a>
+      </div>
+      <div class="faculty-card">
+        <img src="./images/faculty-placeholder.jpg" alt="Dr. Divya Gupta">
+        <h3>Dr. Divya Gupta</h3>
+        <p>Saturangle Club Mentor</p>
+        <a href="mailto:divya.gupta@gla.ac.in">divya.gupta@gla.ac.in</a>
+      </div>
+      <div class="faculty-card">
+        <img src="./images/faculty-placeholder.jpg" alt="Dr. Ruchika Kulshrestha">
+        <h3>Dr. Ruchika Kulshrestha</h3>
+        <p>Aikyam Club Mentor</p>
+        <a href="mailto:ruchika.kulshrestha@gla.ac.in">ruchika.kulshrestha@gla.ac.in</a>
+      </div>
+      <div class="faculty-card">
+        <img src="./images/faculty-placeholder.jpg" alt="Mr. Lov Kush Kumar">
+        <h3>Mr. Lov Kush Kumar</h3>
+        <p>Pratibha Club Mentor</p>
+        <a href="mailto:lovkush.kumar@gla.ac.in">lovkush.kumar@gla.ac.in</a>
+      </div>
+      <div class="faculty-card">
+        <img src="./images/faculty-placeholder.jpg" alt="Dr. Deepak Tiwari">
+        <h3>Dr. Deepak Tiwari</h3>
+        <p>Voice Club Mentor</p>
+        <a href="mailto:deepak.tiwari@gla.ac.in">deepak.tiwari@gla.ac.in</a>
+      </div>
+      <div class="faculty-card">
+        <img src="./images/faculty-placeholder.jpg" alt="Dr. Anmol Nagpal">
+        <h3>Dr. Anmol Nagpal</h3>
+        <p>GLA Media Scoop</p>
+        <a href="mailto:anmol.nagpal@gla.ac.in">anmol.nagpal@gla.ac.in</a>
+      </div>
+      <div class="faculty-card">
+        <img src="../FRONTEND/images/" alt="Dr. Brijesh Goswami">
+        <h3>Dr. Brijesh Goswami</h3>
+        <p>Cultural-Vice President</p>
+        <a href="mailto:brijesh.goswami@gla.ac.in">brijesh.goswami@gla.ac.in</a>
+      </div>
+      <div class="faculty-card">
+        <img src="./images/faculty-placeholder.jpg" alt="Dr. Reena Gupta">
+        <h3>Dr. Reena Gupta</h3>
+        <p>Vihiti Club Mentor</p>
+        <a href="mailto:reena.gupta@gla.ac.in">reena.gupta@gla.ac.in</a>
+      </div>
+      <div class="faculty-card">
+        <img src="./images/faculty-placeholder.jpg" alt="Mr. Rahul Gupta">
+        <h3>Mr. Rahul Gupta</h3>
+        <p>Music Teacher</p>
+        <a href="mailto:rahul.gupta@gla.ac.in">rahul.gupta@gla.ac.in</a>
+      </div>
+      <div class="faculty-card">
+        <img src="./images/faculty-placeholder.jpg" alt="Mr. Akhilesh Kumar">
+        <h3>Mr. Akhilesh Kumar</h3>
+        <p>Music Teacher</p>
+        <a href="mailto:akhileshkumar.gla@gla.ac.in">akhileshkumar.gla@gla.ac.in</a>
+      </div>
+      <div class="faculty-card">
+        <img src="./images/faculty-placeholder.jpg" alt="Mr. Anil Kumar Saxena">
+        <h3>Mr. Anil Kumar Saxena</h3>
+        <p>Office Assistant</p>
+        <a href="mailto:anilkumar.saxean@gla.ac.in">anilkumar.saxean@gla.ac.in</a>
+      </div>
+      <div class="faculty-card">
+        <img src="./images/faculty-placeholder.jpg" alt="Mr. Gaurav Sharma">
+        <h3>Mr. Gaurav Sharma</h3>
+        <p>Office Executive</p>
+        <a href="mailto:sharma.gaurav@gla.ac.in">sharma.gaurav@gla.ac.in</a>
+      </div>
+      <div class="faculty-card">
+        <img src="./images/faculty-placeholder.jpg" alt="Mr. Satish Kumar">
+        <h3>Mr. Satish Kumar</h3>
+        <p>Executive</p>
+        <a href="mailto:satish.kumar@gla.ac.in">satish.kumar@gla.ac.in</a>
+      </div>
     </div>
   </section>
+  <!-- ===================== End Faculty Council Section ===================== -->
 
-  <!-- Faculty Council Section -->
-<section id="faculty-council" style="background-color: #f4f4f4; padding: 60px 20px;">
-  <h2 style="text-align: center; font-size: 2rem; color: #2d4675; margin-bottom: 40px;">Faculty Council</h2>
-  <div class="faculty-grid">
-
-    <!-- Faculty Cards -->
-    <div class="faculty-card">
-      <img src="./images/faculty-placeholder.jpg" alt="Dr. Vivek Mehrotra">
-      <h3>Dr. Vivek Mehrotra</h3>
-      <p>Cultural-Vice President</p>
-      <a href="mailto:vivek.mehrotra@gla.ac.in">vivek.mehrotra@gla.ac.in</a>
-    </div>
-
-    <div class="faculty-card">
-      <img src="./images/faculty-placeholder.jpg" alt="Dr. Supriya Jain">
-      <h3>Dr. Supriya Jain</h3>
-      <p>Cultural-Vice President</p>
-      <a href="mailto:supriya.jain@gla.ac.in">supriya.jain@gla.ac.in</a>
-    </div>
-
-    <div class="faculty-card">
-      <img src="./images/natraj and ninad.jpg" alt="Dr. Brijesh Goswami">
-      <h3>Dr. Brijesh Goswami</h3>
-      <p>Cultural-Vice President</p>
-      <a href="mailto:brijesh.goswami@gla.ac.in">brijesh.goswami@gla.ac.in</a>
-    </div>
-
-    <div class="faculty-card">
-      <img src="./images/faculty-placeholder.jpg" alt="Dr. Shilpi Pathak">
-      <h3>Dr. Shilpi Pathak</h3>
-      <p>General Secretary - Internal Affairs</p>
-      <a href="mailto:shilpi.pathak@gla.ac.in">shilpi.pathak@gla.ac.in</a>
-    </div>
-
-    <div class="faculty-card">
-      <img src="./images/faculty-placeholder.jpg" alt="Dr. Reena Gupta">
-      <h3>Dr. Reena Gupta</h3>
-      <p>General Secretary - External Affairs</p>
-      <a href="mailto:reena.gupta@gla.ac.in">reena.gupta@gla.ac.in</a>
-    </div>
-
-    <div class="faculty-card">
-      <img src="./images/faculty-placeholder.jpg" alt="Ms. Niharika Singh">
-      <h3>Ms. Niharika Singh</h3>
-      <p>Cultural-Secretary</p>
-      <a href="mailto:niharika.singh@gla.ac.in">niharika.singh@gla.ac.in</a>
-    </div>
-
-    <div class="faculty-card">
-      <img src="./images/faculty-placeholder.jpg" alt="Mr. Faizul Hasan">
-      <h3>Mr. Faizul Hasan</h3>
-      <p>Drishti Club Mentor</p>
-      <a href="mailto:faijul.hasan@gla.ac.in">faijul.hasan@gla.ac.in</a>
-    </div>
-
-    <div class="faculty-card">
-      <img src="./images/faculty-placeholder.jpg" alt="Dr. Ayushi Dixit">
-      <h3>Dr. Ayushi Dixit</h3>
-      <p>Fine Arts Club Mentor</p>
-      <a href="mailto:ayushi.dixit@gla.ac.in">ayushi.dixit@gla.ac.in</a>
-    </div>
-
-    <div class="faculty-card">
-      <img src="./images/faculty-placeholder.jpg" alt="Dr. Silpa Krishnan V S">
-      <h3>Dr. Silpa Krishnan V S</h3>
-      <p>Nature Club Mentor</p>
-      <a href="mailto:silpa.krishnan@gla.ac.in">silpa.krishnan@gla.ac.in</a>
-    </div>
-
-    <div class="faculty-card">
-      <img src="./images/faculty-placeholder.jpg" alt="Dr. Neha Kumari">
-      <h3>Dr. Neha Kumari</h3>
-      <p>Poetry Club Mentor</p>
-      <a href="mailto:neha.kumari@gla.ac.in">neha.kumari@gla.ac.in</a>
-    </div>
-
-    <div class="faculty-card">
-      <img src="./images/faculty-placeholder.jpg" alt="Dr. Prateek Upreti">
-      <h3>Dr. Prateek Upreti</h3>
-      <p>Poetry Club Mentor</p>
-      <a href="mailto:prateek.upreti@gla.ac.in">prateek.upreti@gla.ac.in</a>
-    </div>
-
-    <div class="faculty-card">
-      <img src="./images/faculty-placeholder.jpg" alt="Dr. Sohela Mukherjee">
-      <h3>Dr. Sohela Mukherjee</h3>
-      <p>Literario Club Mentor</p>
-      <a href="mailto:sohela.mukherjee@gla.ac.in">sohela.mukherjee@gla.ac.in</a>
-    </div>
-
-    <div class="faculty-card">
-      <img src="./images/faculty-placeholder.jpg" alt="Dr. Divya Gupta">
-      <h3>Dr. Divya Gupta</h3>
-      <p>Saturangle Club Mentor</p>
-      <a href="mailto:divya.gupta@gla.ac.in">divya.gupta@gla.ac.in</a>
-    </div>
-
-    <div class="faculty-card">
-      <img src="./images/faculty-placeholder.jpg" alt="Dr. Ruchika Kulshrestha">
-      <h3>Dr. Ruchika Kulshrestha</h3>
-      <p>Aikyam Club Mentor</p>
-      <a href="mailto:ruchika.kulshrestha@gla.ac.in">ruchika.kulshrestha@gla.ac.in</a>
-    </div>
-
-    <div class="faculty-card">
-      <img src="./images/faculty-placeholder.jpg" alt="Mr. Lov Kush Kumar">
-      <h3>Mr. Lov Kush Kumar</h3>
-      <p>Pratibha Club Mentor</p>
-      <a href="mailto:lovkush.kumar@gla.ac.in">lovkush.kumar@gla.ac.in</a>
-    </div>
-
-    <div class="faculty-card">
-      <img src="./images/faculty-placeholder.jpg" alt="Dr. Deepak Tiwari">
-      <h3>Dr. Deepak Tiwari</h3>
-      <p>Voice Club Mentor</p>
-      <a href="mailto:deepak.tiwari@gla.ac.in">deepak.tiwari@gla.ac.in</a>
-    </div>
-
-    <div class="faculty-card">
-      <img src="./images/faculty-placeholder.jpg" alt="Dr. Anmol Nagpal">
-      <h3>Dr. Anmol Nagpal</h3>
-      <p>GLA Media Scoop</p>
-      <a href="mailto:anmol.nagpal@gla.ac.in">anmol.nagpal@gla.ac.in</a>
-    </div>
-
-    <div class="faculty-card">
-      <img src="../FRONTEND/images/" alt="Dr. Brijesh Goswami">
-      <h3>Dr. Brijesh Goswami</h3>
-      <p>Cultural-Vice President</p>
-      <a href="mailto:brijesh.goswami@gla.ac.in">brijesh.goswami@gla.ac.in</a>
-    </div>
-
-    <div class="faculty-card">
-      <img src="./images/faculty-placeholder.jpg" alt="Dr. Reena Gupta">
-      <h3>Dr. Reena Gupta</h3>
-      <p>Vihiti Club Mentor</p>
-      <a href="mailto:reena.gupta@gla.ac.in">reena.gupta@gla.ac.in</a>
-    </div>
-
-    <div class="faculty-card">
-      <img src="./images/faculty-placeholder.jpg" alt="Mr. Rahul Gupta">
-      <h3>Mr. Rahul Gupta</h3>
-      <p>Music Teacher</p>
-      <a href="mailto:rahul.gupta@gla.ac.in">rahul.gupta@gla.ac.in</a>
-    </div>
-
-    <div class="faculty-card">
-      <img src="./images/faculty-placeholder.jpg" alt="Mr. Akhilesh Kumar">
-      <h3>Mr. Akhilesh Kumar</h3>
-      <p>Music Teacher</p>
-      <a href="mailto:akhileshkumar.gla@gla.ac.in">akhileshkumar.gla@gla.ac.in</a>
-    </div>
-
-    <div class="faculty-card">
-      <img src="./images/faculty-placeholder.jpg" alt="Mr. Anil Kumar Saxena">
-      <h3>Mr. Anil Kumar Saxena</h3>
-      <p>Office Assistant</p>
-      <a href="mailto:anilkumar.saxean@gla.ac.in">anilkumar.saxean@gla.ac.in</a>
-    </div>
-
-    <div class="faculty-card">
-      <img src="./images/faculty-placeholder.jpg" alt="Mr. Gaurav Sharma">
-      <h3>Mr. Gaurav Sharma</h3>
-      <p>Office Executive</p>
-      <a href="mailto:sharma.gaurav@gla.ac.in">sharma.gaurav@gla.ac.in</a>
-    </div>
-
-    <div class="faculty-card">
-      <img src="./images/faculty-placeholder.jpg" alt="Mr. Satish Kumar">
-      <h3>Mr. Satish Kumar</h3>
-      <p>Executive</p>
-      <a href="mailto:satish.kumar@gla.ac.in">satish.kumar@gla.ac.in</a>
-    </div>
-
-  </div>
-</section>
-
-
-  <!-- Footer -->
+  <!-- ===================== Footer ===================== -->
   <footer class="modern-footer">
     <div class="footer-waves">
       <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
         <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="footer-fill"></path>
       </svg>
     </div>
-    
     <div class="footer-content">
+      <!-- Footer Brand -->
       <div class="footer-section footer-brand">
         <div class="brand-logo">
           <img src="./images/logo.png" alt="GLA University" class="footer-logo">
@@ -311,7 +386,7 @@
           </div>
         </div>
       </div>
-
+      <!-- Footer Quick Links -->
       <div class="footer-section">
         <h4>Quick Links</h4>
         <ul class="footer-links">
@@ -323,7 +398,7 @@
           <li><a href="#" class="footer-link"><i class="link-icon">▶</i>Alumni</a></li>
         </ul>
       </div>
-
+      <!-- Footer Campus Resources -->
       <div class="footer-section">
         <h4>Campus Resources</h4>
         <ul class="footer-links">
@@ -335,7 +410,7 @@
           <li><a href="#" class="footer-link"><i class="link-icon">▶</i>International Office</a></li>
         </ul>
       </div>
-
+      <!-- Footer Contact -->
       <div class="footer-section footer-contact">
         <h4>Get in Touch</h4>
         <div class="contact-item">
@@ -361,7 +436,7 @@
           </div>
         </div>
       </div>
-
+      <!-- Footer Mobile Apps -->
       <div class="footer-section footer-apps">
         <h4>Mobile Apps</h4>
         <p>Download our apps for easy access</p>
@@ -373,10 +448,9 @@
             <img src="./images/app-store.png" alt="App Store" class="app-icon">
           </a>
         </div>
-        </div>
       </div>
     </div>
-
+    <!-- Footer Social Links -->
     <div class="footer-social">
       <h4>Follow Us</h4>
       <div class="social-links">
@@ -402,7 +476,7 @@
         </a>
       </div>
     </div>
-
+    <!-- Footer Bottom -->
     <div class="footer-bottom">
       <div class="footer-bottom-content">
         <p>&copy; 2025 GLA University. All rights reserved.</p>
@@ -418,5 +492,6 @@
       </div>
     </div>
   </footer>
+  <!-- ===================== End Footer ===================== -->
 </body>
 </html>
