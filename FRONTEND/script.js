@@ -514,4 +514,141 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 
+  // ===========================================================
+  // ENHANCED VIDEO BANNER & FACULTY CARDS FUNCTIONALITY
+  // ===========================================================
+
+  // Enhanced Video Controls
+  const playBtn = document.getElementById('playBtn');
+  const heroVideo = document.getElementById('heroVideo');
+  
+  if (playBtn && heroVideo) {
+    playBtn.addEventListener('click', function() {
+      if (heroVideo.paused) {
+        heroVideo.play();
+        playBtn.innerHTML = '<span class="play-icon">⏸</span><span class="play-text">Pause Video</span>';
+      } else {
+        heroVideo.pause();
+        playBtn.innerHTML = '<span class="play-icon">▶</span><span class="play-text">Play Video</span>';
+      }
+    });
+  }
+
+  // Enhanced Faculty Card Filtering
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const facultyCards = document.querySelectorAll('.faculty-card');
+  
+  console.log('Filter buttons found:', filterButtons.length);
+  console.log('Faculty cards found:', facultyCards.length);
+  
+  filterButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      console.log('Filter button clicked:', this.getAttribute('data-filter'));
+      
+      // Remove active class from all buttons
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      // Add active class to clicked button
+      this.classList.add('active');
+      
+      const filterValue = this.getAttribute('data-filter');
+      
+      facultyCards.forEach((card, index) => {
+        const cardCategory = card.getAttribute('data-category');
+        console.log('Card category:', cardCategory, 'Filter:', filterValue);
+        
+        if (filterValue === 'all' || cardCategory === filterValue) {
+          card.style.display = 'block';
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(30px) scale(0.9)';
+          
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0) scale(1)';
+            card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+          }, index * 50);
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(-30px) scale(0.8)';
+          card.style.transition = 'all 0.3s ease';
+          
+          setTimeout(() => {
+            card.style.display = 'none';
+          }, 300);
+        }
+      });
+    });
+  });
+
+  // Enhanced Hover Effects for Faculty Cards
+  facultyCards.forEach((card, index) => {
+    // Add staggered entrance animation
+    card.style.animationDelay = `${index * 0.1}s`;
+    card.classList.add('fade-in-card');
+    
+    // Enhanced hover interactions with tilt effect
+    card.addEventListener('mouseenter', function() {
+      this.style.zIndex = '10';
+      this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+      this.style.transform = 'translateY(-20px) scale(1.05)';
+      
+      // Add glow effect
+      this.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.2), 0 0 30px rgba(79, 172, 254, 0.3)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+      this.style.zIndex = '1';
+      this.style.transform = 'translateY(0) scale(1)';
+      this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+      this.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+    });
+
+    // Add click animation
+    card.addEventListener('click', function() {
+      this.style.transform = 'translateY(-20px) scale(0.98)';
+      setTimeout(() => {
+        this.style.transform = 'translateY(-20px) scale(1.05)';
+      }, 150);
+    });
+  });
+
+  // Parallax effect for video background
+  window.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    const video = document.querySelector('.video-banner video');
+    if (video) {
+      video.style.transform = `translate(-50%, -50%) translateY(${scrolled * 0.3}px)`;
+    }
+  });
+
+  // Enhanced keyboard navigation
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      // Reset filter to show all
+      const allButton = document.querySelector('.filter-btn[data-filter="all"]');
+      if (allButton) {
+        allButton.click();
+      }
+    }
+  });
+
+  // Add intersection observer for scroll animations
+  const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.2 });
+
+  facultyCards.forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(50px)';
+    card.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+    cardObserver.observe(card);
+  });
+
+  // ===========================================================
+  // END ENHANCED FUNCTIONALITY
+  // ===========================================================
 });
