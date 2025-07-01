@@ -632,7 +632,7 @@ html {
   ENHANCED FACULTY COUNCIL SECTION - PROFESSIONAL REDESIGN
 =========================================================== */
 .faculty-council-section {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #f8f8f8 0%, #ede9e9 100%);
   padding: 100px 20px;
   position: relative;
   overflow: hidden;
@@ -675,9 +675,9 @@ html {
 .section-title {
   font-size: clamp(2.8rem, 6vw, 4.5rem);
   font-weight: 900;
-  color: white;
+  color: #2c3e50;
   margin-bottom: 25px;
-  text-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   position: relative;
   letter-spacing: -1px;
   line-height: 1.1;
@@ -709,7 +709,7 @@ html {
 
 .section-subtitle {
   font-size: 1.4rem;
-  color: rgba(255, 255, 255, 0.95);
+  color: rgba(0, 0, 0, 0.95);
   margin-bottom: 35px;
   max-width: 700px;
   margin-left: auto;
