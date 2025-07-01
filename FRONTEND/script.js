@@ -444,29 +444,22 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   // ----------------- Footer Animations and Functionality -----------------
-  // Animated counter for statistics
-  function animateCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    counters.forEach(counter => {
-      const target = parseInt(counter.getAttribute('data-target'));
-      const count = +counter.innerText;
-      const increment = target / 200;
-      if (count < target) {
-        counter.innerText = Math.ceil(count + increment);
-        setTimeout(() => animateCounters(), 1);
-      } else {
-        counter.innerText = target.toLocaleString();
-      }
-    });
-  }
-
   // Intersection Observer for footer animations
   const footerObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate');
+      if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+        entry.target.classList.add('animate', 'animated');
+        
+        // Animate footer stats if this is the footer stats section
         if (entry.target.classList.contains('footer-stats')) {
-          animateCounters();
+          const footerStatNumbers = entry.target.querySelectorAll('.stat-number[data-target]');
+          footerStatNumbers.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-target'));
+            if (target) {
+              animateCounter(stat, target);
+              stat.removeAttribute('data-target'); // Prevent re-animation
+            }
+          });
         }
       }
     });
@@ -961,4 +954,218 @@ document.addEventListener("DOMContentLoaded", async () => {
       }, 300);
     }, 5000);
   }
+
+  // ----------------- DSW Section: Video Modal and Animations -----------------
+  
+  // Video Modal Functionality
+  const videoModal = document.getElementById('videoModal');
+  const modalVideo = document.getElementById('modalVideo');
+  const closeModal = document.getElementById('closeModal');
+  const playVideoBtns = document.querySelectorAll('.play-video-btn');
+
+  // Video sources for different events
+  const videoSources = {
+    spandan: './videos/spandan-highlights.mp4',
+    technavya: './videos/technavya-highlights.mp4',
+    dandiya: './videos/dandiya-night-highlights.mp4'
+  };
+
+  // Open video modal
+  playVideoBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const videoType = btn.getAttribute('data-video');
+      if (videoSources[videoType]) {
+        modalVideo.src = videoSources[videoType];
+        videoModal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        
+        // Handle video load error
+        modalVideo.addEventListener('error', () => {
+          alert('Video not available at the moment. Please try again later.');
+          closeVideoModal();
+        }, { once: true });
+      }
+    });
+  });
+
+  // Close video modal
+  function closeVideoModal() {
+    videoModal.style.display = 'none';
+    modalVideo.pause();
+    modalVideo.src = '';
+    document.body.style.overflow = 'auto';
+  }
+
+  if (closeModal) {
+    closeModal.addEventListener('click', closeVideoModal);
+  }
+
+  // Close modal when clicking outside
+  videoModal?.addEventListener('click', (e) => {
+    if (e.target === videoModal) {
+      closeVideoModal();
+    }
+  });
+
+  // Close modal with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && videoModal?.style.display === 'block') {
+      closeVideoModal();
+    }
+  });
+
+  // Animated Counter for DSW Stats
+  function animateCounter(element, target, duration = 2000) {
+    let start = 0;
+    const startTime = performance.now();
+    
+    function updateCounter(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Easing function for smooth animation
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      const current = Math.floor(easeOut * target);
+      
+      element.textContent = current;
+      
+      if (progress < 1) {
+        requestAnimationFrame(updateCounter);
+      } else {
+        element.textContent = target; // Ensure final value is exact
+      }
+    }
+    
+    requestAnimationFrame(updateCounter);
+  }
+
+  // Intersection Observer for DSW animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const dswObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Animate stat numbers
+        const statNumbers = entry.target.querySelectorAll('.stat-number[data-target]');
+        statNumbers.forEach(stat => {
+          const target = parseInt(stat.getAttribute('data-target'));
+          if (target) {
+            animateCounter(stat, target);
+            stat.removeAttribute('data-target'); // Prevent re-animation
+          }
+        });
+
+        // Add fade-in animation to event cards
+        const eventCards = entry.target.querySelectorAll('.event-card');
+        eventCards.forEach((card, index) => {
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, index * 300);
+        });
+      }
+    });
+  }, observerOptions);
+
+  // Auto-trigger counter animation for immediate visibility
+  setTimeout(() => {
+    const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+    statNumbers.forEach((stat) => {
+      const target = parseInt(stat.getAttribute('data-target'));
+      if (target) {
+        animateCounter(stat, target);
+        stat.removeAttribute('data-target');
+      }
+    });
+  }, 1500);
+
+  // Observe DSW section
+  const dswSection = document.querySelector('.dsw-section');
+  if (dswSection) {
+    dswObserver.observe(dswSection);
+    
+    // Set initial state for event cards
+    const eventCards = dswSection.querySelectorAll('.event-card');
+    eventCards.forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+  }
+
+  // Observe Dean section for animations
+  const deanSection = document.querySelector('.enhanced-dean-section');
+  if (deanSection) {
+    dswObserver.observe(deanSection);
+  }
+
+  // Smooth scroll to DSW section
+  function scrollToDSW() {
+    dswSection?.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
+
+  // Add smooth scroll for all internal links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Initialize all animations on page load
+  function initializeAnimations() {
+    // Trigger counter animations for visible elements
+    const allStatNumbers = document.querySelectorAll('.stat-number[data-target]');
+    allStatNumbers.forEach(stat => {
+      const rect = stat.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        const target = parseInt(stat.getAttribute('data-target'));
+        if (target) {
+          setTimeout(() => {
+            animateCounter(stat, target);
+            stat.removeAttribute('data-target');
+          }, Math.random() * 1000 + 500); // Stagger animations
+        }
+      }
+    });
+  }
+
+  // Initialize footer stats specifically
+  function initializeFooterStats() {
+    const footerStats = document.querySelector('.footer-stats');
+    if (footerStats) {
+      footerObserver.observe(footerStats);
+      
+      // Also trigger animation if footer is already visible
+      const rect = footerStats.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        const footerStatNumbers = footerStats.querySelectorAll('.stat-number[data-target]');
+        footerStatNumbers.forEach(stat => {
+          const target = parseInt(stat.getAttribute('data-target'));
+          if (target) {
+            setTimeout(() => {
+              animateCounter(stat, target);
+              stat.removeAttribute('data-target');
+            }, 2000); // Delayed start for footer
+          }
+        });
+      }
+    }
+  }
+
+  // Initialize on page load
+  setTimeout(initializeAnimations, 1000);
+  setTimeout(initializeFooterStats, 1500);
 });
