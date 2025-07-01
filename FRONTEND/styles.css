@@ -2094,6 +2094,22 @@ html {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+}
+
+.popup-sidebar ul li a.main-menu-item::after {
+  content: '▼';
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  transition: transform 0.3s ease;
+  opacity: 0.7;
+}
+
+.popup-sidebar ul li a.main-menu-item.active::after {
+  transform: translateY(-50%) rotate(180deg);
 }
 
 .popup-sidebar ul li a::before {
@@ -2118,35 +2134,55 @@ html {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 .popup-sidebar .sub-menu {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.3);
   margin: 0;
   padding: 0;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .popup-sidebar .sub-menu.active {
-  max-height: 200px;
+  max-height: 300px;
+  padding: 5px 0;
 }
 
 .popup-sidebar .sub-menu-btn {
   background: none;
   border: none;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.85);
   font-size: 14px;
-  padding: 12px 45px;
+  padding: 14px 45px;
   width: 100%;
   text-align: left;
   cursor: pointer;
   transition: all 0.3s ease;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.popup-sidebar .sub-menu-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.popup-sidebar .sub-menu-btn:hover::before {
+  left: 100%;
 }
 
 .popup-sidebar .sub-menu-btn:hover {
   background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
   padding-left: 55px;
+  transform: translateX(5px);
 }
 
 /* ===========================================================

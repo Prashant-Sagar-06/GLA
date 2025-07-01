@@ -387,15 +387,58 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // ----------------- Sub-menu Button Navigation -----------------
+  
+  // Handle main menu item clicks to toggle submenus
+  document.querySelectorAll('.main-menu-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      const section = this.getAttribute('data-section');
+      const submenu = document.getElementById(`${section}-submenu`);
+      
+      if (submenu) {
+        // Close all other submenus and remove active class from other items
+        document.querySelectorAll('.sub-menu').forEach(menu => {
+          if (menu !== submenu) {
+            menu.classList.remove('active');
+          }
+        });
+        
+        document.querySelectorAll('.main-menu-item').forEach(menuItem => {
+          if (menuItem !== this) {
+            menuItem.classList.remove('active');
+          }
+        });
+        
+        // Toggle current submenu and main menu item
+        submenu.classList.toggle('active');
+        this.classList.toggle('active');
+      }
+    });
+  });
+
+  // Handle submenu button clicks for navigation
   document.querySelectorAll('.sub-menu-btn').forEach(button => {
     button.addEventListener('click', function () {
       const section = this.getAttribute('data-section');
-      if (section === "cultural") {
-        window.location.href = "/Cultural/cultural_club.html";
-      } else if (section === "departmental") {
-        window.location.href = "/Departmental/Departmental.html";
-      } else if (section === "sports") {
-        window.location.href = "/Sports/Sports.html";
+      const url = this.getAttribute('data-url');
+      
+      if (url) {
+        window.location.href = url;
+      } else {
+        // Fallback for sections without specific URLs
+        if (section === "cultural") {
+          window.location.href = "/FRONTEND/Cultural/cultural_club.html";
+        } else if (section === "departmental") {
+          window.location.href = "/FRONTEND/Departmental/Departmental.html";
+        } else if (section === "sports") {
+          window.location.href = "/FRONTEND/Sports/Sports.html";
+        } else if (section === "student-affairs") {
+          window.location.href = "/FRONTEND/Council/student-affairs.html";
+        } else if (section === "cultural-affairs") {
+          window.location.href = "/FRONTEND/Council/cultural-affairs.html";
+        } else if (section === "sports-council") {
+          window.location.href = "/FRONTEND/Council/sports-council.html";
+        }
       }
     });
   });
