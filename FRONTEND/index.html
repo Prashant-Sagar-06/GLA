@@ -70,18 +70,16 @@
   <!-- ===================== Navbar ===================== -->
   <header class="modern-navbar">
     <div class="navbar-container">
-      <div class="navbar-brand">
-        <button type="button" class="mobile-menu-btn" id="menu-toggle" aria-label="Toggle Menu">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </button>
-        <div class="brand-logo">
-          <img src="./images/logo.png" alt="GLA University Logo" class="logo-img">
-          <div class="brand-text">
-            <h1 class="university-name">GLA UNIVERSITY</h1>
-            <span class="brand-subtitle">Excellence in Education</span>
-          </div>
+      <button type="button" class="mobile-menu-btn" id="menu-toggle" aria-label="Toggle Menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <div class="brand-logo">
+        <img src="./images/logo.png" alt="GLA University Logo" class="logo-img">
+        <div class="brand-text">
+          <h1 class="university-name">GLA UNIVERSITY</h1>
+          <span class="brand-subtitle">Excellence in Education</span>
         </div>
       </div>
       <nav class="navbar-nav">
@@ -151,6 +149,9 @@
     </div>
   </header>
   <!-- ===================== End Navbar ===================== -->
+
+  <!-- ===================== Sidebar Backdrop ===================== -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
   <!-- ===================== Sidebar Popup ===================== -->
   <div class="popup-sidebar" id="popupSidebar">
@@ -313,19 +314,8 @@
       <div class="title-underline"></div>
     </div>
     
-    <!-- Filter Tabs -->
-    <div class="filter-tabs">
-      <button class="filter-btn active" data-filter="all">All Members</button>
-      <button class="filter-btn" data-filter="president">Presidents</button>
-      <button class="filter-btn" data-filter="secretary">Secretaries</button>
-      <button class="filter-btn" data-filter="mentor">Club Mentors</button>
-      <button class="filter-btn" data-filter="teacher">Teachers</button>
-      <button class="filter-btn" data-filter="executive">Executives</button>
-    </div>
-    
     <div class="faculty-grid">
-      <!-- Presidents -->
-      <div class="faculty-card glass-card hover-lift" data-category="president">
+      <div class="faculty-card glass-card hover-lift">
         <div class="card-header">
           <div class="faculty-avatar">
             <img src="./images/faculty-placeholder.jpg" alt="Dr. Vivek Mehrotra" loading="lazy">
@@ -354,7 +344,7 @@
         </div>
       </div>
 
-      <div class="faculty-card glass-card hover-lift" data-category="president">
+      <div class="faculty-card glass-card hover-lift">
         <div class="card-header">
           <div class="faculty-avatar">
             <img src="./images/supriya mam.jpg" alt="Dr. Supriya Jain" loading="lazy">
@@ -383,7 +373,7 @@
         </div>
       </div>
 
-      <div class="faculty-card glass-card hover-lift" data-category="president">
+      <div class="faculty-card glass-card hover-lift">
         <div class="card-header">
           <div class="faculty-avatar">
             <img src="./images/natraj and ninad.jpg" alt="Dr. Brijesh Goswami" loading="lazy">
@@ -412,8 +402,7 @@
         </div>
       </div>
 
-      <!-- Secretaries -->
-      <div class="faculty-card glass-card hover-lift" data-category="secretary">
+      <div class="faculty-card glass-card hover-lift">
         <div class="card-header">
           <div class="faculty-avatar">
             <img src="./images/shilpi mam.jpg" alt="Dr. Shilpi Pathak" loading="lazy">
@@ -441,7 +430,7 @@
         </div>
       </div>
 
-      <div class="faculty-card glass-card hover-lift" data-category="secretary">
+      <div class="faculty-card glass-card hover-lift">
         <div class="card-header">
           <div class="faculty-avatar">
             <img src="./images/reena mam.jpg" alt="Dr. Reena Gupta" loading="lazy">
@@ -469,7 +458,7 @@
         </div>
       </div>
 
-      <div class="faculty-card glass-card hover-lift" data-category="secretary">
+      <div class="faculty-card glass-card hover-lift">
         <div class="card-header">
           <div class="faculty-avatar">
             <img src="./images/niharika mam.png" alt="Ms. Niharika Singh" loading="lazy">
@@ -497,8 +486,7 @@
         </div>
       </div>
 
-      <!-- Club Mentors -->
-      <div class="faculty-card glass-card hover-lift" data-category="mentor">
+      <div class="faculty-card glass-card hover-lift">
         <div class="card-header">
           <div class="faculty-avatar">
             <img src="./images/drishti.jpeg" alt="Mr. Faizul Hasan" loading="lazy">
@@ -527,7 +515,7 @@
         </div>
       </div>
 
-      <div class="faculty-card glass-card hover-lift" data-category="mentor">
+      <div class="faculty-card glass-card hover-lift">
         <div class="card-header">
           <div class="faculty-avatar">
             <img src="./images/faculty-placeholder.jpg" alt="Dr. Ayushi Dixit" loading="lazy">
@@ -556,7 +544,7 @@
         </div>
       </div>
 
-      <div class="faculty-card glass-card hover-lift" data-category="mentor">
+      <div class="faculty-card glass-card hover-lift">
         <div class="card-header">
           <div class="faculty-avatar">
             <img src="./images/faculty-placeholder.jpg" alt="Dr. Silpa Krishnan V S" loading="lazy">
@@ -585,7 +573,7 @@
         </div>
       </div>
 
-      <div class="faculty-card glass-card hover-lift" data-category="mentor">
+      <div class="faculty-card glass-card hover-lift">
         <div class="card-header">
           <div class="faculty-avatar">
             <img src="./images/poetry.jpg" alt="Dr. Neha Kumari" loading="lazy">
@@ -614,7 +602,7 @@
         </div>
       </div>
 
-      <div class="faculty-card glass-card hover-lift" data-category="mentor">
+      <div class="faculty-card glass-card hover-lift">
         <div class="card-header">
           <div class="faculty-avatar">
             <img src="./images/faculty-placeholder.jpg" alt="Dr. Prateek Upreti" loading="lazy">
@@ -643,7 +631,7 @@
         </div>
       </div>
 
-      <div class="faculty-card glass-card hover-lift" data-category="mentor">
+      <div class="faculty-card glass-card hover-lift">
         <div class="card-header">
           <div class="faculty-avatar">
             <img src="./images/sohela.jpg" alt="Dr. Sohela Mukherjee" loading="lazy">
@@ -672,7 +660,7 @@
         </div>
       </div>
 
-      <div class="faculty-card glass-card hover-lift" data-category="mentor">
+      <div class="faculty-card glass-card hover-lift">
         <div class="card-header">
           <div class="faculty-avatar">
             <img src="./images/saturangle.jpg" alt="Dr. Divya Gupta" loading="lazy">
@@ -701,7 +689,7 @@
         </div>
       </div>
 
-      <div class="faculty-card glass-card hover-lift" data-category="mentor">
+      <div class="faculty-card glass-card hover-lift">
         <div class="card-header">
           <div class="faculty-avatar">
             <img src="./images/faculty-placeholder.jpg" alt="Dr. Ruchika Kulshrestha" loading="lazy">
@@ -730,7 +718,7 @@
         </div>
       </div>
 
-      <div class="faculty-card glass-card hover-lift" data-category="mentor">
+      <div class="faculty-card glass-card hover-lift">
         <div class="card-header">
           <div class="faculty-avatar">
             <img src="./images/luv kush sir.jpg" alt="Mr. Lov Kush Kumar" loading="lazy">
@@ -759,7 +747,7 @@
         </div>
       </div>
 
-      <div class="faculty-card glass-card hover-lift" data-category="mentor">
+      <div class="faculty-card glass-card hover-lift">
         <div class="card-header">
           <div class="faculty-avatar">
             <img src="./images/faculty-placeholder.jpg" alt="Dr. Deepak Tiwari" loading="lazy">
@@ -788,7 +776,7 @@
         </div>
       </div>
 
-      <div class="faculty-card glass-card hover-lift" data-category="mentor">
+      <div class="faculty-card glass-card hover-lift">
         <div class="card-header">
           <div class="faculty-avatar">
             <img src="./images/media scoop.jpg" alt="Dr. Anmol Nagpal" loading="lazy">
@@ -817,7 +805,7 @@
         </div>
       </div>
 
-      <div class="faculty-card glass-card hover-lift" data-category="mentor">
+      <div class="faculty-card glass-card hover-lift">
         <div class="card-header">
           <div class="faculty-avatar">
             <img src="./images/reena mam.jpg" alt="Dr. Reena Gupta" loading="lazy">
@@ -846,8 +834,7 @@
         </div>
       </div>
 
-      <!-- Teachers -->
-      <div class="faculty-card glass-card hover-lift" data-category="teacher">
+      <div class="faculty-card glass-card hover-lift">
         <div class="card-header">
           <div class="faculty-avatar">
             <img src="./images/faculty-placeholder.jpg" alt="Mr. Rahul Gupta" loading="lazy">
@@ -876,7 +863,7 @@
         </div>
       </div>
 
-      <div class="faculty-card glass-card hover-lift" data-category="teacher">
+      <div class="faculty-card glass-card hover-lift">
         <div class="card-header">
           <div class="faculty-avatar">
             <img src="./images/faculty-placeholder.jpg" alt="Mr. Akhilesh Kumar" loading="lazy">
@@ -905,8 +892,7 @@
         </div>
       </div>
 
-      <!-- Executives -->
-      <div class="faculty-card glass-card hover-lift" data-category="executive">
+      <div class="faculty-card glass-card hover-lift">
         <div class="card-header">
           <div class="faculty-avatar">
             <img src="./images/faculty-placeholder.jpg" alt="Mr. Anil Kumar Saxena" loading="lazy">
@@ -935,7 +921,7 @@
         </div>
       </div>
 
-      <div class="faculty-card glass-card hover-lift" data-category="executive">
+      <div class="faculty-card glass-card hover-lift">
         <div class="card-header">
           <div class="faculty-avatar">
             <img src="./images/faculty-placeholder.jpg" alt="Mr. Gaurav Sharma" loading="lazy">
@@ -964,7 +950,7 @@
         </div>
       </div>
 
-      <div class="faculty-card glass-card hover-lift" data-category="executive">
+      <div class="faculty-card glass-card hover-lift">
         <div class="card-header">
           <div class="faculty-avatar">
             <img src="./images/satish sir.jpg" alt="Mr. Satish Kumar" loading="lazy">
