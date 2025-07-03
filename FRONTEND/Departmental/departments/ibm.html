@@ -1,98 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Meta Tags -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IBM Department</title>
-  <link rel="stylesheet" href="../departments/departments.css" />
-  <script src="../Departmental.js" defer></script>
+  <title>Information Business Management Department - GLA University</title>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../../Header_Footer.css" />`n  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="../Departmental.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- Scripts -->
+  <script src="../../script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
+
 <body>
-  <!-- Header -->
-  <div class="top-bar">
-    <div class="top-bar-left" id="typewriter">Welcome to GLA University Departmental Clubs!</div>
-    <div class="top-bar-right">
-      <a href="https://www.facebook.com/glauniv"><img src="../images/facebook.png" alt="Facebook" class="social-icon" /></a>
-      <a href="#"><img src="../images/twitter.png" alt="Twitter" class="social-icon" /></a>
-      <a href="https://www.linkedin.com/school/gla-university"><img src="../images/linkedin.png" alt="LinkedIn" class="social-icon" /></a>
-      <a href="https://www.instagram.com/glauniv"><img src="../images/instagram.png" alt="Instagram" class="social-icon" /></a>
-      <a href="https://api.whatsapp.com/send?phone=916399020003"><img src="../images/whatsapp.png" alt="WhatsApp" class="social-icon" /></a>
-      <button class="zoom-btn" id="zoom-in">🔍+</button>
-      <button class="zoom-btn" id="zoom-out">🔍-</button>
-      <button class="reset-btn" id="reset">Reset</button>
+  <!-- ===================== Top Bar ===================== -->
+  <div class="modern-top-bar">
+    <div class="top-bar-content">
+      <div class="top-bar-left">
+        <div class="contact-info">
+          <span class="contact-item">
+            <i class="icon">📞</i>
+            <span>+91-5662-250900</span>
+          </span>
+          <span class="contact-item">
+            <i class="icon">✉️</i>
+            <span>info@gla.ac.in</span>
+          </span>
+        </div>
+      </div>
+      <div class="top-bar-right">
+        <div class="top-social-links">
+          <a href="https://www.facebook.com/glauniv" class="top-social-icon" title="Facebook">
+            <img src="../../images/facebook.png" alt="Facebook">
+          </a>
+          <a href="#" class="top-social-icon" title="Twitter">
+            <img src="../../images/twitter.png" alt="Twitter">
+          </a>
+          <a href="https://www.linkedin.com/school/gla-university/posts/?feedView=all" class="top-social-icon" title="LinkedIn">
+            <img src="../../images/linkedin.png" alt="LinkedIn">
+          </a>
+          <a href="https://www.instagram.com/glauniv" class="top-social-icon" title="Instagram">
+            <img src="../../images/instagram.png" alt="Instagram">
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=916399020003&text=Hello%20GLA%20University!" class="top-social-icon" title="WhatsApp">
+            <img src="../../images/whatsapp.png" alt="WhatsApp">
+          </a>
+        </div>
+        <div class="accessibility-controls">
+          <button type="button" class="control-btn" id="ibm-zoom-in" title="Increase Font Size">
+            <span>A+</span>
+          </button>
+          <button type="button" class="control-btn" id="ibm-zoom-out" title="Decrease Font Size">
+            <span>A-</span>
+          </button>
+          <button type="button" class="control-btn" id="ibm-reset" title="Reset Font Size">
+            <span>↻</span>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
+  <!-- ===================== End Top Bar ===================== -->
 
-  <header class="navbar">
-    <div class="logo">
-      <img src="../images/logo.png" alt="GLA University Logo" />
-      <h1 class="text">GLA UNIVERSITY</h1>
+  <!-- ===================== Navbar ===================== -->
+  <header class="modern-navbar">
+    <div class="navbar-container">
+      <button type="button" class="mobile-menu-btn" id="menu-toggle" aria-label="Toggle Menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <div class="brand-logo">
+        <img src="../../images/logo.png" alt="GLA University Logo" class="logo-img">
+        <div class="brand-text">
+          <h1 class="university-name">GLA UNIVERSITY</h1>
+          <span class="brand-subtitle">Excellence in Education</span>
+        </div>
+      </div>
+      <nav class="navbar-nav">
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="../../index.html" class="nav-link">
+              <i class="nav-icon">🏠</i>
+              <span>Home</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.gla.ac.in/" class="nav-link">
+              <i class="nav-icon">🏛️</i>
+              <span>Institute</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../../others/campus_events.html" class="nav-link">
+              <i class="nav-icon">📅</i>
+              <span>Campus Events</span>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle">
+              <i class="nav-icon">👥</i>
+              <span>Council Division</span>
+              <i class="dropdown-arrow">▼</i>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="../../Council/student-affairs.html" class="dropdown-link">Student Affairs Council</a></li>
+              <li><a href="../../Council/cultural-affairs.html" class="dropdown-link">Cultural Affairs Council</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle">
+              <i class="nav-icon">📚</i>
+              <span>Student Clubs</span>
+              <i class="dropdown-arrow">▼</i>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="../../Cultural/cultural_club.html" class="dropdown-link">Cultural Clubs</a></li>
+              <li><a href="../Departmental.html" class="dropdown-link">Departmental Clubs</a></li>
+              <li><a href="../../Sports/Sports.html" class="dropdown-link">Sports Clubs</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon">♿</i>
+              <span>Disability Support</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon">🎓</i>
+              <span>Alumni</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon">📋</i>
+              <span>Policies</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
-    <nav>
-      <ul>
-        <li><a href="../Departmental.html">Home</a></li>
-        <li><a href="https://www.gla.ac.in/">Institute</a></li>
-        <li><a href="../campus_events.html">Campus Events</a></li>
-        <li><a href="#">Council Division</a></li>
-        <li><a href="#">Academics</a></li>
-        <li><a href="#">Disability Support</a></li>
-        <li><a href="#">Alumni</a></li>
-        <li><a href="#">Policies on core values</a></li>
-      </ul>
-    </nav>
   </header>
+  <!-- ===================== End Navbar ===================== -->
 
   <!-- Main Content -->
-  <main class="main-section">
-    <h1>IBM Department</h1>
-    <div class="club-grid">
-      <div class="club-card">
-        <a href="innotronics.html">
-          <img src="../images/innotronics.jpg" alt="Innotronics Club" class="club-image" />
-          <h3>Innotronics</h3>
-          <p>Empowering students to innovate with electronics and IoT.</p>
-        </a>
-      </div>
-      <div class="club-card">
-        <a href="quizzards.html">
-          <img src="../images/quizzards.jpg" alt="Quizzards Club" class="club-image" />
-          <h3>Quizzards</h3>
-          <p>Sharpen your intellect through quiz-based learning and competition.</p>
-        </a>
+  <main class="page-content">
+    <div class="department-section">
+      <h2>Information Business Management Department</h2>
+      <p>Welcome to the Information Business Management Department. We offer innovative programs combining business acumen with information technology to create future-ready professionals.</p>
+      <div class="department-details">
+        <div class="department-image">
+          <img src="../../images/dep_ibm.png" alt="IBM Department" />
+        </div>
+        <div class="department-info">
+          <h3>Department Overview</h3>
+          <p>Our department bridges the gap between business and technology, preparing students for leadership roles in the digital economy.</p>
+          <h4>Key Features:</h4>
+          <ul>
+            <li>Industry-integrated curriculum</li>
+            <li>Business analytics tools</li>
+            <li>Digital transformation focus</li>
+            <li>Entrepreneurship development</li>
+            <li>Corporate partnerships</li>
+          </ul>
+        </div>
       </div>
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h4>GET IN TOUCH</h4>
-        <p>Address: 17km Stone, NH-2, Mathura-Delhi Road, Mathura-281 406 (U.P.) INDIA</p>
-        <p>Phone: +91-5662-250900</p>
-        <p>Email: <a href="mailto:glaoftwaresupport@gla.ac.in">glaoftwaresupport@gla.ac.in</a></p>
-      </div>
-      <div class="footer-col">
-        <h4>DOWNLOAD OUR FREE MOBILE APPS</h4>
-        <div class="app-links">
-          <a href="https://play.google.com/store/search?q=gla+university+app&c=apps"><img src="../images/google-play.png" alt="Download on Google Play" class="app-icon"></a>
-          <a href="#"><img src="../images/app-store.png" alt="Download on App Store" class="app-icon"></a>
+  <!-- ===================== Footer ===================== -->
+  <footer class="modern-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="../../images/logo.png" alt="GLA University Logo" class="footer-logo-img">
+          <div class="footer-brand-text">
+            <h3 class="footer-university-name">GLA UNIVERSITY</h3>
+            <p class="footer-tagline">Excellence in Education</p>
+          </div>
+        </div>
+        <p class="footer-description">
+          GLA University is committed to providing world-class education and fostering innovation, research, and holistic development of students.
+        </p>
+        <div class="footer-contact">
+          <div class="contact-item">
+            <i class="icon">📍</i>
+            <span>17 Km Stone, NH-2, Mathura-Delhi Road, Mathura, Uttar Pradesh 281406</span>
+          </div>
+          <div class="contact-item">
+            <i class="icon">📞</i>
+            <span>+91-5662-250900</span>
+          </div>
+          <div class="contact-item">
+            <i class="icon">✉️</i>
+            <span>info@gla.ac.in</span>
+          </div>
         </div>
       </div>
-      <div class="footer-col">
-        <h4>SOCIAL MEDIA</h4>
-        <div class="social-icons">
-          <a href="https://www.facebook.com/glauniv"><img src="../images/facebook.png" alt="Facebook" class="social-icon"></a>
-          <a href="#"><img src="../images/twitter.png" alt="Twitter" class="social-icon"></a>
-          <a href="https://www.linkedin.com/school/gla-university"><img src="../images/linkedin.png" alt="LinkedIn" class="social-icon"></a>
-          <a href="https://www.instagram.com/glauniv"><img src="../images/instagram.png" alt="Instagram" class="social-icon"></a>
-          <a href="https://api.whatsapp.com/send?phone=916399020003"><img src="../images/whatsapp.png" alt="WhatsApp" class="social-icon"></a>
+      
+      <div class="footer-section">
+        <h3 class="footer-section-title">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="../../index.html" class="footer-link">Home</a></li>
+          <li><a href="https://www.gla.ac.in/" class="footer-link">About GLA</a></li>
+          <li><a href="../../Cultural/cultural_club.html" class="footer-link">Cultural Clubs</a></li>
+          <li><a href="../Departmental.html" class="footer-link">Departmental Clubs</a></li>
+          <li><a href="../../Sports/Sports.html" class="footer-link">Sports</a></li>
+          <li><a href="../../others/campus_events.html" class="footer-link">Campus Events</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3 class="footer-section-title">Student Life</h3>
+        <ul class="footer-links">
+          <li><a href="../../others/NSS.html" class="footer-link">NSS</a></li>
+          <li><a href="../../others/NCC.html" class="footer-link">NCC</a></li>
+          <li><a href="#" class="footer-link">Library</a></li>
+          <li><a href="#" class="footer-link">Hostels</a></li>
+          <li><a href="#" class="footer-link">Career Services</a></li>
+          <li><a href="#" class="footer-link">Alumni Network</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3 class="footer-section-title">Connect With Us</h3>
+        <div class="footer-social-links">
+          <a href="https://www.facebook.com/glauniv" class="footer-social-link" title="Facebook">
+            <img src="../../images/facebook.png" alt="Facebook">
+          </a>
+          <a href="#" class="footer-social-link" title="Twitter">
+            <img src="../../images/twitter.png" alt="Twitter">
+          </a>
+          <a href="https://www.linkedin.com/school/gla-university/posts/?feedView=all" class="footer-social-link" title="LinkedIn">
+            <img src="../../images/linkedin.png" alt="LinkedIn">
+          </a>
+          <a href="https://www.instagram.com/glauniv" class="footer-social-link" title="Instagram">
+            <img src="../../images/instagram.png" alt="Instagram">
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=916399020003&text=Hello%20GLA%20University!" class="footer-social-link" title="WhatsApp">
+            <img src="../../images/whatsapp.png" alt="WhatsApp">
+          </a>
+        </div>
+        <div class="app-download">
+          <h4 class="app-download-title">Download Our App</h4>
+          <div class="app-links">
+            <a href="https://play.google.com/store/search?q=gla+university+app&c=apps" class="app-link">
+              <img src="../../images/google-play.png" alt="Get it on Google Play">
+            </a>
+            <a href="#" class="app-link">
+              <img src="../../images/app-store.png" alt="Download on the App Store">
+            </a>
+          </div>
         </div>
       </div>
     </div>
+    
     <div class="footer-bottom">
-      <p>&copy; 2025 GLA University. All rights reserved.</p>
+      <div class="footer-bottom-content">
+        <p class="copyright">&copy; 2025 GLA University. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#" class="footer-bottom-link">Privacy Policy</a>
+          <a href="#" class="footer-bottom-link">Terms of Service</a>
+          <a href="#" class="footer-bottom-link">Cookie Policy</a>
+        </div>
+      </div>
     </div>
   </footer>
+  <!-- ===================== End Footer ===================== -->
 </body>
 </html>

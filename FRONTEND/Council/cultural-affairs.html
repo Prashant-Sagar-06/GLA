@@ -1,22 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Meta Tags -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Science Department - GLA University</title>
-  
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="../../Header_Footer.css" />
-  <link rel="stylesheet" href="../../styles.css" />
-  <link rel="stylesheet" href="../Departmental.css">
+  <title>Cultural Affairs Council - GLA University</title>
+  <link rel="stylesheet" href="../Header_Footer.css" />
+  <link rel="stylesheet" href="../styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-  <!-- Scripts -->
-  <script src="../../script.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="../script.js" defer></script>
+  <script src="../Header_Footer.js" defer></script>
 </head>
 
 <body>
@@ -38,25 +31,31 @@
       <div class="top-bar-right">
         <div class="top-social-links">
           <a href="https://www.facebook.com/glauniv" class="top-social-icon" title="Facebook">
-            <img src="../../images/facebook.png" alt="Facebook">
+            <img src="../images/facebook.png" alt="Facebook">
           </a>
           <a href="#" class="top-social-icon" title="Twitter">
-            <img src="../../images/twitter.png" alt="Twitter">
+            <img src="../images/twitter.png" alt="Twitter">
           </a>
           <a href="https://www.linkedin.com/school/gla-university/posts/?feedView=all" class="top-social-icon" title="LinkedIn">
-            <img src="../../images/linkedin.png" alt="LinkedIn">
+            <img src="../images/linkedin.png" alt="LinkedIn">
           </a>
           <a href="https://www.instagram.com/glauniv" class="top-social-icon" title="Instagram">
-            <img src="../../images/instagram.png" alt="Instagram">
+            <img src="../images/instagram.png" alt="Instagram">
           </a>
           <a href="https://api.whatsapp.com/send?phone=916399020003&text=Hello%20GLA%20University!" class="top-social-icon" title="WhatsApp">
-            <img src="../../images/whatsapp.png" alt="WhatsApp">
+            <img src="../images/whatsapp.png" alt="WhatsApp">
           </a>
         </div>
         <div class="accessibility-controls">
-          <button type="button" class="control-btn" id="science-zoom-in" title="Increase Font Size"><span>A+</span></button>
-          <button type="button" class="control-btn" id="science-zoom-out" title="Decrease Font Size"><span>A-</span></button>
-          <button type="button" class="control-btn" id="science-reset" title="Reset Font Size"><span>↻</span></button>
+          <button type="button" class="control-btn" id="cultural-affairs-zoom-in" title="Increase Font Size">
+            <span>A+</span>
+          </button>
+          <button type="button" class="control-btn" id="cultural-affairs-zoom-out" title="Decrease Font Size">
+            <span>A-</span>
+          </button>
+          <button type="button" class="control-btn" id="cultural-affairs-reset" title="Reset Font Size">
+            <span>↻</span>
+          </button>
         </div>
       </div>
     </div>
@@ -72,7 +71,7 @@
       </button>
       
       <div class="brand-logo">
-        <img src="../../images/logo.png" alt="GLA University Logo" class="logo-img">
+        <img src="../images/logo.png" alt="GLA University Logo" class="logo-img">
         <div class="brand-text">
           <h1 class="university-name">GLA UNIVERSITY</h1>
           <span class="brand-subtitle">Excellence in Education</span>
@@ -82,7 +81,7 @@
       <nav class="navbar-nav">
         <ul class="nav-menu">
           <li class="nav-item">
-            <a href="../../index.html" class="nav-link">
+            <a href="../index.html" class="nav-link">
               <i class="nav-icon">🏠</i>
               <span>Home</span>
             </a>
@@ -94,7 +93,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="../../others/campus_events.html" class="nav-link">
+            <a href="../others/campus_events.html" class="nav-link">
               <i class="nav-icon">📅</i>
               <span>Campus Events</span>
             </a>
@@ -106,20 +105,20 @@
               <i class="dropdown-arrow">▼</i>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="../../Council/student-affairs.html" class="dropdown-link">Student Affairs Council</a></li>
-              <li><a href="../../Council/cultural-affairs.html" class="dropdown-link">Cultural Affairs Council</a></li>
+              <li><a href="student-affairs.html" class="dropdown-link">Student Affairs Council</a></li>
+              <li><a href="cultural-affairs.html" class="dropdown-link active">Cultural Affairs Council</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle">
-              <i class="nav-icon">🎭</i>
+              <i class="nav-icon">📚</i>
               <span>Student Clubs</span>
               <i class="dropdown-arrow">▼</i>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="../../Cultural/cultural_club.html" class="dropdown-link">Cultural Clubs</a></li>
-              <li><a href="../Departmental.html" class="dropdown-link">Departmental Clubs</a></li>
-              <li><a href="../../Sports/Sports.html" class="dropdown-link">Sports Clubs</a></li>
+              <li><a href="../Cultural/cultural_club.html" class="dropdown-link">Cultural Clubs</a></li>
+              <li><a href="../Departmental/Departmental.html" class="dropdown-link">Departmental Clubs</a></li>
+              <li><a href="../Sports/Sports.html" class="dropdown-link">Sports Clubs</a></li>
             </ul>
           </li>
           <li class="nav-item">
@@ -147,26 +146,55 @@
 
   <!-- ===================== Main Content ===================== -->
   <main class="page-content">
-    <div class="department-section">
-      <h2>Science Department</h2>
-      <p>Welcome to the Science Department. We offer comprehensive programs in physics, chemistry, biology, and interdisciplinary sciences.</p>
+    <div class="council-hero">
+      <h1>Cultural Affairs Council</h1>
+      <p>Promoting cultural excellence and artistic expression across GLA University.</p>
+    </div>
+    
+    <div class="council-section">
+      <h2>About Cultural Affairs Council</h2>
+      <p>The Cultural Affairs Council at GLA University is dedicated to fostering a vibrant cultural environment that celebrates diversity, creativity, and artistic expression. We organize and oversee all cultural activities across the university.</p>
       
-      <div class="department-details">
-        <div class="department-image">
-          <img src="../../images/dep_science.png" alt="Science Department" />
+      <div class="council-features">
+        <h3>Our Initiatives</h3>
+        <ul>
+          <li>Annual cultural festivals and events</li>
+          <li>Inter-college cultural competitions</li>
+          <li>Artist workshops and masterclasses</li>
+          <li>Cultural club coordination and support</li>
+          <li>Traditional and contemporary art promotion</li>
+          <li>Student talent development programs</li>
+        </ul>
+      </div>
+      
+      <div class="upcoming-events">
+        <h3>Upcoming Cultural Events</h3>
+        <div class="event-list">
+          <div class="event-item">
+            <h4>Spandan 2024</h4>
+            <p>Annual cultural festival featuring dance, music, and drama competitions</p>
+            <span class="event-date">Coming Soon</span>
+          </div>
+          <div class="event-item">
+            <h4>Dandiya Night</h4>
+            <p>Traditional Gujarati folk dance celebration</p>
+            <span class="event-date">Festival Season</span>
+          </div>
+          <div class="event-item">
+            <h4>Poetry Recitation</h4>
+            <p>Monthly poetry and literature appreciation sessions</p>
+            <span class="event-date">Every Month</span>
+          </div>
         </div>
-        <div class="department-info">
-          <h3>Department Overview</h3>
-          <p>Our department provides strong foundation in basic sciences with research opportunities and practical applications.</p>
-          
-          <h4>Key Features:</h4>
-          <ul>
-            <li>Physics and chemistry labs</li>
-            <li>Biology research</li>
-            <li>Interdisciplinary studies</li>
-            <li>Research projects</li>
-            <li>Scientific publications</li>
-          </ul>
+      </div>
+      
+      <div class="council-contact">
+        <h3>Get Involved</h3>
+        <p>Join us in creating memorable cultural experiences!</p>
+        <div class="contact-info">
+          <p><strong>Email:</strong> culturalaffairs@gla.ac.in</p>
+          <p><strong>Office:</strong> Cultural Center, Campus</p>
+          <p><strong>Hours:</strong> Monday - Friday, 10:00 AM - 6:00 PM</p>
         </div>
       </div>
     </div>
@@ -187,11 +215,11 @@
       <div class="footer-section">
         <h3>Quick Links</h3>
         <ul>
-          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../index.html">Home</a></li>
           <li><a href="https://www.gla.ac.in/">Institute</a></li>
-          <li><a href="../../Cultural/cultural_club.html">Cultural Clubs</a></li>
-          <li><a href="../Departmental.html">Departmental Clubs</a></li>
-          <li><a href="../../Sports/Sports.html">Sports Clubs</a></li>
+          <li><a href="../Cultural/cultural_club.html">Cultural Clubs</a></li>
+          <li><a href="../Departmental/Departmental.html">Departmental Clubs</a></li>
+          <li><a href="../Sports/Sports.html">Sports Clubs</a></li>
         </ul>
       </div>
       
@@ -199,16 +227,16 @@
         <h3>Follow Us</h3>
         <div class="social-links">
           <a href="https://www.facebook.com/glauniv" title="Facebook">
-            <img src="../../images/facebook.png" alt="Facebook">
+            <img src="../images/facebook.png" alt="Facebook">
           </a>
           <a href="#" title="Twitter">
-            <img src="../../images/twitter.png" alt="Twitter">
+            <img src="../images/twitter.png" alt="Twitter">
           </a>
           <a href="https://www.linkedin.com/school/gla-university/posts/?feedView=all" title="LinkedIn">
-            <img src="../../images/linkedin.png" alt="LinkedIn">
+            <img src="../images/linkedin.png" alt="LinkedIn">
           </a>
           <a href="https://www.instagram.com/glauniv" title="Instagram">
-            <img src="../../images/instagram.png" alt="Instagram">
+            <img src="../images/instagram.png" alt="Instagram">
           </a>
         </div>
       </div>
@@ -218,9 +246,5 @@
       <p>&copy; 2024 GLA University. All rights reserved.</p>
     </div>
   </footer>
-
-  <!-- Scripts -->
-  <script src="../../Header_Footer.js"></script>
-  <script src="../Departmental.js"></script>
 </body>
 </html>

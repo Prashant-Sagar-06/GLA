@@ -1,0 +1,114 @@
+/* ===========================================================
+  DEPARTMENT CONTENT STYLES - CONTENT ONLY
+  Header/Footer styles removed - using centralized Header_Footer.css
+=========================================================== */
+
+/* ================= RESET AND BASE STYLES ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================= MAIN SECTION ================= */
+.main-section {
+  padding: 40px 20px;
+  flex: 1;
+}
+
+.main-section h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #004080;
+}
+
+/* Optional: fallback UL/LI layout if used */
+.main-section ul {
+  list-style-type: none;
+  padding-left: 0;
+  text-align: center;
+}
+
+.main-section ul li {
+  padding: 10px;
+  font-size: 18px;
+}
+
+.main-section ul li a {
+  text-decoration: none;
+  color: #0066cc;
+}
+
+.main-section ul li a:hover {
+  text-decoration: underline;
+}
+
+/* ================= CLUB GRID ================= */
+.club-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.club-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  min-width: 260px;
+  max-width: 300px;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.club-card:hover {
+  background-color: #f0f8ff;
+  transform: translateY(-4px);
+}
+
+.club-card a {
+  text-decoration: none;
+  color: #004080;
+  display: block;
+}
+
+.club-card img.club-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.club-card h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+}
+
+.club-card p {
+  font-weight: normal;
+  font-size: 14px;
+  color: #333;
+}
+
+/* ===========================================================
+  END OF DEPARTMENT CONTENT STYLES
+=========================================================== */

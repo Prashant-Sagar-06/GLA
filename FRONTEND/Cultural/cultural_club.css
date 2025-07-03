@@ -1,102 +1,7 @@
-/* General Body Styling */
-
-body {
-    margin: 0;
-    font-family: 'Roboto', Arial, sans-serif;
-    background: linear-gradient(to bottom right, #c8d8e7, #53adda);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-/* Top Bar Styling */
-.top-bar {
-    background-color: #2d4675;
-    color: white;
-    font-weight: bold;
-    padding: 8px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.top-bar-left {
-    font-size: 16px;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-.top-bar-right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.social-icon {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: white;
-    padding: 2px;
-}
-
-.zoom-btn, .reset-btn {
-    background: none;
-    border: 2px solid white;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.zoom-btn:hover, .reset-btn:hover {
-    background-color: white;
-    color: #2d4675;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: linear-gradient(to right, #00084d, #00796b);
-  color: rgb(255, 255, 255);
-  padding: 15px 40px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-}
-
-.logo img {
-  height: 40px;
-  margin-right: 15px;
-}
-.text {
-    color: rgb(255, 255, 255);
-    font-family:'Times New Roman', Times, serif;
-}
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 10px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: rgb(255, 255, 255);
-  padding: 8px 12px;
-  border-radius: 5px;
-  transition: background 0.3s ease;
-}
-
-nav ul li a:hover {
-  background-color: #1db131;
-  text-decoration: underline;
-}
+/* ===========================================================
+  CULTURAL CLUB SPECIFIC STYLES
+  Only styles specific to cultural clubs content
+=========================================================== */
 
 
 /* Footer Styling */
@@ -197,73 +102,142 @@ nav ul li a:hover {
     margin: 0 auto;
 }
 
-/* Styling for individual cards */
+/* ===========================================================
+  CULTURAL CLUB GRID & CARD STYLES - OPTIMIZED
+=========================================================== */
+
+/* Cultural clubs content wrapper */
+.clubs-content {
+    margin: 2rem auto;
+    max-width: 1400px;
+    padding: 0 1rem;
+}
+
+/* Page title styling */
+.page-title {
+    text-align: center;
+    color: #1e3c72;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Optimized grid layout */
+.clubs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    padding: 1rem 0;
+}
+
+/* Enhanced card design */
 .card {
-    background: linear-gradient(to bottom, #ffffff, #f7f7f7);
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     text-align: center;
-    padding: 25px;
-    width: 280px;
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: 1px solid #ddd;
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    will-change: transform;
+    position: relative;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover::before {
+    opacity: 1;
 }
 
 .card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
-/* Styling for card images */
+/* Optimized card images */
 .card img {
     width: 100%;
-    height: 180px;
-    object-fit: cover;
+    height: 200px;
+    object-fit: contain;
     border-radius: 15px;
-    margin-bottom: 20px;
-    transition: transform 0.3s;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+    background: rgba(248, 249, 250, 0.8);
 }
 
 .card:hover img {
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
-/* Styling for card titles */
+/* Card titles */
 .card h3 {
-    font-size: 1.8em;
-    color: #00574b;
-    margin-bottom: 15px;
-    font-family: 'Roboto', Arial, sans-serif;
-    font-weight: bold;
+    font-size: 1.6rem;
+    color: #1e3c72;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
     text-transform: capitalize;
+    line-height: 1.3;
 }
 
-/* Styling for card descriptions */
+/* Card descriptions */
 .card p {
-    font-size: 1.1em;
+    font-size: 1rem;
     color: #666;
     line-height: 1.6;
-    font-family: 'Roboto', Arial, sans-serif;
-    margin-bottom: 15px;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
-/* Add a button to the card */
+/* Card buttons */
 .card .card-btn {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #00796b;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
     color: white;
     text-decoration: none;
     border-radius: 25px;
-    font-size: 1em;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.3s;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .card .card-btn:hover {
-    background-color: #004d40;
-    transform: scale(1.1);
+    background: linear-gradient(135deg, #2a5298, #4facfe);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(46, 82, 152, 0.3);
+}
+
+/* Loading animation for cards */
+.card.loading {
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { opacity: 0.8; }
 }
 
 /* Responsive Design */
@@ -282,7 +256,41 @@ nav ul li a:hover {
         flex-direction: column;
         align-items: center;
     }
+
+    .clubs-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0.5rem;
+    }
+    
+    .card {
+        padding: 1.2rem;
+    }
+    
+    .card h3 {
+        font-size: 1.4rem;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
 }
+
+@media (max-width: 480px) {
+    .clubs-content {
+        padding: 0 0.5rem;
+    }
+    
+    .card img {
+        height: 150px;
+    }
+    
+    .page-title {
+        font-size: 1.8rem;
+    }
+}
+
 /* Top Bar Styling */
 .top-bar {
     background-color: #2d4675;

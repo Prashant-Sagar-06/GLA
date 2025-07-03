@@ -1,69 +1,8 @@
-/* Top Bar */
-.top-bar {
-  background-color: #2d4675;
-  color: white;
-  font-weight: bold;
-  padding: 8px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.top-bar-left {
-  font-size: 16px;
-}
-.top-bar-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.social-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: white;
-  padding: 2px;
-}
+/* ===========================================================
+  CLUB TEMPLATE STYLES - CONTENT ONLY
+  Header/Footer styles removed - using centralized Header_Footer.css
+=========================================================== */
 
-/* Navigation Bar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #003366;
-  color: white;
-  padding: 15px 40px;
-  flex-wrap: wrap;
-}
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-.logo img {
-  height: 40px;
-}
-.text {
-  color: white;
-  font-size: 1.5em;
-  font-family: 'Times New Roman', Times, serif;
-}
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 15px;
-  margin: 0;
-  padding: 0;
-}
-nav ul li a {
-  text-decoration: none;
-  color: white;
-  padding: 8px 12px;
-  border-radius: 5px;
-  transition: background 0.3s ease;
-}
-nav ul li a:hover {
-  background-color: #1db131;
-  text-decoration: underline;
-}
+/* ===========================================================
+  CLUB CONTENT SPECIFIC STYLES
+=========================================================== */

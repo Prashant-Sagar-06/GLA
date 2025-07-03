@@ -4,102 +4,224 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cultural Clubs</title>
-  <link rel="stylesheet" href="../Cultural/cultural_club.css">
-  <script src="../Cultural/cultural-club.js" defer></script>
+  
+  <!-- Preload Critical Resources -->
+  <link rel="preload" href="../Header_Footer.css" as="style">
+  <link rel="preload" href="../styles.css" as="style">
+  <link rel="preload" href="cultural_club.css" as="style">
+  <link rel="preload" href="../images/logo.png" as="image">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../Header_Footer.css">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="cultural_club.css">
 </head>
 <body>
-  <!-- Header and Top Bar -->
-  <div class="top-bar">
-    <div class="top-bar-left" id="typewriter"></div>
-    <div class="top-bar-right">
-      <a href="https://www.facebook.com/glauniv"><img src="../images/facebook.png" alt="Facebook" class="social-icon"></a>
-      <a href="#"><img src="../images/twitter.png" alt="Twitter" class="social-icon"></a>
-      <a href="https://www.linkedin.com/school/gla-university/posts/?feedView=all"><img src="../images/linkedin.png" alt="LinkedIn" class="social-icon"></a>
-      <a href="https://www.instagram.com/glauniv"><img src="../images/instagram.png" alt="Instagram" class="social-icon"></a>
-      <a href="https://api.whatsapp.com/send?phone=916399020003"><img src="../images/whatsapp.png" alt="WhatsApp" class="social-icon"></a>
-      <button class="zoom-btn" id="zoom-in">🔍+</button>
-      <button class="zoom-btn" id="zoom-out">🔍-</button>
-      <button class="reset-btn" id="reset">Reset</button>
+  <!-- ===================== Top Bar ===================== -->
+  <div class="modern-top-bar">
+    <div class="top-bar-content">
+      <div class="top-bar-left">
+        <div class="contact-info">
+          <span class="contact-item">
+            <i class="icon">📞</i>
+            <span>+91-5662-250900</span>
+          </span>
+          <span class="contact-item">
+            <i class="icon">✉️</i>
+            <span>info@gla.ac.in</span>
+          </span>
+        </div>
+      </div>
+      <div class="top-bar-right">
+        <div class="top-social-links">
+          <a href="https://www.facebook.com/glauniv" class="top-social-icon" title="Facebook">
+            <img src="../images/facebook.png" alt="Facebook" loading="lazy">
+          </a>
+          <a href="#" class="top-social-icon" title="Twitter">
+            <img src="../images/twitter.png" alt="Twitter" loading="lazy">
+          </a>
+          <a href="https://www.linkedin.com/school/gla-university/posts/?feedView=all" class="top-social-icon" title="LinkedIn">
+            <img src="../images/linkedin.png" alt="LinkedIn" loading="lazy">
+          </a>
+          <a href="https://www.instagram.com/glauniv" class="top-social-icon" title="Instagram">
+            <img src="../images/instagram.png" alt="Instagram" loading="lazy">
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=916399020003&text=Hello%20GLA%20University!" class="top-social-icon" title="WhatsApp">
+            <img src="../images/whatsapp.png" alt="WhatsApp" loading="lazy">
+          </a>
+        </div>
+        <div class="accessibility-controls">
+          <button type="button" class="control-btn" id="cultural-zoom-in" title="Increase Font Size">
+            <span>A+</span>
+          </button>
+          <button type="button" class="control-btn" id="cultural-zoom-out" title="Decrease Font Size">
+            <span>A-</span>
+          </button>
+          <button type="button" class="control-btn" id="cultural-reset" title="Reset Font Size">
+            <span>↻</span>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
+  <!-- ===================== End Top Bar ===================== -->
 
-  <header class="navbar">
-    <div class="logo">
-      <img src="./images/logo.png" alt="GLA University Logo" />
-      <h1 class="text">GLA UNIVERSITY</h1>
+  <!-- ===================== Navbar ===================== -->
+  <header class="modern-navbar">
+    <div class="navbar-container">
+      <button type="button" class="mobile-menu-btn" id="menu-toggle" aria-label="Toggle Menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <div class="brand-logo">
+        <img src="../images/logo.png" alt="GLA University Logo" loading="lazy" class="logo-img">
+        <div class="brand-text">
+          <h1 class="university-name">GLA UNIVERSITY</h1>
+          <span class="brand-subtitle">Excellence in Education</span>
+        </div>
+      </div>
+      <nav class="navbar-nav">
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="../index.html" class="nav-link">
+              <i class="nav-icon">🏠</i>
+              <span>Home</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.gla.ac.in/" class="nav-link">
+              <i class="nav-icon">🏛️</i>
+              <span>Institute</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../others/campus_events.html" class="nav-link">
+              <i class="nav-icon">📅</i>
+              <span>Campus Events</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="cultural_club.html" class="nav-link active">
+              <i class="nav-icon">🎭</i>
+              <span>Cultural Clubs</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../Departmental/Departmental.html" class="nav-link">
+              <i class="nav-icon">📚</i>
+              <span>Departmental</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../Sports/Sports.html" class="nav-link">
+              <i class="nav-icon">⚽</i>
+              <span>Sports</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="https://www.gla.ac.in/">Institute</a></li>
-        <li><a href="campus_events.html">Campus Events</a></li>
-        <li><a href="#">Council Division</a></li>
-        <li><a href="#">Academics</a></li>
-        <li><a href="#">Disability Support</a></li>
-        <li><a href="#">Alumni</a></li>
-        <li><a href="#">Policies on core values</a></li>
-      </ul>
-    </nav>
   </header>
+  <!-- ===================== End Navbar ===================== -->
 
-  <main class="main-section">
-    <h1>Cultural Clubs</h1>
-    <div class="row">
-      <a href="../Cultural/C-Club/mediascoop.html" class="card">
-        <img src="../images/mediascoop logo.jpg" alt="Media Scoop Club">
+  <!-- ===================== Cultural Clubs Content ===================== -->
+  <main class="clubs-content">
+    <h1 class="page-title">Cultural Clubs</h1>
+    <div class="clubs-grid">
+      <div class="card">
+        <img src="../images/mediascoop logo.jpg" alt="Media Scoop Club" loading="lazy">
         <h3>Media Scoop Club</h3>
-      </a>
-      <a href="../Cultural/C-Club/ninad.html" class="card">
-        <img src="../images/ninad logo.png" alt="Ninad Club">
-        <h3>Ninad Club</h3>
-      </a>
-      <a href="../Cultural/C-Club/natraj.html" class="card">
-        <img src="../images/natraj logo.png" alt="Natraj Club">
-        <h3>Natraj Club</h3>
-      </a>
+        <p>Stay informed with the latest campus news and multimedia content.</p>
+        <a href="../Cultural/C-Club/Mediascoop.html" class="card-btn">Learn More</a>
+      </div>
       
-      <a href="../Cultural/C-Club/vihti.html" class="card">
-        <img src="../images/vihti logo.png" alt="Vihiti Theatre Club">
+      <div class="card">
+        <img src="../images/ninad logo.png" alt="Ninad Club" loading="lazy">
+        <h3>Ninad Club</h3>
+        <p>Explore the world of music and melodious expressions.</p>
+        <a href="../Cultural/C-Club/ninad.html" class="card-btn">Learn More</a>
+      </div>
+      
+      <div class="card">
+        <img src="../images/natraj logo.png" alt="Natraj Club" loading="lazy">
+        <h3>Natraj Club</h3>
+        <p>Experience the art of classical and contemporary dance forms.</p>
+        <a href="../Cultural/C-Club/natraj.html" class="card-btn">Learn More</a>
+      </div>
+      
+      <div class="card">
+        <img src="../images/vihti logo.png" alt="Vihiti Theatre Club" loading="lazy">
         <h3>Vihiti Theatre Club</h3>
-      </a>
-      <a href="../Cultural/C-Club/dristhi.html" class="card">
-        <img src="../images/Drishti_Logo.jpg" alt="Drishti Photography Club">
+        <p>Discover the magic of theater and dramatic performances.</p>
+        <a href="../Cultural/C-Club/vihti.html" class="card-btn">Learn More</a>
+      </div>
+      
+      <div class="card">
+        <img src="../images/Drishti_Logo.jpg" alt="Drishti Photography Club" loading="lazy">
         <h3>Drishti Photography Club</h3>
-      </a>
-      <a href="../Cultural/C-Club/poetry.html" class="card">
-        <img src="../images/Poetry logo.jpg" alt="Poetry Club">
+        <p>Capture moments and create visual stories through photography.</p>
+        <a href="../Cultural/C-Club/dristhi.html" class="card-btn">Learn More</a>
+      </div>
+      
+      <div class="card">
+        <img src="../images/Poetry logo.jpg" alt="Poetry Club" loading="lazy">
         <h3>Poetry Club</h3>
-      </a>
-      <a href="../Cultural/C-Club/literario.html" class="card">
-        <img src="../images/literario logo.png" alt="Litrario Club">
+        <p>Express yourself through the power of words and poetry.</p>
+        <a href="../Cultural/C-Club/poetry.html" class="card-btn">Learn More</a>
+      </div>
+      
+      <div class="card">
+        <img src="../images/literario logo.png" alt="Literario Club" loading="lazy">
         <h3>Literario Club</h3>
-      </a>
-      <a href="../Cultural/C-Club/saturangle.html" class="card">
-        <img src="../images/saturangle logo.png" alt="Saturangle Club">
+        <p>Dive into literature and expand your reading horizons.</p>
+        <a href="../Cultural/C-Club/literario.html" class="card-btn">Learn More</a>
+      </div>
+      
+      <div class="card">
+        <img src="../images/saturangle logo.png" alt="Saturangle Club" loading="lazy">
         <h3>Saturangle Club</h3>
-      </a>
-      <a href="../Cultural/C-Club/pratibha.html" class="card">
-        <img src="../images/pratibha logo.png" alt="Pratibha Club">
+        <p>Explore mathematics and logical problem-solving.</p>
+        <a href="../Cultural/C-Club/saturangle.html" class="card-btn">Learn More</a>
+      </div>
+      
+      <div class="card">
+        <img src="../images/pratibha logo.png" alt="Pratibha Club" loading="lazy">
         <h3>Pratibha Club</h3>
-      </a>
-      <a href="../Cultural/C-Club/" class="card">
-        <img src="../images/fine arts logo.png" alt="Fine Arts Club">
+        <p>Showcase your talents and develop performance skills.</p>
+        <a href="../Cultural/C-Club/pratibha.html" class="card-btn">Learn More</a>
+      </div>
+      
+      <div class="card">
+        <img src="../images/fine arts logo.png" alt="Fine Arts Club" loading="lazy">
         <h3>Fine Arts Club</h3>
-      </a>
-      <a href="nature.html" class="card">
-        <img src="../images/nature logo.png" alt="Nature Club">
+        <p>Create beautiful artwork and explore artistic expression.</p>
+        <a href="#" class="card-btn">Learn More</a>
+      </div>
+      
+      <div class="card">
+        <img src="../images/nature logo.png" alt="Nature Club" loading="lazy">
         <h3>Nature Club</h3>
-      </a>
-      <a href="../Cultural/C-Club/aikyam.html" class="card">
-        <img src="../images/aikyam logo.png" alt="Aikyam Club">
+        <p>Connect with nature and promote environmental awareness.</p>
+        <a href="#" class="card-btn">Learn More</a>
+      </div>
+      
+      <div class="card">
+        <img src="../images/aikyam logo.png" alt="Aikyam Club" loading="lazy">
         <h3>Aikyam Club</h3>
-      </a>
-      <a href="../Cultural/C-Club/voice.html" class="card">
-        <img src="../images/voice logo.png" alt="Voice Club">
+        <p>Promote unity and cultural harmony across communities.</p>
+        <a href="../Cultural/C-Club/aikyam.html" class="card-btn">Learn More</a>
+      </div>
+      
+      <div class="card">
+        <img src="../images/voice logo.png" alt="Voice Club" loading="lazy">
         <h3>Voice Club</h3>
-      </a>
+        <p>Develop your vocal talents and public speaking skills.</p>
+        <a href="../Cultural/C-Club/voice.html" class="card-btn">Learn More</a>
+      </div>
     </div>
   </main>
+  <!-- ===================== End Cultural Clubs Content ===================== -->
   
 
   <!-- Footer -->
@@ -110,22 +232,23 @@
         <p>Address: 17km Stone, NH-2, Mathura-Delhi Road, Mathura-281 406 (U.P.) INDIA</p>
         <p>Phone: +91-5662-250900</p>
         <p>Email: <a href="mailto:glaoftwaresupport@gla.ac.in">glaoftwaresupport@gla.ac.in</a></p>
+        <p>Fax: +91-5662-280901</p>
       </div>
       <div class="footer-col">
         <h4>Download Our Free Mobile Apps</h4>
         <div class="app-links">
-          <a href="https://play.google.com/store/search?q=gla+university+app&c=apps"><img src="../images/google-play.png" alt="Google Play" class="app-icon"></a>
-          <a href="#"><img src="../images/app-store.png" alt="App Store" class="app-icon"></a>
+          <a href="https://play.google.com/store/search?q=gla+university+app&c=apps"><img src="../images/google-play.png" alt="Google Play" loading="lazy" class="app-icon"></a>
+          <a href="#"><img src="../images/app-store.png" alt="App Store" loading="lazy" class="app-icon"></a>
         </div>
       </div>
       <div class="footer-col">
         <h4>Social Media</h4>
         <div class="social-icons">
-          <a href="https://www.facebook.com/glauniv"><img src="../images/facebook.png" alt="Facebook"></a>
-          <a href="#"><img src="../images/twitter.png" alt="Twitter"></a>
-          <a href="https://www.linkedin.com/school/gla-university/posts/?feedView=all"><img src="../images/linkedin.png" alt="LinkedIn"></a>
-          <a href="https://www.instagram.com/glauniv"><img src="../images/instagram.png" alt="Instagram"></a>
-          <a href="https://api.whatsapp.com/send?phone=916399020003"><img src="../images/whatsapp.png" alt="WhatsApp"></a>
+          <a href="https://www.facebook.com/glauniv"><img src="../images/facebook.png" alt="Facebook" loading="lazy"></a>
+          <a href="#"><img src="../images/twitter.png" alt="Twitter" loading="lazy"></a>
+          <a href="https://www.linkedin.com/school/gla-university/posts/?feedView=all"><img src="../images/linkedin.png" alt="LinkedIn" loading="lazy"></a>
+          <a href="https://www.instagram.com/glauniv"><img src="../images/instagram.png" alt="Instagram" loading="lazy"></a>
+          <a href="https://api.whatsapp.com/send?phone=916399020003"><img src="../images/whatsapp.png" alt="WhatsApp" loading="lazy"></a>
         </div>
       </div>
     </div>
@@ -133,5 +256,10 @@
       <p>&copy; 2025 GLA University. All rights reserved.</p>
     </div>
   </footer>
+
+  <script src="../script.js"></script>
+  <script src="../Header_Footer.js"></script>
+  <script src="cultural-clubs-optimized.js"></script>
 </body>
 </html>
+
