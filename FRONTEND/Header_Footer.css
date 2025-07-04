@@ -8,7 +8,8 @@
 =========================================================== */
 @keyframes gradientShift {
   0%, 100% { 
-    background-position: 0% 50%; 
+    background-position: 0%
+    50%; 
   }
   50% { 
     background-position: 100% 50%; 
@@ -418,6 +419,7 @@
 }
 
 /* Navbar Navigation */
+
 .navbar-nav {
   display: flex;
   align-items: center;
@@ -1251,54 +1253,114 @@
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
+/* SUBMENU STYLES - Clean Professional Version */
+/* High specificity to override styles.css conflicts */
 .popup-sidebar .sub-menu {
-  background: rgba(0, 0, 0, 0.3);
-  margin: 0;
-  padding: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-radius: 8px !important;
+  margin: 8px 0 8px 20px !important;
+  padding: 0 !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  overflow: hidden !important;
+  position: relative !important;
+  z-index: 1001 !important;
+  max-height: 0 !important;
+  opacity: 0 !important;
+  transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
+  display: block !important; /* Force display block to override styles.css */
+  visibility: hidden !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+  backdrop-filter: blur(5px) !important;
 }
 
 .popup-sidebar .sub-menu.active {
-  max-height: 300px;
-  padding: 5px 0;
+  max-height: 300px !important;
+  opacity: 1 !important;
+  padding: 8px 0 !important;
+  visibility: visible !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
 }
 
 .popup-sidebar .sub-menu-btn {
-  background: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 14px;
-  padding: 14px 45px;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  position: relative;
-  overflow: hidden;
+  background: transparent !important;
+  border: none !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 14px !important;
+  padding: 12px 20px !important;
+  width: 100% !important;
+  text-align: left !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  border-radius: 6px !important;
+  margin: 2px 8px !important;
+  width: calc(100% - 16px) !important;
+  display: block !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.5px !important;
 }
 
 .popup-sidebar .sub-menu-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  transition: left 0.5s ease;
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent) !important;
+  transition: left 0.6s ease !important;
 }
 
 .popup-sidebar .sub-menu-btn:hover::before {
-  left: 100%;
+  left: 100% !important;
 }
 
 .popup-sidebar .sub-menu-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  padding-left: 55px;
-  transform: translateX(5px);
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  transform: translateX(6px) !important;
+  box-shadow: 0 3px 12px rgba(255, 255, 255, 0.1) !important;
+  font-weight: 600 !important;
+}
+
+.popup-sidebar .sub-menu-btn:active {
+  transform: translateX(4px) scale(0.98) !important;
+}
+
+/* Active state for main menu items */
+.popup-sidebar .main-menu-item.active {
+  background: rgba(52, 152, 219, 0.15) !important;
+  color: #74b9ff !important;
+  font-weight: 600 !important;
+  border-left: 3px solid #74b9ff !important;
+}
+
+/* OVERRIDE CONFLICTING STYLES FROM styles.css */
+/* These rules have maximum specificity to ensure they work */
+html .popup-sidebar .sub-menu {
+  display: block !important;
+}
+
+html .popup-sidebar .sub-menu.active {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Ensure main menu items work properly */
+.popup-sidebar ul li a.main-menu-item {
+  cursor: pointer !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
+.popup-sidebar ul li a.main-menu-item:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
 }

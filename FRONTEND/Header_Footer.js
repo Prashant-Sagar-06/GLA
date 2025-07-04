@@ -100,6 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   
   function openSidebar() {
+    console.log('Opening sidebar...');
     popupSidebar.style.display = 'block';
     sidebarBackdrop.classList.add('active');
     menuToggle.classList.add('active');
@@ -396,32 +397,56 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ============================================================
-  // SUBMENU NAVIGATION FUNCTIONALITY
+  // SUBMENU NAVIGATION FUNCTIONALITY - CLEAN VERSION
   // ============================================================
   
   // Handle main menu items that have submenus
   document.querySelectorAll('.main-menu-item').forEach(item => {
     item.addEventListener('click', (e) => {
       e.preventDefault();
+      e.stopPropagation();
+      
       const section = e.target.getAttribute('data-section');
       const submenu = document.getElementById(`${section}-submenu`);
       
+      console.log(`Clicked on section: ${section}`);
+      
       if (submenu) {
-        // Close all other submenus and remove active class from their parent items
+        // Check if this submenu is currently active
+        const isCurrentlyActive = submenu.classList.contains('active');
+        
+        // Close all submenus first
         document.querySelectorAll('.sub-menu').forEach(menu => {
-          if (menu !== submenu) {
-            menu.classList.remove('active');
-          }
-        });
-        document.querySelectorAll('.main-menu-item').forEach(menuItem => {
-          if (menuItem !== item) {
-            menuItem.classList.remove('active');
-          }
+          menu.classList.remove('active');
         });
         
-        // Toggle current submenu and parent item active state
-        submenu.classList.toggle('active');
-        item.classList.toggle('active');
+        // Remove active class from all main menu items
+        document.querySelectorAll('.main-menu-item').forEach(menuItem => {
+          menuItem.classList.remove('active');
+          menuItem.setAttribute('aria-expanded', 'false');
+        });
+        
+        // If the clicked submenu was NOT active, make it active
+        if (!isCurrentlyActive) {
+          submenu.classList.add('active');
+          // Add debug class temporarily to test visibility
+          submenu.classList.add('debug');
+          item.classList.add('active');
+          item.setAttribute('aria-expanded', 'true');
+          console.log(`Activated submenu: ${section}`);
+          
+          // Remove debug class after 3 seconds
+          setTimeout(() => {
+            submenu.classList.remove('debug');
+          }, 3000);
+        }
+        
+        // Force a style recalculation
+        submenu.offsetHeight;
+        
+        console.log(`Submenu ${section} is now: ${submenu.classList.contains('active') ? 'ACTIVE' : 'INACTIVE'}`);
+      } else {
+        console.warn(`Submenu not found for section: ${section}`);
       }
     });
   });
@@ -430,9 +455,13 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('.sub-menu-btn').forEach(button => {
     button.addEventListener('click', (e) => {
       e.preventDefault();
+      e.stopPropagation();
+      
       const url = e.target.getAttribute('data-url');
       
       if (url) {
+        console.log(`Navigating to: ${url}`);
+        
         // Add loading state
         e.target.style.opacity = '0.7';
         e.target.innerHTML += ' ⟳';
@@ -441,6 +470,8 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
           window.location.href = url;
         }, 300);
+      } else {
+        console.warn('No URL found for submenu button:', e.target);
       }
     });
   });
@@ -547,3 +578,27 @@ if (typeof module !== 'undefined' && module.exports) {
     // Export any functions that might be needed elsewhere
   };
 }
+
+// ==================== FIX: Sidebar Submenu Toggle ====================
+document.querySelectorAll('.main-menu-item').forEach(item => {
+  item.addEventListener('click', function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('aria-controls');
+    const submenu = document.getElementById(targetId);
+    if (submenu) {
+      submenu.classList.toggle('active');
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !isExpanded);
+    }
+  });
+});
+
+document.querySelectorAll('.sub-menu-btn').forEach(button => {
+  button.addEventListener('click', function () {
+    const url = this.getAttribute('data-url');
+    if (url) {
+      window.location.href = url;
+    }
+  });
+});
+// ==================== END FIX ====================
