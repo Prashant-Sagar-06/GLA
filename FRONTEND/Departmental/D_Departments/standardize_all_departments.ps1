@@ -1,11 +1,147 @@
-﻿<!DOCTYPE html>
+# PowerShell script to standardize all D_Departments HTML files
+# Define the department mappings with their specific content
+
+$departments = @{
+    "biotechnology" = @{
+        "title" = "Biotechnology Department"
+        "logo" = "dep_biotechnology.png"
+        "description" = "Welcome to the Biotechnology Department - Pioneering biological innovation and technology at GLA University."
+        "about" = "The Biotechnology Department focuses on cutting-edge research in genetic engineering, bioinformatics, molecular biology, and bioprocess technology to address challenges in healthcare, agriculture, and environmental sustainability."
+        "clubs" = @()
+    }
+    "ce" = @{
+        "title" = "Civil Engineering Department"
+        "logo" = "dep_ce.png"
+        "description" = "Welcome to the Civil Engineering Department - Building the future infrastructure at GLA University."
+        "about" = "The Civil Engineering Department specializes in structural engineering, transportation systems, environmental engineering, and construction management to develop sustainable infrastructure solutions."
+        "clubs" = @()
+    }
+    "cea" = @{
+        "title" = "Computer Engineering & Applications Department"
+        "logo" = "dep_cea.png"
+        "description" = "Welcome to the Computer Engineering & Applications Department - Innovating technology solutions at GLA University."
+        "about" = "The Computer Engineering & Applications Department focuses on software development, computer systems, artificial intelligence, and emerging technologies to solve real-world problems."
+        "clubs" = @()
+    }
+    "chemistry" = @{
+        "title" = "Chemistry Department"
+        "logo" = "dep_chemistry.png"
+        "description" = "Welcome to the Chemistry Department - Exploring molecular science at GLA University."
+        "about" = "The Chemistry Department conducts advanced research in organic, inorganic, physical, and analytical chemistry, contributing to pharmaceutical, materials science, and environmental applications."
+        "clubs" = @(
+            @{"name" = "ChemGLA"; "image" = "chemgla logo.jpg"; "description" = "Chemical research and innovation society."}
+        )
+    }
+    "ec" = @{
+        "title" = "Electronics & Communication Department"
+        "logo" = "dep_ec.png"
+        "description" = "Welcome to the Electronics & Communication Department - Advancing communication technology at GLA University."
+        "about" = "The Electronics & Communication Department specializes in telecommunications, signal processing, embedded systems, and VLSI design to develop next-generation communication technologies."
+        "clubs" = @()
+    }
+    "ee" = @{
+        "title" = "Electrical Engineering Department"
+        "logo" = "dep_ee.png"
+        "description" = "Welcome to the Electrical Engineering Department - Powering innovation at GLA University."
+        "about" = "The Electrical Engineering Department focuses on power systems, renewable energy, control systems, and electrical machinery to develop sustainable energy solutions."
+        "clubs" = @()
+    }
+    "ibm" = @{
+        "title" = "Institute of Business Management Department"
+        "logo" = "dep_ibm.png"
+        "description" = "Welcome to the Institute of Business Management - Shaping future business leaders at GLA University."
+        "about" = "The Institute of Business Management provides comprehensive education in management, entrepreneurship, finance, and strategic planning to develop skilled business professionals."
+        "clubs" = @(
+            @{"name" = "Finance Club"; "image" = "finance logo.jpg"; "description" = "Financial literacy and investment awareness."},
+            @{"name" = "Empresario"; "image" = "empresario logo.jpg"; "description" = "Entrepreneurship and business development."}
+        )
+    }
+    "ibm-pg" = @{
+        "title" = "Institute of Business Management (PG) Department"
+        "logo" = "dep_ibmpg.png"
+        "description" = "Welcome to the Institute of Business Management (PG) - Advanced business education at GLA University."
+        "about" = "The Institute of Business Management (PG) offers postgraduate programs in advanced management, strategic leadership, and specialized business domains for experienced professionals."
+        "clubs" = @()
+    }
+    "ipr" = @{
+        "title" = "Intellectual Property Rights Department"
+        "logo" = "dep_ipr.png"
+        "description" = "Welcome to the Intellectual Property Rights Department - Protecting innovation at GLA University."
+        "about" = "The Intellectual Property Rights Department focuses on patent law, trademark protection, copyright management, and innovation commercialization to safeguard intellectual assets."
+        "clubs" = @()
+    }
+    "law" = @{
+        "title" = "Law Department"
+        "logo" = "dep_law.png"
+        "description" = "Welcome to the Law Department - Upholding justice and legal excellence at GLA University."
+        "about" = "The Law Department provides comprehensive legal education covering constitutional law, criminal law, corporate law, and international law to develop skilled legal professionals."
+        "clubs" = @()
+    }
+    "mathematics" = @{
+        "title" = "Mathematics Department"
+        "logo" = "dep_mathematics.png"
+        "description" = "Welcome to the Mathematics Department - Exploring mathematical sciences at GLA University."
+        "about" = "The Mathematics Department conducts research in pure and applied mathematics, statistics, and computational mathematics to solve complex theoretical and practical problems."
+        "clubs" = @()
+    }
+    "me" = @{
+        "title" = "Mechanical Engineering Department"
+        "logo" = "dep_me.png"
+        "description" = "Welcome to the Mechanical Engineering Department - Engineering mechanical solutions at GLA University."
+        "about" = "The Mechanical Engineering Department specializes in thermodynamics, manufacturing, robotics, and automotive engineering to develop innovative mechanical systems and solutions."
+        "clubs" = @(
+            @{"name" = "Mechanical & Informative"; "image" = "mechanical and informative logo.jpg"; "description" = "Mechanical engineering innovations and information sharing."}
+        )
+    }
+    "polytechnic" = @{
+        "title" = "Polytechnic Department"
+        "logo" = "dep_polytechnic.png"
+        "description" = "Welcome to the Polytechnic Department - Technical education excellence at GLA University."
+        "about" = "The Polytechnic Department provides hands-on technical education in various engineering disciplines, focusing on practical skills and industry readiness."
+        "clubs" = @()
+    }
+    "science" = @{
+        "title" = "Science Department"
+        "logo" = "dep_science.png"
+        "description" = "Welcome to the Science Department - Advancing scientific knowledge at GLA University."
+        "about" = "The Science Department encompasses physics, chemistry, biology, and interdisciplinary sciences, conducting research to understand natural phenomena and develop scientific applications."
+        "clubs" = @()
+    }
+}
+
+# Base template function
+function Create-DepartmentHTML($deptKey, $deptInfo) {
+    $clubsSection = ""
+    if ($deptInfo.clubs.Count -gt 0) {
+        $clubsSection = @"
+        
+        <div class="club-grid">
+"@
+        foreach ($club in $deptInfo.clubs) {
+            $clubsSection += @"
+
+          <div class="club-card">
+            <img src="../../images/$($club.image)" alt="$($club.name)" class="club-image" />
+            <h3>$($club.name)</h3>
+            <p>$($club.description)</p>
+          </div>
+"@
+        }
+        $clubsSection += @"
+
+        </div>
+"@
+    }
+
+    return @"
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GLA University - Saturangle Club</title>
+  <title>GLA University - $($deptInfo.title)</title>
   <link rel="stylesheet" href="../../Header_Footer.css" />
-  <link rel="stylesheet" href="All_Cultural_club.css" />
+  <link rel="stylesheet" href="All_Department.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -29,9 +165,9 @@
           <a href="https://api.whatsapp.com/send?phone=916399020003&text=Hello%20GLA%20University!" class="top-social-icon" title="WhatsApp"><img src="../../images/whatsapp.png" alt="WhatsApp"></a>
         </div>
         <div class="accessibility-controls">
-          <button type="button" class="control-btn" id="saturangle-zoom-in" title="Increase Font Size"><span>A+</span></button>
-          <button type="button" class="control-btn" id="saturangle-zoom-out" title="Decrease Font Size"><span>A-</span></button>
-          <button type="button" class="control-btn" id="saturangle-reset" title="Reset Font Size"><span>↻</span></button>
+          <button type="button" class="control-btn" id="$($deptKey)-zoom-in" title="Increase Font Size"><span>A+</span></button>
+          <button type="button" class="control-btn" id="$($deptKey)-zoom-out" title="Decrease Font Size"><span>A-</span></button>
+          <button type="button" class="control-btn" id="$($deptKey)-reset" title="Reset Font Size"><span>↻</span></button>
         </div>
       </div>
     </div>
@@ -68,8 +204,8 @@
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle"><i class="nav-icon">📚</i><span>Student Clubs</span><i class="dropdown-arrow">▼</i></a>
             <ul class="dropdown-menu">
-              <li><a href="../cultural_club.html" class="dropdown-link">Cultural Clubs</a></li>
-              <li><a href="../../Departmental/Departmental.html" class="dropdown-link">Departmental Clubs</a></li>
+              <li><a href="../../Cultural/cultural_club.html" class="dropdown-link">Cultural Clubs</a></li>
+              <li><a href="../Departmental.html" class="dropdown-link">Departmental Clubs</a></li>
               <li><a href="../../Sports/Sports.html" class="dropdown-link">Sports Clubs</a></li>
             </ul>
           </li>
@@ -101,8 +237,8 @@
       <li>
         <a href="#" data-section="clubs" class="main-menu-item">Students Clubs</a>
         <div class="sub-menu" id="clubs-submenu">
-          <button type="button" class="sub-menu-btn" data-section="cultural" data-url="../cultural_club.html">Cultural</button>
-          <button type="button" class="sub-menu-btn" data-section="departmental" data-url="../../Departmental/Departmental.html">Departmental</button>
+          <button type="button" class="sub-menu-btn" data-section="cultural" data-url="../../Cultural/cultural_club.html">Cultural</button>
+          <button type="button" class="sub-menu-btn" data-section="departmental" data-url="../Departmental.html">Departmental</button>
           <button type="button" class="sub-menu-btn" data-section="sports" data-url="../../Sports/Sports.html">Sports</button>
         </div>
       </li>
@@ -114,19 +250,19 @@
 
   <!-- ===================== Main Content ===================== -->
   <main>
-    <!-- Saturangle Club Content -->
+    <!-- $($deptInfo.title) Content -->
     <section class="club-content">
       <div class="club-header">
-        <img src="../../images/default.png" alt="Saturangle Club Logo" class="club-logo" />
-        <h1 class="club-name">Saturangle Club</h1>
+        <img src="../../images/$($deptInfo.logo)" alt="$($deptInfo.title) Logo" class="club-logo" />
+        <h1 class="club-name">$($deptInfo.title)</h1>
         <p class="club-description">
-          Welcome to Saturangle Club - Exploring the intersection of art, science, and creativity at GLA University.
+          $($deptInfo.description)
         </p>
       </div>
       
       <div class="club-info">
-        <h3>About Saturangle Club</h3>
-        <p>Saturangle Club is dedicated to promoting interdisciplinary thinking and creative problem-solving among students. We organize workshops, competitions, and events that blend different fields of knowledge.</p>
+        <h3>About $($deptInfo.title)</h3>
+        <p>$($deptInfo.about)</p>$clubsSection
       </div>
     </section>
   </main>
@@ -217,6 +353,22 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="../../Header_Footer.js"></script>
-  <script src="All_Cultural_club.js"></script>
+  <script src="All_Department.js"></script>
 </body>
 </html>
+"@
+}
+
+# Process each department
+foreach ($deptKey in $departments.Keys) {
+    if ($deptKey -ne "agriculture") {  # Skip agriculture as it's already done
+        $deptInfo = $departments[$deptKey]
+        $htmlContent = Create-DepartmentHTML -deptKey $deptKey -deptInfo $deptInfo
+        $filePath = "c:\Users\sagar\OneDrive\Desktop\GLA\FRONTEND\Departmental\D_Departments\$deptKey.html"
+        
+        Write-Host "Creating standardized file for: $($deptInfo.title)"
+        $htmlContent | Out-File -FilePath $filePath -Encoding UTF8
+    }
+}
+
+Write-Host "All D_Departments files have been standardized!"

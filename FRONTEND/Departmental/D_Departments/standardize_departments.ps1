@@ -1,11 +1,33 @@
-﻿<!DOCTYPE html>
+# PowerShell script to standardize all D_Departments HTML files
+# This script will convert all files to use the same structure as C-Club files
+
+$departments = @(
+    @{name="Agriculture Science"; file="agriculture.html"; id="agriculture"},
+    @{name="Biotechnology"; file="biotechnology.html"; id="biotechnology"},
+    @{name="Civil Engineering"; file="ce.html"; id="ce"},
+    @{name="Civil Engineering (Architecture)"; file="cea.html"; id="cea"},
+    @{name="Chemistry"; file="chemistry.html"; id="chemistry"},
+    @{name="Electronics & Communication"; file="ec.html"; id="ec"},
+    @{name="Electrical Engineering"; file="ee.html"; id="ee"},
+    @{name="Information Business Management"; file="ibm.html"; id="ibm"},
+    @{name="Information Business Management (PG)"; file="ibm-pg.html"; id="ibm-pg"},
+    @{name="Intellectual Property Rights"; file="ipr.html"; id="ipr"},
+    @{name="Law"; file="law.html"; id="law"},
+    @{name="Mathematics"; file="mathematics.html"; id="mathematics"},
+    @{name="Mechanical Engineering"; file="me.html"; id="me"},
+    @{name="Polytechnic"; file="polytechnic.html"; id="polytechnic"},
+    @{name="Science"; file="science.html"; id="science"}
+)
+
+$standardTemplate = @'
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GLA University - Saturangle Club</title>
+  <title>GLA University - {{DEPARTMENT_NAME}} Department</title>
   <link rel="stylesheet" href="../../Header_Footer.css" />
-  <link rel="stylesheet" href="All_Cultural_club.css" />
+  <link rel="stylesheet" href="All_Department.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -29,9 +51,9 @@
           <a href="https://api.whatsapp.com/send?phone=916399020003&text=Hello%20GLA%20University!" class="top-social-icon" title="WhatsApp"><img src="../../images/whatsapp.png" alt="WhatsApp"></a>
         </div>
         <div class="accessibility-controls">
-          <button type="button" class="control-btn" id="saturangle-zoom-in" title="Increase Font Size"><span>A+</span></button>
-          <button type="button" class="control-btn" id="saturangle-zoom-out" title="Decrease Font Size"><span>A-</span></button>
-          <button type="button" class="control-btn" id="saturangle-reset" title="Reset Font Size"><span>↻</span></button>
+          <button type="button" class="control-btn" id="{{DEPARTMENT_ID}}-zoom-in" title="Increase Font Size"><span>A+</span></button>
+          <button type="button" class="control-btn" id="{{DEPARTMENT_ID}}-zoom-out" title="Decrease Font Size"><span>A-</span></button>
+          <button type="button" class="control-btn" id="{{DEPARTMENT_ID}}-reset" title="Reset Font Size"><span>↻</span></button>
         </div>
       </div>
     </div>
@@ -68,8 +90,8 @@
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle"><i class="nav-icon">📚</i><span>Student Clubs</span><i class="dropdown-arrow">▼</i></a>
             <ul class="dropdown-menu">
-              <li><a href="../cultural_club.html" class="dropdown-link">Cultural Clubs</a></li>
-              <li><a href="../../Departmental/Departmental.html" class="dropdown-link">Departmental Clubs</a></li>
+              <li><a href="../../Cultural/cultural_club.html" class="dropdown-link">Cultural Clubs</a></li>
+              <li><a href="../Departmental.html" class="dropdown-link">Departmental Clubs</a></li>
               <li><a href="../../Sports/Sports.html" class="dropdown-link">Sports Clubs</a></li>
             </ul>
           </li>
@@ -101,8 +123,8 @@
       <li>
         <a href="#" data-section="clubs" class="main-menu-item">Students Clubs</a>
         <div class="sub-menu" id="clubs-submenu">
-          <button type="button" class="sub-menu-btn" data-section="cultural" data-url="../cultural_club.html">Cultural</button>
-          <button type="button" class="sub-menu-btn" data-section="departmental" data-url="../../Departmental/Departmental.html">Departmental</button>
+          <button type="button" class="sub-menu-btn" data-section="cultural" data-url="../../Cultural/cultural_club.html">Cultural</button>
+          <button type="button" class="sub-menu-btn" data-section="departmental" data-url="../Departmental.html">Departmental</button>
           <button type="button" class="sub-menu-btn" data-section="sports" data-url="../../Sports/Sports.html">Sports</button>
         </div>
       </li>
@@ -114,21 +136,8 @@
 
   <!-- ===================== Main Content ===================== -->
   <main>
-    <!-- Saturangle Club Content -->
-    <section class="club-content">
-      <div class="club-header">
-        <img src="../../images/default.png" alt="Saturangle Club Logo" class="club-logo" />
-        <h1 class="club-name">Saturangle Club</h1>
-        <p class="club-description">
-          Welcome to Saturangle Club - Exploring the intersection of art, science, and creativity at GLA University.
-        </p>
-      </div>
-      
-      <div class="club-info">
-        <h3>About Saturangle Club</h3>
-        <p>Saturangle Club is dedicated to promoting interdisciplinary thinking and creative problem-solving among students. We organize workshops, competitions, and events that blend different fields of knowledge.</p>
-      </div>
-    </section>
+    <!-- {{DEPARTMENT_NAME}} Department Content -->
+    {{MAIN_CONTENT}}
   </main>
   <!-- ===================== End Main Content ===================== -->
 
@@ -217,6 +226,55 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="../../Header_Footer.js"></script>
-  <script src="All_Cultural_club.js"></script>
+  <script src="All_Department.js"></script>
 </body>
 </html>
+'@
+
+Write-Host "Starting standardization of D_Departments HTML files..." -ForegroundColor Green
+Write-Host "This script will standardize all files to match the C-Club structure." -ForegroundColor Yellow
+
+foreach ($dept in $departments) {
+    Write-Host "Processing $($dept.name) ($($dept.file))..." -ForegroundColor Cyan
+    
+    # Read the existing file to extract main content
+    $existingFile = Get-Content $dept.file -Raw
+    
+    # Extract main content between <main> and </main> tags
+    $mainContentMatch = [regex]::Match($existingFile, '<main[^>]*>(.*?)</main>', [Text.RegularExpressions.RegexOptions]::Singleline)
+    if ($mainContentMatch.Success) {
+        $mainContent = $mainContentMatch.Groups[1].Value.Trim()
+    } else {
+        # Fallback: create basic department content
+        $mainContent = @"
+    <section class="department-content">
+      <div class="department-header">
+        <h1 class="department-name">$($dept.name) Department</h1>
+        <p class="department-description">
+          Welcome to the $($dept.name) Department at GLA University.
+        </p>
+      </div>
+      
+      <div class="department-info">
+        <h3>About $($dept.name)</h3>
+        <p>This department focuses on providing quality education and research opportunities in $($dept.name).</p>
+      </div>
+    </section>
+"@
+    }
+    
+    # Create the new standardized file
+    $newContent = $standardTemplate -replace '{{DEPARTMENT_NAME}}', $dept.name -replace '{{DEPARTMENT_ID}}', $dept.id -replace '{{MAIN_CONTENT}}', $mainContent
+    
+    # Backup original file
+    Copy-Item $dept.file "$($dept.file).backup"
+    
+    # Write new standardized content
+    Set-Content -Path $dept.file -Value $newContent -Encoding UTF8
+    
+    Write-Host "✓ Completed $($dept.file)" -ForegroundColor Green
+}
+
+Write-Host "`nStandardization complete!" -ForegroundColor Green
+Write-Host "All files have been standardized to use the Header_Footer.css structure." -ForegroundColor Yellow
+Write-Host "Backup files created with .backup extension." -ForegroundColor Blue

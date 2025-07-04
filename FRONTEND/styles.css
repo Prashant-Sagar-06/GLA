@@ -2866,3 +2866,46 @@ html {
    display: none;
   }
 }
+
+/* ===========================================================
+  LOADING PREVENTION & NAVIGATION FIXES
+=========================================================== */
+/* Global styles to prevent persistent loading states */
+.loading, .loader, .loading-spinner, .loading-overlay, 
+.swiper-lazy-preloader, .spinner, .page-loader {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* Ensure pages are always visible after load */
+body.page-loaded {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Submenu styles for hamburger navigation */
+.sub-menu {
+    display: none;
+    padding-left: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.sub-menu-btn {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background: none;
+    border: none;
+    color: white;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.sub-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}

@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GLA University - Saturangle Club</title>
+  <title>GLA University - Agriculture Science Department</title>
   <link rel="stylesheet" href="../../Header_Footer.css" />
-  <link rel="stylesheet" href="All_Cultural_club.css" />
+  <link rel="stylesheet" href="All_Department.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -29,9 +29,9 @@
           <a href="https://api.whatsapp.com/send?phone=916399020003&text=Hello%20GLA%20University!" class="top-social-icon" title="WhatsApp"><img src="../../images/whatsapp.png" alt="WhatsApp"></a>
         </div>
         <div class="accessibility-controls">
-          <button type="button" class="control-btn" id="saturangle-zoom-in" title="Increase Font Size"><span>A+</span></button>
-          <button type="button" class="control-btn" id="saturangle-zoom-out" title="Decrease Font Size"><span>A-</span></button>
-          <button type="button" class="control-btn" id="saturangle-reset" title="Reset Font Size"><span>↻</span></button>
+          <button type="button" class="control-btn" id="agriculture-zoom-in" title="Increase Font Size"><span>A+</span></button>
+          <button type="button" class="control-btn" id="agriculture-zoom-out" title="Decrease Font Size"><span>A-</span></button>
+          <button type="button" class="control-btn" id="agriculture-reset" title="Reset Font Size"><span>↻</span></button>
         </div>
       </div>
     </div>
@@ -68,8 +68,8 @@
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle"><i class="nav-icon">📚</i><span>Student Clubs</span><i class="dropdown-arrow">▼</i></a>
             <ul class="dropdown-menu">
-              <li><a href="../cultural_club.html" class="dropdown-link">Cultural Clubs</a></li>
-              <li><a href="../../Departmental/Departmental.html" class="dropdown-link">Departmental Clubs</a></li>
+              <li><a href="../../Cultural/cultural_club.html" class="dropdown-link">Cultural Clubs</a></li>
+              <li><a href="../Departmental.html" class="dropdown-link">Departmental Clubs</a></li>
               <li><a href="../../Sports/Sports.html" class="dropdown-link">Sports Clubs</a></li>
             </ul>
           </li>
@@ -101,8 +101,8 @@
       <li>
         <a href="#" data-section="clubs" class="main-menu-item">Students Clubs</a>
         <div class="sub-menu" id="clubs-submenu">
-          <button type="button" class="sub-menu-btn" data-section="cultural" data-url="../cultural_club.html">Cultural</button>
-          <button type="button" class="sub-menu-btn" data-section="departmental" data-url="../../Departmental/Departmental.html">Departmental</button>
+          <button type="button" class="sub-menu-btn" data-section="cultural" data-url="../../Cultural/cultural_club.html">Cultural</button>
+          <button type="button" class="sub-menu-btn" data-section="departmental" data-url="../Departmental.html">Departmental</button>
           <button type="button" class="sub-menu-btn" data-section="sports" data-url="../../Sports/Sports.html">Sports</button>
         </div>
       </li>
@@ -114,19 +114,32 @@
 
   <!-- ===================== Main Content ===================== -->
   <main>
-    <!-- Saturangle Club Content -->
+    <!-- Agriculture Department Content -->
     <section class="club-content">
       <div class="club-header">
-        <img src="../../images/default.png" alt="Saturangle Club Logo" class="club-logo" />
-        <h1 class="club-name">Saturangle Club</h1>
+        <img src="../../images/dep_agriculture.png" alt="Agriculture Science Department Logo" class="club-logo" />
+        <h1 class="club-name">Agriculture Science Department</h1>
         <p class="club-description">
-          Welcome to Saturangle Club - Exploring the intersection of art, science, and creativity at GLA University.
+          Welcome to the Agriculture Science Department - Advancing sustainable agriculture and food security at GLA University.
         </p>
       </div>
       
       <div class="club-info">
-        <h3>About Saturangle Club</h3>
-        <p>Saturangle Club is dedicated to promoting interdisciplinary thinking and creative problem-solving among students. We organize workshops, competitions, and events that blend different fields of knowledge.</p>
+        <h3>About Agriculture Science Department</h3>
+        <p>The Agriculture Science Department focuses on innovative agricultural practices, sustainable farming techniques, and research in crop science, soil management, and agricultural technology to address global food security challenges.</p>
+        
+        <div class="club-grid">
+          <div class="club-card">
+            <img src="../../images/almargo logo.jpg" alt="Almagro Club" class="club-image" />
+            <h3>Almagro</h3>
+            <p>Agricultural innovation and sustainability initiatives.</p>
+          </div>
+          <div class="club-card">
+            <img src="../../images/agriventure logo.jpg" alt="Agriventure Club" class="club-image" />
+            <h3>Agriventure</h3>
+            <p>Agro-entrepreneurship and venture creation activities.</p>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -217,6 +230,6 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="../../Header_Footer.js"></script>
-  <script src="All_Cultural_club.js"></script>
+  <script src="All_Department.js"></script>
 </body>
 </html>

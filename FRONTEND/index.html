@@ -10,19 +10,27 @@
   <link rel="preload" href="Header_Footer.css" as="style">
   <link rel="preload" href="styles.css" as="style">
   <link rel="preload" href="images/logo.png" as="image">
-  <link rel="preload" href="images/gla.mp4" as="video" type="video/mp4">
+  <!-- Removed video preload - it's too large and blocks rendering -->
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="Header_Footer.css" />
+  
+  <!-- Preconnect to external domains for better performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  
+  <!-- Load fonts with font-display swap -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-  <!-- Scripts -->
+  
+  <!-- Defer non-critical CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" media="print" onload="this.media='all'">
+  
+  <!-- Scripts with proper defer -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
   <script src="script.js" defer></script>
   <script src="Header_Footer.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 
 <body>
@@ -189,7 +197,7 @@
 
   <!-- ===================== Enhanced Video Banner ===================== -->
   <section class="video-banner">
-    <video autoplay muted loop id="heroVideo">
+    <video autoplay muted loop id="heroVideo" preload="metadata" poster="./images/gla_banner.png">
       <source src="./images/gla.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
@@ -264,7 +272,7 @@
           <!-- Spandan Event -->
           <div class="event-card spandan">
             <div class="event-media">
-              <img src="./images/cultural-clubs.png" alt="Spandan Cultural Festival" class="event-image">
+              <img src="./images/cultural-clubs.png" alt="Spandan Cultural Festival" class="event-image" loading="lazy">
               <div class="event-overlay">
                 <button class="play-video-btn" data-video="spandan">
                   <span class="play-icon">▶</span>
@@ -296,7 +304,7 @@
           <!-- Technavya Event -->
           <div class="event-card technavya">
             <div class="event-media">
-              <img src="./images/codebustersGLAU logo.jpg" alt="Technavya Technical Festival" class="event-image">
+              <img src="./images/codebustersGLAU logo.jpg" alt="Technavya Technical Festival" class="event-image" loading="lazy">
               <div class="event-overlay">
                 <button class="play-video-btn" data-video="technavya">
                   <span class="play-icon">▶</span>
@@ -328,7 +336,7 @@
           <!-- Dandiya Night Event -->
           <div class="event-card dandiya">
             <div class="event-media">
-              <img src="./images/janamashtmi(1).jpg" alt="Dandiya Night Festival" class="event-image">
+              <img src="./images/janamashtmi(1).jpg" alt="Dandiya Night Festival" class="event-image" loading="lazy">
               <div class="event-overlay">
                 <button class="play-video-btn" data-video="dandiya">
                   <span class="play-icon">▶</span>

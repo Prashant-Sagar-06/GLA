@@ -4,13 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GLA University - Drishti Club</title>
-  <link rel="stylesheet" href="../../Header_Footer.css" />`n  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="../../Header_Footer.css" />
+  <link rel="stylesheet" href="All_Cultural_club.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <script src="../../Header_Footer.js" defer></script>
-  <script src="../../script.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 <body>
   <!-- ===================== Top Bar ===================== -->
@@ -84,87 +82,85 @@
   </header>
   <!-- ===================== End Navbar ===================== -->
 
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="logo">
-      <img src="images/logo.png" alt="GLA University Logo" />
-      <h1 class="text">GLA UNIVERSITY</h1>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="https://www.gla.ac.in/">Institute</a></li>
-        <li><a href="campus_events.html">Campus Events</a></li>
-        <li><a href="#">Council Division</a></li>
-        <li><a href="#">Academics</a></li>
-        <li><a href="#">Disability Support</a></li>
-        <li><a href="#">Alumni</a></li>
-        <li><a href="#">Policies on core values</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- ===================== Sidebar Backdrop ===================== -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
-  <!-- Club Header Section -->
-  <section class="club-header">
-    <img src="../images/drishti_logo.png" alt="Drishti Club Logo" class="club-logo" />
-    <h1 class="club-name">Drishti Club</h1>
-    <p class="club-description">
-      Drishti Club is GLA’s dynamic cultural team dedicated to creative expression through events, design, media, and innovation, led by passionate individuals committed to student empowerment.
-    </p>
-  </section>
+  <!-- ===================== Sidebar Popup ===================== -->
+  <div class="popup-sidebar" id="popupSidebar">
+    <ul>
+      <li><a href="../../others/about.html">About</a></li>
+      <li><a href="../../others/newsletters.html">Newsletters</a></li>
+      <li><a href="../../others/student_activity.html">Student Activity Centre</a></li>
+      <li>
+        <a href="#" data-section="council" class="main-menu-item">Council</a>
+        <div class="sub-menu" id="council-submenu">
+          <button type="button" class="sub-menu-btn" data-section="student-affairs" data-url="../../Council/student-affairs.html">Student Affairs Council</button>
+          <button type="button" class="sub-menu-btn" data-section="cultural-affairs" data-url="../../Council/cultural-affairs.html">Cultural Affairs Council</button>
+        </div>
+      </li>
+      <li>
+        <a href="#" data-section="clubs" class="main-menu-item">Students Clubs</a>
+        <div class="sub-menu" id="clubs-submenu">
+          <button type="button" class="sub-menu-btn" data-section="cultural" data-url="../cultural_club.html">Cultural</button>
+          <button type="button" class="sub-menu-btn" data-section="departmental" data-url="../../Departmental/Departmental.html">Departmental</button>
+          <button type="button" class="sub-menu-btn" data-section="sports" data-url="../../Sports/Sports.html">Sports</button>
+        </div>
+      </li>
+      <li><a href="../../others/NCC.html">NCC</a></li>
+      <li><a href="../../others/NSS.html">NSS</a></li>
+    </ul>
+  </div>
+  <!-- ===================== End Sidebar Popup ===================== -->
 
-  <!-- Team Section -->
-  <section class="team-section">
-    <h2>MEET THE TEAM</h2>
-    <!-- Mentor Card -->
-    <div class="mentor-card">
-      <img src="images/mentor.png" alt="Club Mentor" class="profile-pic">
-      <h3>Dr. Ramesh Sapra</h3>
-      <p>Faculty Mentor</p>
-    </div>
-
-    <!-- President -->
-    <div class="president-card team-card">
-      <img src="../images/default.png" alt="Uday Gupta" class="profile-pic">
-      <h3>Uday Gupta</h3>
-      <p>President</p>
-    </div>
-
-    <!-- Vice Presidents -->
-    <div class="vp-row">
   <!-- ===================== Main Content ===================== -->
   <main>
+    <!-- Drishti Club Content -->
     <section class="club-content">
-      <h2>Drishti Club</h2>
-      <p>Welcome to the Drishti Club - Fostering Vision and Innovation at GLA University.</p>
-      
-      <!-- Club Information Section -->
-      <div class="club-info">
-        <h3>About Drishti Club</h3>
-        <p>Drishti Club is dedicated to developing visionary thinking and innovative approaches among students. We organize events, workshops, and activities that inspire creativity and forward-thinking.</p>
+      <div class="club-header">
+        <img src="../../images/Drishti_Logo.jpg" alt="Drishti Club Logo" class="club-logo" />
+        <h1 class="club-name">Drishti Club</h1>
+        <p class="club-description">
+          Drishti Club is GLA's dynamic cultural team dedicated to creative expression through events, design, media, and innovation, led by passionate individuals committed to student empowerment.
+        </p>
+      </div>
+
+      <!-- Team Section -->
+      <div class="team-section">
+        <h2>MEET THE TEAM</h2>
         
-        <!-- Team Section -->
-        <div class="team-section">
-          <h3>Our Team</h3>
-          <div class="team-grid">
-            <div class="team-card">
-              <h4>Jatin Chaudhary</h4>
-              <p>Vice President</p>
-            </div>
-            <div class="team-card">
-              <h4>Milan Awasthi</h4>
-              <p>Vice President</p>
-            </div>
+        <!-- Mentor Card -->
+        <div class="mentor-card">
+          <img src="../../images/default.png" alt="Club Mentor" class="profile-pic">
+          <h3>Dr. Ramesh Sapra</h3>
+          <p>Faculty Mentor</p>
+        </div>
+
+        <!-- President -->
+        <div class="president-card team-card">
+          <img src="../../images/default.png" alt="Uday Gupta" class="profile-pic">
+          <h3>Uday Gupta</h3>
+          <p>President</p>
+        </div>
+
+        <!-- Vice Presidents -->
+        <div class="team-grid">
+          <div class="team-card">
+            <h4>Jatin Chaudhary</h4>
+            <p>Vice President</p>
           </div>
-          
-          <div class="other-members">
-            <h4>Other Members</h4>
-            <ul>
-              <li>Ayush Chauhan – General Secretary – B.Tech CSE</li>
-              <li>Satvik Gupta – General Secretary – B.Tech CSE</li>
-              <li>Utkarsh Saxena – Treasurer – B.Tech ECE</li>
-            </ul>
+          <div class="team-card">
+            <h4>Milan Awasthi</h4>
+            <p>Vice President</p>
           </div>
+        </div>
+        
+        <div class="other-members">
+          <h4>Other Members</h4>
+          <ul>
+            <li>Ayush Chauhan – General Secretary – B.Tech CSE</li>
+            <li>Satvik Gupta – General Secretary – B.Tech CSE</li>
+            <li>Utkarsh Saxena – Treasurer – B.Tech ECE</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -252,6 +248,10 @@
     </div>
   </footer>
   <!-- ===================== End Footer ===================== -->
+  
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="../../Header_Footer.js"></script>
+  <script src="All_Cultural_club.js"></script>
 </body>
 </html>
-

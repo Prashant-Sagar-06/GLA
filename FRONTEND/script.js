@@ -5,6 +5,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   const isCouncilPage = window.location.pathname.includes('Council/');
   const isSimplePage = isCouncilPage; // Add other simple pages here if needed
 
+  // Static mode detection - check if we're running without a backend server
+  const isStaticMode = !window.location.href.includes('localhost') || window.location.protocol === 'file:';
+  console.info(isStaticMode ? 'Running in static mode - API calls disabled' : 'Running with backend server');
+
+  // Global flag for API errors
+  let hasApiErrors = false;
+
   // ----------------- Dynamic Main Content Loader -----------------
   function loadContent(section) {
     const mainContent = document.querySelector(".main-content");
@@ -47,23 +54,28 @@ document.addEventListener("DOMContentLoaded", async () => {
   // ----------------- Swiper Slider Initialization -----------------
   if (!isSimplePage) {
     try {
-      const res = await fetch('/api/images');
-      if (res.ok) {
-        const images = await res.json();
-        const swiperWrapper = document.querySelector('.swiper-wrapper');
-        if (swiperWrapper) {
-          swiperWrapper.innerHTML = images.map(img =>
-            `<div class="swiper-slide"><img src="${img.url}" alt="${img.alt}"></div>`
-          ).join('');
-          new Swiper('.mySwiper', {
-            loop: true,
-            autoplay: { delay: 3000, disableOnInteraction: false },
-            navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-            pagination: { el: ".swiper-pagination", clickable: true }
-          });
+      if (!isStaticMode) {
+        const res = await fetch('/api/images');
+        if (res.ok) {
+          const images = await res.json();
+          const swiperWrapper = document.querySelector('.swiper-wrapper');
+          if (swiperWrapper) {
+            swiperWrapper.innerHTML = images.map(img =>
+              `<div class="swiper-slide"><img src="${img.url}" alt="${img.alt}"></div>`
+            ).join('');
+            new Swiper('.mySwiper', {
+              loop: true,
+              autoplay: { delay: 3000, disableOnInteraction: false },
+              navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+              pagination: { el: ".swiper-pagination", clickable: true }
+            });
+          }
+        } else {
+          console.info('API endpoint /api/images not available, using static content');
+          hasApiErrors = true;
         }
       } else {
-        console.info('API endpoint /api/images not available, using static content');
+        console.info('Static mode: Using static image content');
         hasApiErrors = true;
       }
     } catch (err) {
@@ -79,13 +91,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       initializeDeanSection();
     
       // Try to load dean data from API, fallback to static content
-      try {
-        const deanRes = await fetch('/api/dean');
-        if (deanRes.ok) {
-          const dean = await deanRes.json();
-          
-          // Update dean info with API data
-          const deanInfoElement = document.getElementById('dean-info');
+      if (!isStaticMode) {
+        try {
+          const deanRes = await fetch('/api/dean');
+          if (deanRes.ok) {
+            const dean = await deanRes.json();
+            
+            // Update dean info with API data
+            const deanInfoElement = document.getElementById('dean-info');
           if (deanInfoElement) {
             deanInfoElement.querySelector('.dean-title-animated h2').textContent = dean.name || 'Dr. Himanshu Agarwal';
             deanInfoElement.querySelector('.dean-position').textContent = dean.position || 'Dean of Students Welfare';
@@ -111,8 +124,12 @@ document.addEventListener("DOMContentLoaded", async () => {
           console.info('API endpoint /api/dean not available, using static content');
           hasApiErrors = true;
         }
-      } catch (apiErr) {
-        console.info('API endpoint /api/dean not available, using static content');
+        } catch (apiErr) {
+          console.info('API endpoint /api/dean not available, using static content');
+          hasApiErrors = true;
+        }
+      } else {
+        console.info('Static mode: Using static dean content');
         hasApiErrors = true;
       }
     } catch (err) {
@@ -250,12 +267,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // ----------------- Council Members Section -----------------
-  try {
-    const res = await fetch('/api/council-members');
-    if (res.ok) {
-      const members = await res.json();
-      const container = document.getElementById('council-members-container');
-      if (container) {
+  if (!isStaticMode) {
+    try {
+      const res = await fetch('/api/council-members');
+      if (res.ok) {
+        const members = await res.json();
+        const container = document.getElementById('council-members-container');
+        if (container) {
         container.innerHTML = members.map(member => `
           <div class="council-member-box">
             <div class="member-image"><img src="${member.image}" alt="${member.name}" /></div>
@@ -270,35 +288,44 @@ document.addEventListener("DOMContentLoaded", async () => {
       console.info('API endpoint /api/council-members not available, using static content');
       hasApiErrors = true;
     }
-  } catch (err) {
-    console.info('API endpoint /api/council-members not available, using static content');
+    } catch (err) {
+      console.info('API endpoint /api/council-members not available, using static content');
+      hasApiErrors = true;
+    }
+  } else {
+    console.info('Static mode: Using static council members content');
     hasApiErrors = true;
   }
 
   // ----------------- Departmental Clubs Section -----------------
   if (!isSimplePage) {
-    try {
-      const res = await fetch('/api/departmental-clubs');
-      if (res.ok) {
-        const clubs = await res.json();
-        const container = document.getElementById('departmental-clubs-container');
-        if (container) {
-          container.innerHTML = clubs.map(club => `
-            <div class="club-card">
-              <div class="club-image"><img src="${club.image}" alt="${club.name}" /></div>
-              <div class="club-details">
-                <h3>${club.name}</h3>
-                <p>${club.description}</p>
-              </div>
+    if (!isStaticMode) {
+      try {
+        const res = await fetch('/api/departmental-clubs');
+        if (res.ok) {
+          const clubs = await res.json();
+          const container = document.getElementById('departmental-clubs-container');
+          if (container) {
+            container.innerHTML = clubs.map(club => `
+              <div class="club-card">
+                <div class="club-image"><img src="${club.image}" alt="${club.name}" /></div>
+                <div class="club-details">
+                  <h3>${club.name}</h3>
+                  <p>${club.description}</p>
+                </div>
             </div>
           `).join('');
         }
-      } else {
+        } else {
+          console.info('API endpoint /api/departmental-clubs not available, using static content');
+          hasApiErrors = true;
+        }
+      } catch (err) {
         console.info('API endpoint /api/departmental-clubs not available, using static content');
         hasApiErrors = true;
       }
-    } catch (err) {
-      console.info('API endpoint /api/departmental-clubs not available, using static content');
+    } else {
+      console.info('Static mode: Using static departmental clubs content');
       hasApiErrors = true;
     }
   }
@@ -964,4 +991,98 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (hasApiErrors) {
     addStaticModeNotification();
   }
+
+  // Add lazy loading to all images that don't already have it
+  function addLazyLoadingToImages() {
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+      // Skip if already has loading attribute or is critical (like logo)
+      if (!img.hasAttribute('loading') && !img.src.includes('logo.png')) {
+        img.setAttribute('loading', 'lazy');
+      }
+    });
+  }
+
+  // Call immediately to add lazy loading to all images
+  addLazyLoadingToImages();
+
+  // Optimize video loading for better performance
+  function optimizeVideoLoading() {
+    const heroVideo = document.getElementById('heroVideo');
+    if (heroVideo) {
+      // Add loading timeout - if video doesn't load in 3 seconds, show static background
+      const videoTimeout = setTimeout(() => {
+        if (heroVideo.readyState < 2) { // HAVE_CURRENT_DATA
+          console.info('Video loading slowly, showing fallback image');
+          heroVideo.style.display = 'none';
+          const videoBanner = heroVideo.closest('.video-banner');
+          if (videoBanner) {
+            videoBanner.style.backgroundImage = 'url(./images/gla_banner.png)';
+            videoBanner.style.backgroundSize = 'cover';
+            videoBanner.style.backgroundPosition = 'center';
+          }
+        }
+      }, 3000);
+
+      // Clear timeout if video loads successfully
+      heroVideo.addEventListener('loadeddata', () => {
+        clearTimeout(videoTimeout);
+        console.info('Video loaded successfully');
+      });
+
+      // Handle video error
+      heroVideo.addEventListener('error', () => {
+        clearTimeout(videoTimeout);
+        console.info('Video failed to load, showing fallback');
+        heroVideo.style.display = 'none';
+      });
+    }
+  }
+
+  // Call video optimization
+  optimizeVideoLoading();
+
+  // Performance monitoring
+  function logPerformanceMetrics() {
+    if (window.performance && window.performance.timing) {
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const timing = window.performance.timing;
+          const loadTime = timing.loadEventEnd - timing.navigationStart;
+          const domReady = timing.domContentLoadedEventEnd - timing.navigationStart;
+          const firstPaint = timing.responseEnd - timing.navigationStart;
+          
+          console.log('🚀 Performance Metrics:');
+          console.log(`📄 DOM Ready: ${domReady}ms`);
+          console.log(`🎨 First Paint: ${firstPaint}ms`);
+          console.log(`✅ Full Load: ${loadTime}ms`);
+          
+          // Show user-friendly notification for slow loading
+          if (loadTime > 5000) {
+            showNotification('Page loaded but images may still be loading. This is normal for first visit.', 'info');
+          }
+        }, 100);
+      });
+    }
+  }
+
+  // Start performance monitoring
+  logPerformanceMetrics();
+
+  // Ensure all loading overlays are hidden (final safety check)
+  setTimeout(() => {
+    const loadingElements = document.querySelectorAll('.loading, .loader, .loading-spinner, .loading-overlay, .swiper-lazy-preloader, .spinner, .page-loader');
+    loadingElements.forEach(el => {
+      el.style.display = 'none';
+      el.style.opacity = '0';
+      el.style.visibility = 'hidden';
+    });
+    
+    // Mark body as page loaded
+    document.body.classList.add('page-loaded');
+    document.body.style.opacity = '1';
+    document.body.style.visibility = 'visible';
+    
+    console.info('Page fully loaded and all loading states cleared');
+  }, 1000);
 });

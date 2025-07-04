@@ -396,6 +396,56 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ============================================================
+  // SUBMENU NAVIGATION FUNCTIONALITY
+  // ============================================================
+  
+  // Handle main menu items that have submenus
+  document.querySelectorAll('.main-menu-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      const section = e.target.getAttribute('data-section');
+      const submenu = document.getElementById(`${section}-submenu`);
+      
+      if (submenu) {
+        // Close all other submenus and remove active class from their parent items
+        document.querySelectorAll('.sub-menu').forEach(menu => {
+          if (menu !== submenu) {
+            menu.classList.remove('active');
+          }
+        });
+        document.querySelectorAll('.main-menu-item').forEach(menuItem => {
+          if (menuItem !== item) {
+            menuItem.classList.remove('active');
+          }
+        });
+        
+        // Toggle current submenu and parent item active state
+        submenu.classList.toggle('active');
+        item.classList.toggle('active');
+      }
+    });
+  });
+  
+  // Handle submenu button clicks
+  document.querySelectorAll('.sub-menu-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      const url = e.target.getAttribute('data-url');
+      
+      if (url) {
+        // Add loading state
+        e.target.style.opacity = '0.7';
+        e.target.innerHTML += ' ⟳';
+        
+        // Navigate to the URL
+        setTimeout(() => {
+          window.location.href = url;
+        }, 300);
+      }
+    });
+  });
+
+  // ============================================================
   // UTILITY FUNCTIONS
   // ============================================================
   

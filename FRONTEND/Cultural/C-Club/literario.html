@@ -4,13 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GLA University - Literario Club</title>
-  <link rel="stylesheet" href="../../Header_Footer.css" />`n  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="../../Header_Footer.css" />
+  <link rel="stylesheet" href="All_Cultural_club.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <script src="../../Header_Footer.js" defer></script>
-  <script src="../../script.js" defer></script>A  <script src="../../script.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 <body>
   <!-- ===================== Top Bar ===================== -->
@@ -84,12 +82,52 @@
   </header>
   <!-- ===================== End Navbar ===================== -->
 
+  <!-- ===================== Sidebar Backdrop ===================== -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- ===================== Sidebar Popup ===================== -->
+  <div class="popup-sidebar" id="popupSidebar">
+    <ul>
+      <li><a href="../../others/about.html">About</a></li>
+      <li><a href="../../others/newsletters.html">Newsletters</a></li>
+      <li><a href="../../others/student_activity.html">Student Activity Centre</a></li>
+      <li>
+        <a href="#" data-section="council" class="main-menu-item">Council</a>
+        <div class="sub-menu" id="council-submenu">
+          <button type="button" class="sub-menu-btn" data-section="student-affairs" data-url="../../Council/student-affairs.html">Student Affairs Council</button>
+          <button type="button" class="sub-menu-btn" data-section="cultural-affairs" data-url="../../Council/cultural-affairs.html">Cultural Affairs Council</button>
+        </div>
+      </li>
+      <li>
+        <a href="#" data-section="clubs" class="main-menu-item">Students Clubs</a>
+        <div class="sub-menu" id="clubs-submenu">
+          <button type="button" class="sub-menu-btn" data-section="cultural" data-url="../cultural_club.html">Cultural</button>
+          <button type="button" class="sub-menu-btn" data-section="departmental" data-url="../../Departmental/Departmental.html">Departmental</button>
+          <button type="button" class="sub-menu-btn" data-section="sports" data-url="../../Sports/Sports.html">Sports</button>
+        </div>
+      </li>
+      <li><a href="../../others/NCC.html">NCC</a></li>
+      <li><a href="../../others/NSS.html">NSS</a></li>
+    </ul>
+  </div>
+  <!-- ===================== End Sidebar Popup ===================== -->
+
   <!-- ===================== Main Content ===================== -->
   <main>
-    <!-- PAGE-SPECIFIC CONTENT GOES HERE -->
+    <!-- Literario Club Content -->
     <section class="club-content">
-      <h2>Literario Club</h2>
-      <p>Welcome to the Literario Club page. Content coming soon...</p>
+      <div class="club-header">
+        <img src="../../images/literario logo.png" alt="Literario Club Logo" class="club-logo" />
+        <h1 class="club-name">Literario Club</h1>
+        <p class="club-description">
+          Welcome to Literario Club - Where words come alive and creativity flourishes at GLA University.
+        </p>
+      </div>
+      
+      <div class="club-info">
+        <h3>About Literario Club</h3>
+        <p>Literario Club is dedicated to fostering literary excellence and creative writing among students. We organize poetry sessions, writing workshops, literary competitions, and cultural events that celebrate the power of words and storytelling.</p>
+      </div>
     </section>
   </main>
   <!-- ===================== End Main Content ===================== -->
@@ -175,5 +213,10 @@
     </div>
   </footer>
   <!-- ===================== End Footer ===================== -->
+  
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="../../Header_Footer.js"></script>
+  <script src="All_Cultural_club.js"></script>
 </body>
 </html>
